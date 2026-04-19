@@ -13,13 +13,18 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import json
 import random
+from dataclasses import dataclass
 from datetime import date, timedelta
+from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
 import numpy as np
 from pydantic import BaseModel, Field
+
+from .energy_model import CHARGE_POWER_KWH_PER_HOUR, available_flexible_energy_kwh
 
 
 # ── Input models ──────────────────────────────────────────────────────────────
@@ -152,14 +157,13 @@ class FleetOptimizeResponse(BaseModel):
 
 _PRIORITY_RANK: dict[str, int] = {"high": 0, "medium": 1, "low": 2}
 V2G_EXPORT_PER_VEHICLE_KWH = 15.0
-CHARGE_POWER_KWH_PER_HOUR = 7.0
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 
 def _flexible_kwh(v: FleetVehicle) -> float:
-    return max(0.0, v.soc_kwh - v.reserve_kwh - v.mobility_need_kwh)
+    return available_flexible_energy_kwh(v.soc_kwh, v.reserve_kwh + v.mobility_need_kwh)
 
 
 def _naive_baseline_cost(vehicles: list[FleetVehicle], charge_price: float) -> float:
@@ -712,6 +716,17 @@ def generate_demo_jobs() -> list[InferenceJob]:
     return _DEMO_JOBS
 
 
+def _scaled_demo_jobs_for_fleet_size(fleet_size: int) -> list[InferenceJob]:
+    batch_count = max(1, (fleet_size + 14) // 15)
+    scaled_jobs: list[InferenceJob] = []
+    for batch_index in range(batch_count):
+        for job in _DEMO_JOBS:
+            scaled_jobs.append(
+                job.model_copy(update={"job_id": f"{job.job_id}-B{batch_index + 1}"})
+            )
+    return scaled_jobs
+
+
 _DEMO_JOBS = [
         InferenceJob(
             job_id="JOB-001",
@@ -826,7 +841,7 @@ def compare_three_seasons() -> SeasonalComparisonResponse:
 
     bundle = _load_runtime_bundle()
     vehicles = generate_demo_fleet(seed=42)
-    jobs = generate_demo_jobs()
+    jobs = _scaled_demo_jobs_for_fleet_size(fleet_size)
     scenarios: list[SeasonalScenario] = []
 
     for target_date, season_label, start_time in _COMPARISON_DATES:
@@ -892,6 +907,30 @@ def compare_three_seasons() -> SeasonalComparisonResponse:
 _ARTIFACTS_DIR = Path(__file__).resolve().parents[1] / "artifacts"
 
 
+@dataclass(frozen=True)
+class _BucketEconomics:
+    revenue_usd: float
+    charge_cost_usd: float
+    net_value_usd: float
+    v2g_revenue_usd: float
+    v2g_export_kwh: float
+
+
+@dataclass(frozen=True)
+class _ProjectionProfile:
+    threshold: float
+    sample_rows: int
+    precision: float
+    recall: float
+    f1: float
+    bucket_counts: dict[str, int]
+    bucket_economics: dict[str, _BucketEconomics]
+    fleet_size: int
+    bidirectional_count: int
+    inference_capable_count: int
+    naive_daily_cost_usd: float
+
+
 class AnnualProjection(BaseModel):
     high_stress_days_per_year: float
     medium_stress_days_per_year: float
@@ -914,107 +953,215 @@ class AnnualProjection(BaseModel):
     recall: float
 
 
-def compute_annual_projection(fleet_size: int = 15) -> AnnualProjection:
-    """
-    Load the precomputed backtest predictions and project annual fleet earnings.
+def _stress_bucket_from_probability(
+    probability: float,
+    threshold: float,
+) -> Literal["LOW", "MEDIUM", "HIGH"]:
+    if probability >= threshold:
+        return "HIGH"
+    if probability >= threshold * 0.55:
+        return "MEDIUM"
+    return "LOW"
 
-    Method:
-      1. Load exact_historical_in_range_predictions.csv (test-set results).
-      2. Count predicted HIGH vs LOW days proportionally.
-      3. Scale to 365-day year.
-      4. Multiply by fleet revenue averages derived from the optimizer.
-    """
+
+def _load_exact_backtest_rows() -> list[dict[str, str]]:
     exact_path = _ARTIFACTS_DIR / "exact_historical_in_range_predictions.csv"
+    if not exact_path.exists():
+        return []
+    with exact_path.open() as handle:
+        return list(csv.DictReader(handle))
+
+
+def _load_exact_backtest_threshold() -> float:
     metrics_path = _ARTIFACTS_DIR / "generated_feature_backtest_metrics.json"
+    default_threshold = 0.02
+    if not metrics_path.exists():
+        return default_threshold
+    try:
+        payload = json.loads(metrics_path.read_text())
+        return float(payload["exact_historical_in_range"]["threshold"])
+    except Exception:
+        return default_threshold
 
-    rows: list[dict] = []
-    if exact_path.exists():
-        with open(exact_path) as f:
-            reader = csv.DictReader(f)
-            rows = list(reader)
 
-    test_rows = len(rows) or 165
-    # Confusion matrix from backtest: [[102,14],[13,36]] for exact historical
+def _compute_confusion_metrics(
+    rows: list[dict[str, str]],
+) -> tuple[int, int, int, int, float, float, float]:
     true_positives = sum(
-        1 for r in rows
-        if r.get("actual_label") == "1" and r.get("predicted_label") == "1"
+        1 for row in rows
+        if row.get("actual_label") == "1" and row.get("predicted_label") == "1"
     )
     false_positives = sum(
-        1 for r in rows
-        if r.get("actual_label") == "0" and r.get("predicted_label") == "1"
+        1 for row in rows
+        if row.get("actual_label") == "0" and row.get("predicted_label") == "1"
     )
     true_negatives = sum(
-        1 for r in rows
-        if r.get("actual_label") == "0" and r.get("predicted_label") == "0"
+        1 for row in rows
+        if row.get("actual_label") == "0" and row.get("predicted_label") == "0"
     )
     false_negatives = sum(
-        1 for r in rows
-        if r.get("actual_label") == "1" and r.get("predicted_label") == "0"
+        1 for row in rows
+        if row.get("actual_label") == "1" and row.get("predicted_label") == "0"
     )
-
-    if not rows:
-        # Fallback to known backtest numbers
-        true_positives, false_positives, true_negatives, false_negatives = 36, 14, 102, 13
-
-    total = true_positives + false_positives + true_negatives + false_negatives or test_rows
-    predicted_high = true_positives + false_positives
-    predicted_low = true_negatives + false_negatives
-
     precision = true_positives / max(1, true_positives + false_positives)
     recall = true_positives / max(1, true_positives + false_negatives)
     f1 = 2 * precision * recall / max(1e-9, precision + recall)
-
-    # Annualize from test-set proportion
-    scale = 365.0 / total
-    high_days_annual = predicted_high * scale
-    medium_days_annual = high_days_annual * 0.35  # ~35% of high days are moderate (shoulder season)
-    low_days_annual = predicted_low * scale
-
-    # Revenue per day type from the optimizer (empirically measured)
-    avg_revenue_high = 83.5   # V2G + inference on HIGH stress day (15-vehicle fleet)
-    avg_cost_high = 7.4       # charging cost on HIGH day
-    avg_revenue_medium = 42.0 # inference only on MEDIUM day
-    avg_cost_medium = 10.0
-
-    annual_revenue = (
-        high_days_annual * avg_revenue_high
-        + medium_days_annual * avg_revenue_medium
+    return (
+        true_positives,
+        false_positives,
+        true_negatives,
+        false_negatives,
+        precision,
+        recall,
+        f1,
     )
-    annual_cost = (
-        high_days_annual * avg_cost_high
-        + medium_days_annual * avg_cost_medium
-        + low_days_annual * 7.4  # still charging on low days
+
+
+def _bucket_counts_from_backtest_rows(
+    rows: list[dict[str, str]],
+    threshold: float,
+) -> dict[str, int]:
+    counts: dict[str, int] = {"HIGH": 0, "MEDIUM": 0, "LOW": 0}
+    for row in rows:
+        probability = float(row.get("fusion_probability") or 0.0)
+        counts[_stress_bucket_from_probability(probability, threshold)] += 1
+    return counts
+
+
+def _bucket_optimizer_result(
+    *,
+    vehicles: list[FleetVehicle],
+    jobs: list[InferenceJob],
+    grid_stress: Literal["LOW", "MEDIUM", "HIGH"],
+) -> _BucketEconomics:
+    result = optimize_fleet(
+        FleetOptimizeRequest(
+            vehicles=vehicles,
+            inference_jobs=jobs,
+            use_ml_prediction=False,
+            grid_stress=grid_stress,
+        )
+    )
+    v2g_revenue_usd = sum(
+        assignment.expected_revenue_usd
+        for assignment in result.assignments
+        if assignment.action == "V2G_DISCHARGE"
+    )
+    v2g_export_kwh = sum(
+        assignment.action_kwh
+        for assignment in result.assignments
+        if assignment.action == "V2G_DISCHARGE"
+    )
+    return _BucketEconomics(
+        revenue_usd=result.summary.total_revenue_usd,
+        charge_cost_usd=result.summary.total_charge_cost_usd,
+        net_value_usd=result.summary.net_value_usd,
+        v2g_revenue_usd=round(v2g_revenue_usd, 3),
+        v2g_export_kwh=round(v2g_export_kwh, 3),
+    )
+
+
+@lru_cache(maxsize=8)
+def _projection_profile(fleet_size: int) -> _ProjectionProfile:
+    rows = _load_exact_backtest_rows()
+    threshold = _load_exact_backtest_threshold()
+    (
+        true_positives,
+        false_positives,
+        true_negatives,
+        false_negatives,
+        precision,
+        recall,
+        f1,
+    ) = _compute_confusion_metrics(rows)
+
+    sample_rows = true_positives + false_positives + true_negatives + false_negatives
+    if sample_rows == 0:
+        sample_rows = 165
+        precision = 0.72
+        recall = 0.7346938775510204
+        f1 = 0.7272727272727273
+        bucket_counts = {"HIGH": 50, "MEDIUM": 18, "LOW": 97}
+    else:
+        bucket_counts = _bucket_counts_from_backtest_rows(rows, threshold)
+
+    vehicles = generate_demo_fleet(seed=42, n=fleet_size)
+    jobs = generate_demo_jobs()
+    bucket_economics = {
+        bucket: _bucket_optimizer_result(
+            vehicles=vehicles,
+            jobs=jobs,
+            grid_stress=bucket,  # type: ignore[arg-type]
+        )
+        for bucket in ("HIGH", "MEDIUM", "LOW")
+    }
+
+    return _ProjectionProfile(
+        threshold=threshold,
+        sample_rows=sample_rows,
+        precision=precision,
+        recall=recall,
+        f1=f1,
+        bucket_counts=bucket_counts,
+        bucket_economics=bucket_economics,
+        fleet_size=fleet_size,
+        bidirectional_count=sum(1 for vehicle in vehicles if vehicle.charger_type == "BIDIRECTIONAL"),
+        inference_capable_count=sum(1 for vehicle in vehicles if vehicle.inference_capable),
+        naive_daily_cost_usd=_naive_baseline_cost(vehicles, 0.11),
+    )
+
+
+def compute_annual_projection(fleet_size: int = 15) -> AnnualProjection:
+    """
+    Replay the holdout backtest sample through the fleet optimizer and annualize it.
+
+    Method:
+      1. Load exact_historical_in_range_predictions.csv (holdout results).
+      2. Bucket each holdout day into HIGH / MEDIUM / LOW from fusion probability.
+      3. Run the fleet optimizer once per stress bucket on a fixed fleet of size N.
+      4. Annualize the bucket counts and optimizer revenues/costs to 365 days.
+    """
+    profile = _projection_profile(fleet_size)
+    scale = 365.0 / profile.sample_rows
+    raw_high_days = profile.bucket_counts["HIGH"] * scale
+    raw_medium_days = profile.bucket_counts["MEDIUM"] * scale
+    high_days_annual = round(raw_high_days, 1)
+    medium_days_annual = round(raw_medium_days, 1)
+    low_days_annual = round(max(0.0, 365.0 - high_days_annual - medium_days_annual), 1)
+
+    annual_revenue = scale * sum(
+        profile.bucket_counts[bucket] * profile.bucket_economics[bucket].revenue_usd
+        for bucket in ("HIGH", "MEDIUM", "LOW")
+    )
+    annual_cost = scale * sum(
+        profile.bucket_counts[bucket] * profile.bucket_economics[bucket].charge_cost_usd
+        for bucket in ("HIGH", "MEDIUM", "LOW")
     )
     annual_net = annual_revenue - annual_cost
-
-    # Naive: every day everyone charges, no revenue
-    naive_daily_cost = sum(max(0, 100.0 - v.soc_kwh) * 0.11 for v in generate_demo_fleet())
-    naive_annual = naive_daily_cost * 365
-
-    vehicles = generate_demo_fleet()
-    bidir_count = sum(1 for v in vehicles if v.charger_type == "BIDIRECTIONAL")
-    inf_count = sum(1 for v in vehicles if v.inference_capable)
+    naive_annual = profile.naive_daily_cost_usd * 365.0
+    avg_revenue_high = profile.bucket_economics["HIGH"].revenue_usd
+    avg_revenue_medium = profile.bucket_economics["MEDIUM"].revenue_usd
 
     return AnnualProjection(
-        high_stress_days_per_year=round(high_days_annual, 1),
-        medium_stress_days_per_year=round(medium_days_annual, 1),
-        low_stress_days_per_year=round(low_days_annual, 1),
+        high_stress_days_per_year=high_days_annual,
+        medium_stress_days_per_year=medium_days_annual,
+        low_stress_days_per_year=low_days_annual,
         avg_revenue_per_high_day_usd=avg_revenue_high,
         avg_revenue_per_medium_day_usd=avg_revenue_medium,
         projected_annual_revenue_usd=round(annual_revenue, 2),
         projected_annual_cost_usd=round(annual_cost, 2),
         projected_annual_net_usd=round(annual_net, 2),
-        projected_per_vehicle_usd=round(annual_net / max(1, fleet_size), 2),
+        projected_per_vehicle_usd=round(annual_net / max(1, profile.fleet_size), 2),
         naive_annual_cost_usd=round(naive_annual, 2),
-        annual_savings_vs_naive_usd=round(naive_annual - annual_cost + annual_revenue, 2),
-        fleet_size=fleet_size,
-        bidirectional_count=bidir_count,
-        inference_capable_count=inf_count,
-        data_source="exact_historical_in_range_predictions (backtest test split)",
-        test_rows=total,
-        f1_score=round(f1, 4),
-        precision=round(precision, 4),
-        recall=round(recall, 4),
+        annual_savings_vs_naive_usd=round(naive_annual + annual_net, 2),
+        fleet_size=profile.fleet_size,
+        bidirectional_count=profile.bidirectional_count,
+        inference_capable_count=profile.inference_capable_count,
+        data_source="exact_historical_in_range_predictions + optimizer replay by stress bucket",
+        test_rows=profile.sample_rows,
+        f1_score=round(profile.f1, 4),
+        precision=round(profile.precision, 4),
+        recall=round(profile.recall, 4),
     )
 
 
@@ -1049,10 +1196,15 @@ def compute_week_forecast(start_date: str | None = None) -> WeekForecastResponse
     from .forecasting_model_adapter import _load_runtime_bundle, get_historical_forecast_for_date
 
     bundle = _load_runtime_bundle()
+    profile = _projection_profile(15)
     start = date.fromisoformat(start_date) if start_date else date.today()
 
-    # Revenue estimates by stress level (from optimizer empirical averages)
-    _net_by_stress = {"HIGH": 76.1, "MEDIUM": 32.0, "LOW": -7.4}
+    # Reuse the annual projection replay so the week forecast and annual card
+    # are grounded in the same fleet economics.
+    _net_by_stress = {
+        bucket: profile.bucket_economics[bucket].net_value_usd
+        for bucket in ("HIGH", "MEDIUM", "LOW")
+    }
 
     days: list[DayForecast] = []
     for offset in range(7):
@@ -1072,12 +1224,7 @@ def compute_week_forecast(start_date: str | None = None) -> WeekForecastResponse
             eia_p = forecast.eia_prob
             wx_p = forecast.weather_prob
 
-            if prob >= threshold:
-                stress: Literal["LOW", "MEDIUM", "HIGH"] = "HIGH"
-            elif prob >= threshold * 0.55:
-                stress = "MEDIUM"
-            else:
-                stress = "LOW"
+            stress = _stress_bucket_from_probability(prob, threshold)
 
             days.append(
                 DayForecast(
@@ -1144,17 +1291,18 @@ def compute_upgrade_roi() -> UpgradeCalculatorResponse:
     Show the ROI of upgrading UNIDIRECTIONAL vehicles to BIDIRECTIONAL.
     Uses the optimizer's empirical V2G revenue per vehicle per high-stress day.
     """
-    vehicles = generate_demo_fleet()
+    vehicles = generate_demo_fleet(seed=42)
     bidir = sum(1 for v in vehicles if v.charger_type == "BIDIRECTIONAL")
     unidir = len(vehicles) - bidir
 
-    # From annual projection: 110.6 high-stress days/year, $5.25 avg V2G revenue/vehicle/event
-    high_days = 110.6
-    v2g_rev_per_vehicle_per_day = V2G_EXPORT_PER_VEHICLE_KWH * 0.35  # $5.25
+    profile = _projection_profile(len(vehicles))
+    proj = compute_annual_projection(fleet_size=len(vehicles))
+    high_days = proj.high_stress_days_per_year
+    v2g_rev_per_vehicle_per_day = (
+        profile.bucket_economics["HIGH"].v2g_revenue_usd / max(1, bidir)
+    )
     upgrade_cost_per_vehicle = 1500.0  # industry estimate
 
-    # Current annual net from annual projection
-    proj = compute_annual_projection(fleet_size=len(vehicles))
     current_net = proj.projected_annual_net_usd
 
     # Realistic: first upgrades go to highest-SOC vehicles (best V2G candidates),

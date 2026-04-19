@@ -131,7 +131,7 @@ async def lifespan(app: FastAPI):
         mongo.client.close()
 
 
-app = FastAPI(title="OpenVPP Backend", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="Grid Sense Backend", version="1.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,

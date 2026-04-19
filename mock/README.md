@@ -1,6 +1,6 @@
 # Mock Data Bundle
 
-This folder contains the minimal JSON fixtures for the OpenVPP WebSocket MVP.
+This folder contains the minimal JSON fixtures for the Grid Sense WebSocket MVP.
 
 Files:
 - `simulation_constants.json`: hardcoded system defaults and bounds

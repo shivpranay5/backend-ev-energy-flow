@@ -5,6 +5,17 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from .energy_model import (
+    BATTERY_CAPACITY_KWH,
+    CHARGE_POWER_KWH_PER_HOUR,
+    V2G_DISCHARGE_POWER_KWH_PER_HOUR,
+    available_flexible_energy_kwh,
+    count_off_peak_hours,
+    inference_power_kwh_per_hour,
+    mobility_buffer_kwh,
+    preferred_departure_target_kwh,
+    tariff_mode_for_hour,
+)
 from .forecasting_model_adapter import get_historical_forecast_for_date
 
 
@@ -111,30 +122,6 @@ def _parse_datetime(date_value: str, time_value: str) -> datetime:
     return datetime.fromisoformat(f"{date_value}T{time_value}")
 
 
-def _tariff_mode_for_hour(hour: int) -> Literal["OFF_PEAK", "NORMAL", "PEAK"]:
-    if hour >= 22 or hour < 6:
-        return "OFF_PEAK"
-    if 16 <= hour < 21:
-        return "PEAK"
-    return "NORMAL"
-
-
-def _mobility_buffer(hours_until_departure: int) -> float:
-    if hours_until_departure <= 4:
-        return 30.0
-    if hours_until_departure <= 8:
-        return 25.0
-    return 20.0
-
-
-def _count_off_peak_hours(start_hour: int, hours_until_departure: int) -> int:
-    hours = 0
-    for offset in range(hours_until_departure):
-        if _tariff_mode_for_hour((start_hour + offset) % 24) == "OFF_PEAK":
-            hours += 1
-    return hours
-
-
 def _weather_margin(condition_bucket: str) -> float:
     if condition_bucket == "extreme_hot":
         return 6.0
@@ -151,13 +138,6 @@ def _inference_demand(hour: int, ownership_mode: str) -> tuple[str, float]:
     if 9 <= hour < 18:
         return "MEDIUM", 0.56 if ownership_mode == "fleet" else 0.48
     return "LOW", 0.26
-
-
-def _charge_target(ownership_mode: str, charger_type: str) -> float:
-    base = 75.0 if ownership_mode == "private" else 70.0
-    if charger_type == "BIDIRECTIONAL":
-        return base + 5.0
-    return base
 
 
 def _stress_bucket(probability: float, threshold: float) -> str:
@@ -250,7 +230,7 @@ def predict_site_decision(payload: SiteDecisionRequest) -> SiteDecisionResponse:
         source=historical.source,
     )
     weather_margin = _weather_margin(weather.condition_bucket)
-    tariff_mode = _tariff_mode_for_hour(dt_local.hour)
+    tariff_mode = tariff_mode_for_hour(dt_local.hour)
 
     inference_demand, inference_score = _inference_demand(dt_local.hour, payload.ownership_mode)
     if payload.ownership_mode == "fleet":
@@ -267,7 +247,7 @@ def predict_site_decision(payload: SiteDecisionRequest) -> SiteDecisionResponse:
     )
     eia_prob = historical.eia_prob
     price_prob = historical.price_prob
-    off_peak_hours_remaining = _count_off_peak_hours(dt_local.hour, payload.hours_until_departure)
+    off_peak_hours_remaining = count_off_peak_hours(dt_local.hour, payload.hours_until_departure)
 
     overrides = payload.overrides or ScenarioOverrides()
     if overrides.tariff_mode is not None:
@@ -276,9 +256,12 @@ def predict_site_decision(payload: SiteDecisionRequest) -> SiteDecisionResponse:
         inference_demand = overrides.inference_demand
         inference_score = {"LOW": 0.26, "MEDIUM": 0.56, "HIGH": 0.82}[inference_demand]
 
-    charge_price = overrides.charge_price_per_kwh or charge_price
-    v2g_price = overrides.v2g_price_per_kwh or v2g_price
-    inference_price = overrides.inference_value_per_kwh or inference_price
+    if overrides.charge_price_per_kwh is not None:
+        charge_price = overrides.charge_price_per_kwh
+    if overrides.v2g_price_per_kwh is not None:
+        v2g_price = overrides.v2g_price_per_kwh
+    if overrides.inference_value_per_kwh is not None:
+        inference_price = overrides.inference_value_per_kwh
     grid_stress = _stress_bucket(grid_probability, historical.fusion_threshold)
     if overrides.grid_stress is not None:
         grid_stress = overrides.grid_stress
@@ -288,14 +271,14 @@ def predict_site_decision(payload: SiteDecisionRequest) -> SiteDecisionResponse:
     if outage_probability is None:
         outage_probability = min(0.95, max(weather.storm_risk_index, grid_probability * 0.28))
 
-    mobility_buffer = _mobility_buffer(payload.hours_until_departure) + weather_margin
-    flexible_kwh = max(0.0, payload.arrival_soc_kwh - mobility_buffer)
-    preferred_target = _charge_target(payload.ownership_mode, payload.charger_type)
+    mobility_buffer = mobility_buffer_kwh(payload.hours_until_departure) + weather_margin
+    flexible_kwh = available_flexible_energy_kwh(payload.arrival_soc_kwh, mobility_buffer)
+    preferred_target = preferred_departure_target_kwh(payload.ownership_mode, payload.charger_type)
     participation_window_score = min(1.0, payload.hours_until_departure / 10.0)
     supports_v2g = payload.charger_type == "BIDIRECTIONAL"
 
     required_to_buffer = max(0.0, mobility_buffer - payload.arrival_soc_kwh)
-    off_peak_recovery_capacity = off_peak_hours_remaining * 7.0
+    off_peak_recovery_capacity = off_peak_hours_remaining * CHARGE_POWER_KWH_PER_HOUR
     can_wait_for_off_peak = required_to_buffer <= off_peak_recovery_capacity
 
     alternatives: list[ActionScore] = []
@@ -310,7 +293,7 @@ def predict_site_decision(payload: SiteDecisionRequest) -> SiteDecisionResponse:
         expected_value = 0.0
 
         if action == "CHARGING":
-            delta = min(7.0, 100.0 - payload.arrival_soc_kwh)
+            delta = min(CHARGE_POWER_KWH_PER_HOUR, BATTERY_CAPACITY_KWH - payload.arrival_soc_kwh)
             expected_value = -(delta * charge_price)
             if tariff_mode != "OFF_PEAK" and can_wait_for_off_peak and payload.arrival_soc_kwh >= mobility_buffer:
                 expected_value -= 0.35
@@ -326,7 +309,7 @@ def predict_site_decision(payload: SiteDecisionRequest) -> SiteDecisionResponse:
                 feasible = False
                 reason = "no_flexible_energy"
             else:
-                delta = -min(10.0, flexible_kwh)
+                delta = -min(V2G_DISCHARGE_POWER_KWH_PER_HOUR, flexible_kwh)
                 expected_value = abs(delta) * v2g_price * grid_probability - abs(delta) * charge_price * 0.35
                 if grid_stress != "HIGH":
                     expected_value -= 1.2
@@ -339,7 +322,7 @@ def predict_site_decision(payload: SiteDecisionRequest) -> SiteDecisionResponse:
                 feasible = False
                 reason = "parking_window_too_short"
             else:
-                power = 8.0 if inference_demand == "HIGH" else 4.0 if inference_demand == "MEDIUM" else 2.0
+                power = inference_power_kwh_per_hour(inference_demand)
                 delta = -min(power, flexible_kwh)
                 expected_value = abs(delta) * inference_price * inference_score - abs(delta) * charge_price * 0.2
                 if inference_demand == "LOW":
@@ -394,7 +377,7 @@ def predict_site_decision(payload: SiteDecisionRequest) -> SiteDecisionResponse:
         "charge_price_per_kwh": round(charge_price, 3),
         "v2g_price_per_kwh": round(v2g_price, 3),
         "inference_value_per_kwh": round(inference_price, 3),
-        "inference_power_kwh_per_hour": 8.0 if inference_demand == "HIGH" else 4.0 if inference_demand == "MEDIUM" else 2.0,
+        "inference_power_kwh_per_hour": inference_power_kwh_per_hour(inference_demand),
     }
 
     return SiteDecisionResponse(

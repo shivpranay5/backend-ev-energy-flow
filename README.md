@@ -1,6 +1,6 @@
 # backend-ev-energy-flow
 
-FastAPI backend for the OpenVPP / EV energy flow demo. It provides:
+FastAPI backend for the Grid Sense / EV energy flow demo. It provides:
 
 - Clerk-backed user and admin identity resolution
 - single-EV prediction and simulation APIs

@@ -6,6 +6,17 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Awaitable, Callable
 
+from .energy_model import (
+    BATTERY_CAPACITY_KWH,
+    CHARGE_POWER_KWH_PER_HOUR,
+    V2G_DISCHARGE_POWER_KWH_PER_HOUR,
+    V2G_EVENT_CAP_KWH,
+    available_flexible_energy_kwh,
+    inference_power_kwh_per_hour,
+    mobility_buffer_kwh,
+    tariff_mode_for_time,
+)
+
 
 def _inference_demand_from_hour(start_time_local: str) -> str:
     """
@@ -142,6 +153,8 @@ class SimulationSnapshot:
     ocpp_context: dict[str, Any]
     accumulated_inference_revenue_usd: float = 0.0
     accumulated_v2g_revenue_usd: float = 0.0
+    iteration_breakdown: dict[str, Any] = field(default_factory=dict)
+    action_candidates: list[dict[str, Any]] = field(default_factory=list)
     extra: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -166,16 +179,18 @@ class SimulationSnapshot:
             "ocpp_context": self.ocpp_context,
             "accumulated_inference_revenue_usd": round(self.accumulated_inference_revenue_usd, 3),
             "accumulated_v2g_revenue_usd": round(self.accumulated_v2g_revenue_usd, 3),
+            "iteration_breakdown": self.iteration_breakdown,
+            "action_candidates": self.action_candidates,
         }
         payload.update(self.extra)
         return payload
 
 
 class SimulationEngine:
-    BATTERY_CAPACITY_KWH = 100.0
-    CHARGE_POWER_KWH_PER_HOUR = 7.0
-    V2G_DISCHARGE_POWER_KWH_PER_HOUR = 10.0
-    V2G_EVENT_CAP_KWH = 30.0
+    BATTERY_CAPACITY_KWH = BATTERY_CAPACITY_KWH
+    CHARGE_POWER_KWH_PER_HOUR = CHARGE_POWER_KWH_PER_HOUR
+    V2G_DISCHARGE_POWER_KWH_PER_HOUR = V2G_DISCHARGE_POWER_KWH_PER_HOUR
+    V2G_EVENT_CAP_KWH = V2G_EVENT_CAP_KWH
 
     def __init__(self, defaults: dict[str, Any], ocpp_transitions: list[dict[str, Any]]) -> None:
         self.defaults = defaults
@@ -224,6 +239,8 @@ class SimulationEngine:
             ocpp_context=OcppContext().to_dict(),
             accumulated_inference_revenue_usd=0.0,
             accumulated_v2g_revenue_usd=0.0,
+            iteration_breakdown={},
+            action_candidates=[],
         )
 
     async def init_session(
@@ -341,7 +358,7 @@ class SimulationEngine:
         initial_soc = float(self.seed["arrival_soc_kwh"])
         hours = max(0, int(self.seed["hours_until_departure"]))
         mobility_buffer = self._mobility_buffer(hours)
-        flexible = max(0.0, initial_soc - mobility_buffer)
+        flexible = available_flexible_energy_kwh(initial_soc, mobility_buffer)
         return SimulationSnapshot(
             simulation_hour=0,
             hours_remaining=hours,
@@ -362,6 +379,8 @@ class SimulationEngine:
             ocpp_context=self._ocpp_for_mode("IDLE"),
             accumulated_inference_revenue_usd=0.0,
             accumulated_v2g_revenue_usd=0.0,
+            iteration_breakdown={},
+            action_candidates=[],
             extra=self._session_context_extra(),
         )
 
@@ -405,36 +424,18 @@ class SimulationEngine:
         }
 
     def _mobility_buffer(self, hours_until_departure: int) -> float:
-        if hours_until_departure <= 4:
-            return 30.0
-        if hours_until_departure <= 8:
-            return 25.0
-        return 20.0
+        return mobility_buffer_kwh(hours_until_departure)
 
     def _inference_power(self) -> float:
-        if self.environment.inference_power_kwh_per_hour is not None:
-            return float(self.environment.inference_power_kwh_per_hour)
-        if self.environment.inference_demand == "HIGH":
-            return 8.0
-        if self.environment.inference_demand == "MEDIUM":
-            return 4.0
-        return 2.0
+        return inference_power_kwh_per_hour(
+            self.environment.inference_demand,
+            self.environment.inference_power_kwh_per_hour,
+        )
 
     def _tariff_mode_for_start_time(self, start_time_local: str | None) -> str:
-        if not start_time_local:
-            return self.environment.tariff_mode
-        try:
-            hour = int(str(start_time_local).split(":", 1)[0])
-        except Exception:  # noqa: BLE001
-            return self.environment.tariff_mode
-        hour = hour % 24
-        if hour >= 22 or hour < 6:
-            return "OFF_PEAK"
-        if 16 <= hour < 21:
-            return "PEAK"
-        return "NORMAL"
+        return tariff_mode_for_time(start_time_local, self.environment.tariff_mode)
 
-    def _remaining_charge_time_hours(self, projected_soc: float, mobility_buffer: float, charge_price: float) -> float:
+    def _remaining_charge_time_hours(self, projected_soc: float, mobility_buffer: float) -> float:
         deficit = max(0.0, mobility_buffer - projected_soc)
         if deficit <= 0:
             return 0.0
@@ -444,7 +445,7 @@ class SimulationEngine:
         if projected_soc >= mobility_buffer:
             return True
         remaining = max(0, hours_until_departure - 1)
-        required = self._remaining_charge_time_hours(projected_soc, mobility_buffer, self.environment.charge_price_per_kwh)
+        required = self._remaining_charge_time_hours(projected_soc, mobility_buffer)
         return required <= remaining
 
     def _evaluate_action(self, action: str, soc: float, mobility_buffer: float, remaining_export_cap: float) -> ActionResult:
@@ -452,7 +453,7 @@ class SimulationEngine:
         v2g_price = self._current_prices()["v2g_price_per_kwh"]
         inference_value = self._current_prices()["inference_value_per_kwh"]
         hours_until_departure = self.state.hours_remaining
-        flexible_kwh = max(0.0, soc - mobility_buffer)
+        flexible_kwh = available_flexible_energy_kwh(soc, mobility_buffer)
 
         if action == "CHARGING":
             delta = min(self.CHARGE_POWER_KWH_PER_HOUR, self.BATTERY_CAPACITY_KWH - soc)
@@ -467,7 +468,11 @@ class SimulationEngine:
                 return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "charger_type_not_bidirectional")
             if self.environment.grid_stress != "HIGH":
                 return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "grid_stress_not_high")
+            if remaining_export_cap <= 0:
+                return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "event_export_cap_reached")
             delta = -min(self.V2G_DISCHARGE_POWER_KWH_PER_HOUR, flexible_kwh, remaining_export_cap)
+            if delta == 0:
+                return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "no_export_headroom")
             projected = soc + delta
             feasible = projected >= mobility_buffer and self._can_recover(projected, mobility_buffer, hours_until_departure)
             immediate = abs(delta) * v2g_price
@@ -484,6 +489,8 @@ class SimulationEngine:
                 return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "departure_too_close")
             inference_power = self._inference_power()
             delta = -min(inference_power, flexible_kwh)
+            if delta == 0:
+                return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "no_flexible_energy")
             projected = soc + delta
             feasible = projected >= mobility_buffer and self._can_recover(projected, mobility_buffer, hours_until_departure)
             immediate = abs(delta) * inference_value
@@ -523,44 +530,107 @@ class SimulationEngine:
             base["transaction_state"] = "STARTED"
         return base
 
+    def _action_result_to_dict(self, action: ActionResult, *, selected: bool = False) -> dict[str, Any]:
+        projected_net = action.marginal_net_profit_usd
+        return {
+            "action": action.action,
+            "selected": selected,
+            "feasible": action.feasible,
+            "energy_delta_kwh": round(action.delta_soc_kwh, 3),
+            "energy_transacted_kwh": round(abs(action.delta_soc_kwh), 3),
+            "gross_revenue_usd": round(max(0.0, action.immediate_value_usd), 3),
+            "direct_cost_usd": round(max(0.0, -action.immediate_value_usd), 3),
+            "recovery_cost_usd": round(action.recovery_cost_usd, 3),
+            "projected_net_value_usd": round(projected_net, 3) if math.isfinite(projected_net) else None,
+            "reason": action.reason,
+        }
+
+    def _rank_action_candidates(self, candidates: list[ActionResult], selected: ActionResult) -> list[dict[str, Any]]:
+        ranked = sorted(
+            candidates,
+            key=lambda item: (
+                item.action == selected.action and item.feasible == selected.feasible,
+                item.feasible,
+                item.marginal_net_profit_usd if math.isfinite(item.marginal_net_profit_usd) else float("-inf"),
+            ),
+            reverse=True,
+        )
+        return [
+            self._action_result_to_dict(
+                candidate,
+                selected=candidate.action == selected.action and candidate.feasible == selected.feasible,
+            )
+            for candidate in ranked
+        ]
+
+    def _iteration_breakdown(
+        self,
+        action: ActionResult,
+        candidates: list[ActionResult],
+        simulation_hour: int,
+    ) -> dict[str, Any]:
+        breakdown = self._action_result_to_dict(action, selected=True)
+        breakdown.update(
+            {
+                "iteration": simulation_hour,
+                "selected_action": action.action,
+                "candidate_count": len(candidates),
+            }
+        )
+        return breakdown
+
     def _advance_locked(self) -> dict[str, Any]:
         if self.completed:
             return self.state.to_dict()
 
         self.state.mobility_buffer_kwh = self._mobility_buffer(self.state.hours_remaining)
-        self.state.flexible_kwh = max(0.0, self.state.battery_level_kwh - self.state.mobility_buffer_kwh)
+        self.state.flexible_kwh = available_flexible_energy_kwh(
+            self.state.battery_level_kwh,
+            self.state.mobility_buffer_kwh,
+        )
         self.state.current_prices = self._current_prices()
         self.state.environment_state = self.environment.to_dict()
         self.state.extra = self._session_context_extra()
 
+        remaining_export_cap = max(0.0, self.V2G_EVENT_CAP_KWH - self.state.grid_export_kwh)
+        candidates = [
+            self._evaluate_action("CHARGING", self.state.battery_level_kwh, self.state.mobility_buffer_kwh, remaining_export_cap),
+            self._evaluate_action("V2G_DISCHARGE", self.state.battery_level_kwh, self.state.mobility_buffer_kwh, remaining_export_cap),
+            self._evaluate_action("INFERENCE_ACTIVE", self.state.battery_level_kwh, self.state.mobility_buffer_kwh, remaining_export_cap),
+            self._evaluate_action("IDLE", self.state.battery_level_kwh, self.state.mobility_buffer_kwh, remaining_export_cap),
+        ]
+
         if self.state.battery_level_kwh <= self.state.mobility_buffer_kwh:
+            charge_delta = min(
+                self.CHARGE_POWER_KWH_PER_HOUR,
+                self.BATTERY_CAPACITY_KWH - self.state.battery_level_kwh,
+            )
+            charge_cost = charge_delta * self.state.current_prices["charge_price_per_kwh"]
             selected = ActionResult(
                 action="CHARGING",
                 feasible=True,
-                delta_soc_kwh=min(self.CHARGE_POWER_KWH_PER_HOUR, self.BATTERY_CAPACITY_KWH - self.state.battery_level_kwh),
-                immediate_value_usd=0.0,
+                delta_soc_kwh=charge_delta,
+                immediate_value_usd=-charge_cost,
                 recovery_cost_usd=0.0,
-                marginal_net_profit_usd=0.0,
+                marginal_net_profit_usd=-charge_cost,
                 reason="hard_override_soc_at_or_below_buffer",
             )
         else:
-            remaining_export_cap = self.V2G_EVENT_CAP_KWH
-            candidates = [
-                self._evaluate_action("CHARGING", self.state.battery_level_kwh, self.state.mobility_buffer_kwh, remaining_export_cap),
-                self._evaluate_action("V2G_DISCHARGE", self.state.battery_level_kwh, self.state.mobility_buffer_kwh, remaining_export_cap),
-                self._evaluate_action("INFERENCE_ACTIVE", self.state.battery_level_kwh, self.state.mobility_buffer_kwh, remaining_export_cap),
-                self._evaluate_action("IDLE", self.state.battery_level_kwh, self.state.mobility_buffer_kwh, remaining_export_cap),
-            ]
             feasible = [item for item in candidates if item.feasible]
             selected = max(feasible, key=lambda item: item.marginal_net_profit_usd) if feasible else candidates[-1]
 
         self._apply_action(selected)
         self.state.simulation_hour += 1
         self.state.hours_remaining = max(0, self.state.hours_remaining - 1)
-        self.state.flexible_kwh = max(0.0, self.state.battery_level_kwh - self.state.mobility_buffer_kwh)
+        self.state.flexible_kwh = available_flexible_energy_kwh(
+            self.state.battery_level_kwh,
+            self.state.mobility_buffer_kwh,
+        )
         self.state.current_prices = self._current_prices()
         self.state.environment_state = self.environment.to_dict()
         self.state.ocpp_context = self._ocpp_for_mode(selected.action)
+        self.state.iteration_breakdown = self._iteration_breakdown(selected, candidates, self.state.simulation_hour)
+        self.state.action_candidates = self._rank_action_candidates(candidates, selected)
         self.state.extra = self._session_context_extra()
         self.mode_durations[selected.action] = self.mode_durations.get(selected.action, 0) + 1
         self.state.inference_hours = self.mode_durations.get("INFERENCE_ACTIVE", 0)
