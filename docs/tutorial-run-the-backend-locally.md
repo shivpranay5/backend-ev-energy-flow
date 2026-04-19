@@ -16,7 +16,8 @@ You need:
 - Python
 - MongoDB access
 - a Clerk app with a valid session token flow
-- the sibling project directory `openvpp_forecasting_stack`
+- forecast assets under `backend-ev-energy-flow/forecasting_assets`
+- the sibling project directory `openvpp_forecasting_stack` for training code, unless you vendor that code too
 
 The backend expects this layout:
 

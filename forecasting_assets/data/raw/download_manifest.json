@@ -1,0 +1,5 @@
+{
+  "eia_hourly_rows": 500,
+  "noaa_rows": 1000,
+  "eia_prices_rows": 100
+}

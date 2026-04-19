@@ -88,8 +88,8 @@ curl http://localhost:8000/simulation/play \
 
 If prediction or fleet analytics fail:
 
-1. Confirm `../openvpp_forecasting_stack` exists beside the backend.
-2. Confirm its training script exists at `scripts/train_three_year_models.py`.
+1. Confirm backend-local forecast assets exist at `forecasting_assets/data/training_3yr`.
+2. If you are still using the sibling project for code loading, confirm `../openvpp_forecasting_stack` exists and has `scripts/train_three_year_models.py`.
 3. Confirm Python can import `pandas` and `scikit-learn` dependencies used by the forecasting adapter.
 
 The simulation engine degrades more gracefully than the prediction and fleet endpoints:

@@ -1,0 +1,501 @@
+period,respondent,respondent-name,type,type-name,value,value-units
+2026-04-19T07,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3576,megawatthours
+2026-04-19T06,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3688,megawatthours
+2026-04-19T05,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3902,megawatthours
+2026-04-19T04,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4181,megawatthours
+2026-04-19T03,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4480,megawatthours
+2026-04-19T02,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4757,megawatthours
+2026-04-19T01,AZPS,Arizona Public Service Company,D,Demand,1804,megawatthours
+2026-04-19T01,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4825,megawatthours
+2026-04-19T00,AZPS,Arizona Public Service Company,D,Demand,4391,megawatthours
+2026-04-19T00,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4677,megawatthours
+2026-04-18T23,AZPS,Arizona Public Service Company,D,Demand,4227,megawatthours
+2026-04-18T23,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4309,megawatthours
+2026-04-18T22,AZPS,Arizona Public Service Company,D,Demand,4191,megawatthours
+2026-04-18T22,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3881,megawatthours
+2026-04-18T21,AZPS,Arizona Public Service Company,D,Demand,4252,megawatthours
+2026-04-18T21,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3526,megawatthours
+2026-04-18T20,AZPS,Arizona Public Service Company,D,Demand,4297,megawatthours
+2026-04-18T20,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3098,megawatthours
+2026-04-18T19,AZPS,Arizona Public Service Company,D,Demand,4313,megawatthours
+2026-04-18T19,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2975,megawatthours
+2026-04-18T18,AZPS,Arizona Public Service Company,D,Demand,4736,megawatthours
+2026-04-18T18,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2749,megawatthours
+2026-04-18T17,AZPS,Arizona Public Service Company,D,Demand,4576,megawatthours
+2026-04-18T17,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2758,megawatthours
+2026-04-18T16,AZPS,Arizona Public Service Company,D,Demand,4145,megawatthours
+2026-04-18T16,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2793,megawatthours
+2026-04-18T15,AZPS,Arizona Public Service Company,D,Demand,3447,megawatthours
+2026-04-18T15,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2963,megawatthours
+2026-04-18T14,AZPS,Arizona Public Service Company,D,Demand,3234,megawatthours
+2026-04-18T14,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3135,megawatthours
+2026-04-18T13,AZPS,Arizona Public Service Company,D,Demand,3223,megawatthours
+2026-04-18T13,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3214,megawatthours
+2026-04-18T12,AZPS,Arizona Public Service Company,D,Demand,3160,megawatthours
+2026-04-18T12,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3163,megawatthours
+2026-04-18T11,AZPS,Arizona Public Service Company,D,Demand,3150,megawatthours
+2026-04-18T11,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3064,megawatthours
+2026-04-18T10,AZPS,Arizona Public Service Company,D,Demand,3219,megawatthours
+2026-04-18T10,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3141,megawatthours
+2026-04-18T09,AZPS,Arizona Public Service Company,D,Demand,3303,megawatthours
+2026-04-18T09,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3141,megawatthours
+2026-04-18T08,AZPS,Arizona Public Service Company,D,Demand,3491,megawatthours
+2026-04-18T08,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3205,megawatthours
+2026-04-18T07,AZPS,Arizona Public Service Company,D,Demand,3750,megawatthours
+2026-04-18T07,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3373,megawatthours
+2026-04-18T06,AZPS,Arizona Public Service Company,D,Demand,3972,megawatthours
+2026-04-18T06,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3746,megawatthours
+2026-04-18T06,AZPS,Arizona Public Service Company,NG,Net generation,3271,megawatthours
+2026-04-18T06,AZPS,Arizona Public Service Company,TI,Total interchange,-701,megawatthours
+2026-04-18T05,AZPS,Arizona Public Service Company,D,Demand,4225,megawatthours
+2026-04-18T05,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4011,megawatthours
+2026-04-18T05,AZPS,Arizona Public Service Company,NG,Net generation,3228,megawatthours
+2026-04-18T05,AZPS,Arizona Public Service Company,TI,Total interchange,-997,megawatthours
+2026-04-18T04,AZPS,Arizona Public Service Company,D,Demand,4409,megawatthours
+2026-04-18T04,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4269,megawatthours
+2026-04-18T04,AZPS,Arizona Public Service Company,NG,Net generation,3418,megawatthours
+2026-04-18T04,AZPS,Arizona Public Service Company,TI,Total interchange,-991,megawatthours
+2026-04-18T03,AZPS,Arizona Public Service Company,D,Demand,4552,megawatthours
+2026-04-18T03,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4467,megawatthours
+2026-04-18T03,AZPS,Arizona Public Service Company,NG,Net generation,3633,megawatthours
+2026-04-18T03,AZPS,Arizona Public Service Company,TI,Total interchange,-919,megawatthours
+2026-04-18T02,AZPS,Arizona Public Service Company,D,Demand,4496,megawatthours
+2026-04-18T02,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4577,megawatthours
+2026-04-18T02,AZPS,Arizona Public Service Company,NG,Net generation,3437,megawatthours
+2026-04-18T02,AZPS,Arizona Public Service Company,TI,Total interchange,-1059,megawatthours
+2026-04-18T01,AZPS,Arizona Public Service Company,D,Demand,4368,megawatthours
+2026-04-18T01,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4531,megawatthours
+2026-04-18T01,AZPS,Arizona Public Service Company,NG,Net generation,2899,megawatthours
+2026-04-18T01,AZPS,Arizona Public Service Company,TI,Total interchange,-1469,megawatthours
+2026-04-18T00,AZPS,Arizona Public Service Company,D,Demand,4043,megawatthours
+2026-04-18T00,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4504,megawatthours
+2026-04-18T00,AZPS,Arizona Public Service Company,NG,Net generation,2739,megawatthours
+2026-04-18T00,AZPS,Arizona Public Service Company,TI,Total interchange,-1304,megawatthours
+2026-04-17T23,AZPS,Arizona Public Service Company,D,Demand,3752,megawatthours
+2026-04-17T23,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4148,megawatthours
+2026-04-17T23,AZPS,Arizona Public Service Company,NG,Net generation,2652,megawatthours
+2026-04-17T23,AZPS,Arizona Public Service Company,TI,Total interchange,-1100,megawatthours
+2026-04-17T22,AZPS,Arizona Public Service Company,D,Demand,3519,megawatthours
+2026-04-17T22,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3913,megawatthours
+2026-04-17T22,AZPS,Arizona Public Service Company,NG,Net generation,2385,megawatthours
+2026-04-17T22,AZPS,Arizona Public Service Company,TI,Total interchange,-1134,megawatthours
+2026-04-17T21,AZPS,Arizona Public Service Company,D,Demand,3276,megawatthours
+2026-04-17T21,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3603,megawatthours
+2026-04-17T21,AZPS,Arizona Public Service Company,NG,Net generation,2103,megawatthours
+2026-04-17T21,AZPS,Arizona Public Service Company,TI,Total interchange,-1173,megawatthours
+2026-04-17T20,AZPS,Arizona Public Service Company,D,Demand,3074,megawatthours
+2026-04-17T20,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3291,megawatthours
+2026-04-17T20,AZPS,Arizona Public Service Company,NG,Net generation,1907,megawatthours
+2026-04-17T20,AZPS,Arizona Public Service Company,TI,Total interchange,-1167,megawatthours
+2026-04-17T19,AZPS,Arizona Public Service Company,D,Demand,2978,megawatthours
+2026-04-17T19,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3091,megawatthours
+2026-04-17T19,AZPS,Arizona Public Service Company,NG,Net generation,1808,megawatthours
+2026-04-17T19,AZPS,Arizona Public Service Company,TI,Total interchange,-1170,megawatthours
+2026-04-17T18,AZPS,Arizona Public Service Company,D,Demand,2948,megawatthours
+2026-04-17T18,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2979,megawatthours
+2026-04-17T18,AZPS,Arizona Public Service Company,NG,Net generation,1759,megawatthours
+2026-04-17T18,AZPS,Arizona Public Service Company,TI,Total interchange,-1189,megawatthours
+2026-04-17T17,AZPS,Arizona Public Service Company,D,Demand,2985,megawatthours
+2026-04-17T17,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3009,megawatthours
+2026-04-17T17,AZPS,Arizona Public Service Company,NG,Net generation,1991,megawatthours
+2026-04-17T17,AZPS,Arizona Public Service Company,TI,Total interchange,-994,megawatthours
+2026-04-17T16,AZPS,Arizona Public Service Company,D,Demand,3192,megawatthours
+2026-04-17T16,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3077,megawatthours
+2026-04-17T16,AZPS,Arizona Public Service Company,NG,Net generation,2234,megawatthours
+2026-04-17T16,AZPS,Arizona Public Service Company,TI,Total interchange,-958,megawatthours
+2026-04-17T15,AZPS,Arizona Public Service Company,D,Demand,3436,megawatthours
+2026-04-17T15,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3266,megawatthours
+2026-04-17T15,AZPS,Arizona Public Service Company,NG,Net generation,2375,megawatthours
+2026-04-17T15,AZPS,Arizona Public Service Company,TI,Total interchange,-1061,megawatthours
+2026-04-17T14,AZPS,Arizona Public Service Company,D,Demand,3447,megawatthours
+2026-04-17T14,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3559,megawatthours
+2026-04-17T14,AZPS,Arizona Public Service Company,NG,Net generation,2386,megawatthours
+2026-04-17T14,AZPS,Arizona Public Service Company,TI,Total interchange,-1061,megawatthours
+2026-04-17T13,AZPS,Arizona Public Service Company,D,Demand,3320,megawatthours
+2026-04-17T13,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3727,megawatthours
+2026-04-17T13,AZPS,Arizona Public Service Company,NG,Net generation,2586,megawatthours
+2026-04-17T13,AZPS,Arizona Public Service Company,TI,Total interchange,-734,megawatthours
+2026-04-17T12,AZPS,Arizona Public Service Company,D,Demand,3117,megawatthours
+2026-04-17T12,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3695,megawatthours
+2026-04-17T12,AZPS,Arizona Public Service Company,NG,Net generation,2497,megawatthours
+2026-04-17T12,AZPS,Arizona Public Service Company,TI,Total interchange,-620,megawatthours
+2026-04-17T11,AZPS,Arizona Public Service Company,D,Demand,3073,megawatthours
+2026-04-17T11,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3596,megawatthours
+2026-04-17T11,AZPS,Arizona Public Service Company,NG,Net generation,2586,megawatthours
+2026-04-17T11,AZPS,Arizona Public Service Company,TI,Total interchange,-487,megawatthours
+2026-04-17T10,AZPS,Arizona Public Service Company,D,Demand,3124,megawatthours
+2026-04-17T10,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3458,megawatthours
+2026-04-17T10,AZPS,Arizona Public Service Company,NG,Net generation,2581,megawatthours
+2026-04-17T10,AZPS,Arizona Public Service Company,TI,Total interchange,-543,megawatthours
+2026-04-17T09,AZPS,Arizona Public Service Company,D,Demand,3269,megawatthours
+2026-04-17T09,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3560,megawatthours
+2026-04-17T09,AZPS,Arizona Public Service Company,NG,Net generation,2477,megawatthours
+2026-04-17T09,AZPS,Arizona Public Service Company,TI,Total interchange,-792,megawatthours
+2026-04-17T08,AZPS,Arizona Public Service Company,D,Demand,3478,megawatthours
+2026-04-17T08,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3600,megawatthours
+2026-04-17T08,AZPS,Arizona Public Service Company,NG,Net generation,2601,megawatthours
+2026-04-17T08,AZPS,Arizona Public Service Company,TI,Total interchange,-877,megawatthours
+2026-04-17T07,AZPS,Arizona Public Service Company,D,Demand,3725,megawatthours
+2026-04-17T07,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3658,megawatthours
+2026-04-17T07,AZPS,Arizona Public Service Company,NG,Net generation,2666,megawatthours
+2026-04-17T07,AZPS,Arizona Public Service Company,TI,Total interchange,-1059,megawatthours
+2026-04-17T06,AZPS,Arizona Public Service Company,D,Demand,3992,megawatthours
+2026-04-17T06,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3880,megawatthours
+2026-04-17T06,AZPS,Arizona Public Service Company,NG,Net generation,2660,megawatthours
+2026-04-17T06,AZPS,Arizona Public Service Company,TI,Total interchange,-1332,megawatthours
+2026-04-17T05,AZPS,Arizona Public Service Company,D,Demand,4214,megawatthours
+2026-04-17T05,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4095,megawatthours
+2026-04-17T05,AZPS,Arizona Public Service Company,NG,Net generation,3298,megawatthours
+2026-04-17T05,AZPS,Arizona Public Service Company,TI,Total interchange,-916,megawatthours
+2026-04-17T04,AZPS,Arizona Public Service Company,D,Demand,4416,megawatthours
+2026-04-17T04,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4388,megawatthours
+2026-04-17T04,AZPS,Arizona Public Service Company,NG,Net generation,3357,megawatthours
+2026-04-17T04,AZPS,Arizona Public Service Company,TI,Total interchange,-1059,megawatthours
+2026-04-17T03,AZPS,Arizona Public Service Company,D,Demand,4507,megawatthours
+2026-04-17T03,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4611,megawatthours
+2026-04-17T03,AZPS,Arizona Public Service Company,NG,Net generation,3193,megawatthours
+2026-04-17T03,AZPS,Arizona Public Service Company,TI,Total interchange,-1314,megawatthours
+2026-04-17T02,AZPS,Arizona Public Service Company,D,Demand,4332,megawatthours
+2026-04-17T02,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4764,megawatthours
+2026-04-17T02,AZPS,Arizona Public Service Company,NG,Net generation,3211,megawatthours
+2026-04-17T02,AZPS,Arizona Public Service Company,TI,Total interchange,-1121,megawatthours
+2026-04-17T01,AZPS,Arizona Public Service Company,D,Demand,4207,megawatthours
+2026-04-17T01,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4642,megawatthours
+2026-04-17T01,AZPS,Arizona Public Service Company,NG,Net generation,2905,megawatthours
+2026-04-17T01,AZPS,Arizona Public Service Company,TI,Total interchange,-1302,megawatthours
+2026-04-17T00,AZPS,Arizona Public Service Company,D,Demand,3866,megawatthours
+2026-04-17T00,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4568,megawatthours
+2026-04-17T00,AZPS,Arizona Public Service Company,NG,Net generation,3542,megawatthours
+2026-04-17T00,AZPS,Arizona Public Service Company,TI,Total interchange,-324,megawatthours
+2026-04-16T23,AZPS,Arizona Public Service Company,D,Demand,3628,megawatthours
+2026-04-16T23,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4173,megawatthours
+2026-04-16T23,AZPS,Arizona Public Service Company,NG,Net generation,2927,megawatthours
+2026-04-16T23,AZPS,Arizona Public Service Company,TI,Total interchange,-701,megawatthours
+2026-04-16T22,AZPS,Arizona Public Service Company,D,Demand,3480,megawatthours
+2026-04-16T22,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3953,megawatthours
+2026-04-16T22,AZPS,Arizona Public Service Company,NG,Net generation,2555,megawatthours
+2026-04-16T22,AZPS,Arizona Public Service Company,TI,Total interchange,-925,megawatthours
+2026-04-16T21,AZPS,Arizona Public Service Company,D,Demand,3154,megawatthours
+2026-04-16T21,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3698,megawatthours
+2026-04-16T21,AZPS,Arizona Public Service Company,NG,Net generation,1805,megawatthours
+2026-04-16T21,AZPS,Arizona Public Service Company,TI,Total interchange,-1349,megawatthours
+2026-04-16T20,AZPS,Arizona Public Service Company,D,Demand,2929,megawatthours
+2026-04-16T20,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3433,megawatthours
+2026-04-16T20,AZPS,Arizona Public Service Company,NG,Net generation,1784,megawatthours
+2026-04-16T20,AZPS,Arizona Public Service Company,TI,Total interchange,-1145,megawatthours
+2026-04-16T19,AZPS,Arizona Public Service Company,D,Demand,2849,megawatthours
+2026-04-16T19,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3269,megawatthours
+2026-04-16T19,AZPS,Arizona Public Service Company,NG,Net generation,1774,megawatthours
+2026-04-16T19,AZPS,Arizona Public Service Company,TI,Total interchange,-1075,megawatthours
+2026-04-16T18,AZPS,Arizona Public Service Company,D,Demand,3030,megawatthours
+2026-04-16T18,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3102,megawatthours
+2026-04-16T18,AZPS,Arizona Public Service Company,NG,Net generation,1990,megawatthours
+2026-04-16T18,AZPS,Arizona Public Service Company,TI,Total interchange,-1040,megawatthours
+2026-04-16T17,AZPS,Arizona Public Service Company,D,Demand,2961,megawatthours
+2026-04-16T17,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3066,megawatthours
+2026-04-16T17,AZPS,Arizona Public Service Company,NG,Net generation,1875,megawatthours
+2026-04-16T17,AZPS,Arizona Public Service Company,TI,Total interchange,-1086,megawatthours
+2026-04-16T16,AZPS,Arizona Public Service Company,D,Demand,3505,megawatthours
+2026-04-16T16,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3125,megawatthours
+2026-04-16T16,AZPS,Arizona Public Service Company,NG,Net generation,2156,megawatthours
+2026-04-16T16,AZPS,Arizona Public Service Company,TI,Total interchange,-1349,megawatthours
+2026-04-16T15,AZPS,Arizona Public Service Company,D,Demand,3469,megawatthours
+2026-04-16T15,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3318,megawatthours
+2026-04-16T15,AZPS,Arizona Public Service Company,NG,Net generation,2315,megawatthours
+2026-04-16T15,AZPS,Arizona Public Service Company,TI,Total interchange,-1154,megawatthours
+2026-04-16T14,AZPS,Arizona Public Service Company,D,Demand,3504,megawatthours
+2026-04-16T14,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3530,megawatthours
+2026-04-16T14,AZPS,Arizona Public Service Company,NG,Net generation,2292,megawatthours
+2026-04-16T14,AZPS,Arizona Public Service Company,TI,Total interchange,-1212,megawatthours
+2026-04-16T13,AZPS,Arizona Public Service Company,D,Demand,3382,megawatthours
+2026-04-16T13,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3690,megawatthours
+2026-04-16T13,AZPS,Arizona Public Service Company,NG,Net generation,2146,megawatthours
+2026-04-16T13,AZPS,Arizona Public Service Company,TI,Total interchange,-1236,megawatthours
+2026-04-16T12,AZPS,Arizona Public Service Company,D,Demand,3187,megawatthours
+2026-04-16T12,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3577,megawatthours
+2026-04-16T12,AZPS,Arizona Public Service Company,NG,Net generation,2021,megawatthours
+2026-04-16T12,AZPS,Arizona Public Service Company,TI,Total interchange,-1166,megawatthours
+2026-04-16T11,AZPS,Arizona Public Service Company,D,Demand,3121,megawatthours
+2026-04-16T11,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3432,megawatthours
+2026-04-16T11,AZPS,Arizona Public Service Company,NG,Net generation,2037,megawatthours
+2026-04-16T11,AZPS,Arizona Public Service Company,TI,Total interchange,-1084,megawatthours
+2026-04-16T10,AZPS,Arizona Public Service Company,D,Demand,3172,megawatthours
+2026-04-16T10,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3399,megawatthours
+2026-04-16T10,AZPS,Arizona Public Service Company,NG,Net generation,2124,megawatthours
+2026-04-16T10,AZPS,Arizona Public Service Company,TI,Total interchange,-1048,megawatthours
+2026-04-16T09,AZPS,Arizona Public Service Company,D,Demand,3269,megawatthours
+2026-04-16T09,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3487,megawatthours
+2026-04-16T09,AZPS,Arizona Public Service Company,NG,Net generation,2216,megawatthours
+2026-04-16T09,AZPS,Arizona Public Service Company,TI,Total interchange,-1053,megawatthours
+2026-04-16T08,AZPS,Arizona Public Service Company,D,Demand,3328,megawatthours
+2026-04-16T08,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3556,megawatthours
+2026-04-16T08,AZPS,Arizona Public Service Company,NG,Net generation,2129,megawatthours
+2026-04-16T08,AZPS,Arizona Public Service Company,TI,Total interchange,-1199,megawatthours
+2026-04-16T07,AZPS,Arizona Public Service Company,D,Demand,3540,megawatthours
+2026-04-16T07,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3514,megawatthours
+2026-04-16T07,AZPS,Arizona Public Service Company,NG,Net generation,2224,megawatthours
+2026-04-16T07,AZPS,Arizona Public Service Company,TI,Total interchange,-1316,megawatthours
+2026-04-16T06,AZPS,Arizona Public Service Company,D,Demand,3862,megawatthours
+2026-04-16T06,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3713,megawatthours
+2026-04-16T06,AZPS,Arizona Public Service Company,NG,Net generation,2838,megawatthours
+2026-04-16T06,AZPS,Arizona Public Service Company,TI,Total interchange,-1024,megawatthours
+2026-04-16T05,AZPS,Arizona Public Service Company,D,Demand,4166,megawatthours
+2026-04-16T05,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3942,megawatthours
+2026-04-16T05,AZPS,Arizona Public Service Company,NG,Net generation,3302,megawatthours
+2026-04-16T05,AZPS,Arizona Public Service Company,TI,Total interchange,-864,megawatthours
+2026-04-16T04,AZPS,Arizona Public Service Company,D,Demand,4415,megawatthours
+2026-04-16T04,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4285,megawatthours
+2026-04-16T04,AZPS,Arizona Public Service Company,NG,Net generation,3532,megawatthours
+2026-04-16T04,AZPS,Arizona Public Service Company,TI,Total interchange,-883,megawatthours
+2026-04-16T03,AZPS,Arizona Public Service Company,D,Demand,4579,megawatthours
+2026-04-16T03,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4561,megawatthours
+2026-04-16T03,AZPS,Arizona Public Service Company,NG,Net generation,3616,megawatthours
+2026-04-16T03,AZPS,Arizona Public Service Company,TI,Total interchange,-963,megawatthours
+2026-04-16T02,AZPS,Arizona Public Service Company,D,Demand,4496,megawatthours
+2026-04-16T02,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4706,megawatthours
+2026-04-16T02,AZPS,Arizona Public Service Company,NG,Net generation,3600,megawatthours
+2026-04-16T02,AZPS,Arizona Public Service Company,TI,Total interchange,-896,megawatthours
+2026-04-16T01,AZPS,Arizona Public Service Company,D,Demand,4276,megawatthours
+2026-04-16T01,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4635,megawatthours
+2026-04-16T01,AZPS,Arizona Public Service Company,NG,Net generation,3328,megawatthours
+2026-04-16T01,AZPS,Arizona Public Service Company,TI,Total interchange,-948,megawatthours
+2026-04-16T00,AZPS,Arizona Public Service Company,D,Demand,3894,megawatthours
+2026-04-16T00,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4578,megawatthours
+2026-04-16T00,AZPS,Arizona Public Service Company,NG,Net generation,2879,megawatthours
+2026-04-16T00,AZPS,Arizona Public Service Company,TI,Total interchange,-1015,megawatthours
+2026-04-15T23,AZPS,Arizona Public Service Company,D,Demand,3595,megawatthours
+2026-04-15T23,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4147,megawatthours
+2026-04-15T23,AZPS,Arizona Public Service Company,NG,Net generation,2878,megawatthours
+2026-04-15T23,AZPS,Arizona Public Service Company,TI,Total interchange,-717,megawatthours
+2026-04-15T22,AZPS,Arizona Public Service Company,D,Demand,3226,megawatthours
+2026-04-15T22,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3893,megawatthours
+2026-04-15T22,AZPS,Arizona Public Service Company,NG,Net generation,2581,megawatthours
+2026-04-15T22,AZPS,Arizona Public Service Company,TI,Total interchange,-645,megawatthours
+2026-04-15T21,AZPS,Arizona Public Service Company,D,Demand,2972,megawatthours
+2026-04-15T21,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3576,megawatthours
+2026-04-15T21,AZPS,Arizona Public Service Company,NG,Net generation,2246,megawatthours
+2026-04-15T21,AZPS,Arizona Public Service Company,TI,Total interchange,-726,megawatthours
+2026-04-15T20,AZPS,Arizona Public Service Company,D,Demand,2814,megawatthours
+2026-04-15T20,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3243,megawatthours
+2026-04-15T20,AZPS,Arizona Public Service Company,NG,Net generation,1900,megawatthours
+2026-04-15T20,AZPS,Arizona Public Service Company,TI,Total interchange,-914,megawatthours
+2026-04-15T19,AZPS,Arizona Public Service Company,D,Demand,2707,megawatthours
+2026-04-15T19,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3054,megawatthours
+2026-04-15T19,AZPS,Arizona Public Service Company,NG,Net generation,1733,megawatthours
+2026-04-15T19,AZPS,Arizona Public Service Company,TI,Total interchange,-974,megawatthours
+2026-04-15T18,AZPS,Arizona Public Service Company,D,Demand,2758,megawatthours
+2026-04-15T18,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2870,megawatthours
+2026-04-15T18,AZPS,Arizona Public Service Company,NG,Net generation,1694,megawatthours
+2026-04-15T18,AZPS,Arizona Public Service Company,TI,Total interchange,-1064,megawatthours
+2026-04-15T17,AZPS,Arizona Public Service Company,D,Demand,2909,megawatthours
+2026-04-15T17,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2873,megawatthours
+2026-04-15T17,AZPS,Arizona Public Service Company,NG,Net generation,1908,megawatthours
+2026-04-15T17,AZPS,Arizona Public Service Company,TI,Total interchange,-1001,megawatthours
+2026-04-15T16,AZPS,Arizona Public Service Company,D,Demand,3130,megawatthours
+2026-04-15T16,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3015,megawatthours
+2026-04-15T16,AZPS,Arizona Public Service Company,NG,Net generation,2182,megawatthours
+2026-04-15T16,AZPS,Arizona Public Service Company,TI,Total interchange,-948,megawatthours
+2026-04-15T15,AZPS,Arizona Public Service Company,D,Demand,3384,megawatthours
+2026-04-15T15,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3219,megawatthours
+2026-04-15T15,AZPS,Arizona Public Service Company,NG,Net generation,2299,megawatthours
+2026-04-15T15,AZPS,Arizona Public Service Company,TI,Total interchange,-1085,megawatthours
+2026-04-15T14,AZPS,Arizona Public Service Company,D,Demand,3544,megawatthours
+2026-04-15T14,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3529,megawatthours
+2026-04-15T14,AZPS,Arizona Public Service Company,NG,Net generation,2614,megawatthours
+2026-04-15T14,AZPS,Arizona Public Service Company,TI,Total interchange,-930,megawatthours
+2026-04-15T13,AZPS,Arizona Public Service Company,D,Demand,3400,megawatthours
+2026-04-15T13,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3697,megawatthours
+2026-04-15T13,AZPS,Arizona Public Service Company,NG,Net generation,2516,megawatthours
+2026-04-15T13,AZPS,Arizona Public Service Company,TI,Total interchange,-884,megawatthours
+2026-04-15T12,AZPS,Arizona Public Service Company,D,Demand,3258,megawatthours
+2026-04-15T12,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3608,megawatthours
+2026-04-15T12,AZPS,Arizona Public Service Company,NG,Net generation,2380,megawatthours
+2026-04-15T12,AZPS,Arizona Public Service Company,TI,Total interchange,-878,megawatthours
+2026-04-15T11,AZPS,Arizona Public Service Company,D,Demand,3169,megawatthours
+2026-04-15T11,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3476,megawatthours
+2026-04-15T11,AZPS,Arizona Public Service Company,NG,Net generation,2360,megawatthours
+2026-04-15T11,AZPS,Arizona Public Service Company,TI,Total interchange,-809,megawatthours
+2026-04-15T10,AZPS,Arizona Public Service Company,D,Demand,3159,megawatthours
+2026-04-15T10,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3416,megawatthours
+2026-04-15T10,AZPS,Arizona Public Service Company,NG,Net generation,2226,megawatthours
+2026-04-15T10,AZPS,Arizona Public Service Company,TI,Total interchange,-933,megawatthours
+2026-04-15T09,AZPS,Arizona Public Service Company,D,Demand,3252,megawatthours
+2026-04-15T09,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3451,megawatthours
+2026-04-15T09,AZPS,Arizona Public Service Company,NG,Net generation,2253,megawatthours
+2026-04-15T09,AZPS,Arizona Public Service Company,TI,Total interchange,-999,megawatthours
+2026-04-15T08,AZPS,Arizona Public Service Company,D,Demand,3360,megawatthours
+2026-04-15T08,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3473,megawatthours
+2026-04-15T08,AZPS,Arizona Public Service Company,NG,Net generation,2248,megawatthours
+2026-04-15T08,AZPS,Arizona Public Service Company,TI,Total interchange,-1112,megawatthours
+2026-04-15T07,AZPS,Arizona Public Service Company,D,Demand,3551,megawatthours
+2026-04-15T07,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3487,megawatthours
+2026-04-15T07,AZPS,Arizona Public Service Company,NG,Net generation,2357,megawatthours
+2026-04-15T07,AZPS,Arizona Public Service Company,TI,Total interchange,-1194,megawatthours
+2026-04-15T06,AZPS,Arizona Public Service Company,D,Demand,3842,megawatthours
+2026-04-15T06,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3691,megawatthours
+2026-04-15T06,AZPS,Arizona Public Service Company,NG,Net generation,2790,megawatthours
+2026-04-15T06,AZPS,Arizona Public Service Company,TI,Total interchange,-1052,megawatthours
+2026-04-15T05,AZPS,Arizona Public Service Company,D,Demand,4075,megawatthours
+2026-04-15T05,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3908,megawatthours
+2026-04-15T05,AZPS,Arizona Public Service Company,NG,Net generation,3060,megawatthours
+2026-04-15T05,AZPS,Arizona Public Service Company,TI,Total interchange,-1015,megawatthours
+2026-04-15T04,AZPS,Arizona Public Service Company,D,Demand,4252,megawatthours
+2026-04-15T04,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4178,megawatthours
+2026-04-15T04,AZPS,Arizona Public Service Company,NG,Net generation,3426,megawatthours
+2026-04-15T04,AZPS,Arizona Public Service Company,TI,Total interchange,-826,megawatthours
+2026-04-15T03,AZPS,Arizona Public Service Company,D,Demand,4331,megawatthours
+2026-04-15T03,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4381,megawatthours
+2026-04-15T03,AZPS,Arizona Public Service Company,NG,Net generation,3451,megawatthours
+2026-04-15T03,AZPS,Arizona Public Service Company,TI,Total interchange,-880,megawatthours
+2026-04-15T02,AZPS,Arizona Public Service Company,D,Demand,4152,megawatthours
+2026-04-15T02,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4473,megawatthours
+2026-04-15T02,AZPS,Arizona Public Service Company,NG,Net generation,3247,megawatthours
+2026-04-15T02,AZPS,Arizona Public Service Company,TI,Total interchange,-905,megawatthours
+2026-04-15T01,AZPS,Arizona Public Service Company,D,Demand,3943,megawatthours
+2026-04-15T01,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4316,megawatthours
+2026-04-15T01,AZPS,Arizona Public Service Company,NG,Net generation,3121,megawatthours
+2026-04-15T01,AZPS,Arizona Public Service Company,TI,Total interchange,-822,megawatthours
+2026-04-15T00,AZPS,Arizona Public Service Company,D,Demand,3530,megawatthours
+2026-04-15T00,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4154,megawatthours
+2026-04-15T00,AZPS,Arizona Public Service Company,NG,Net generation,3248,megawatthours
+2026-04-15T00,AZPS,Arizona Public Service Company,TI,Total interchange,-282,megawatthours
+2026-04-14T23,AZPS,Arizona Public Service Company,D,Demand,3194,megawatthours
+2026-04-14T23,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3771,megawatthours
+2026-04-14T23,AZPS,Arizona Public Service Company,NG,Net generation,3063,megawatthours
+2026-04-14T23,AZPS,Arizona Public Service Company,TI,Total interchange,-131,megawatthours
+2026-04-14T22,AZPS,Arizona Public Service Company,D,Demand,2961,megawatthours
+2026-04-14T22,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3525,megawatthours
+2026-04-14T22,AZPS,Arizona Public Service Company,NG,Net generation,2814,megawatthours
+2026-04-14T22,AZPS,Arizona Public Service Company,TI,Total interchange,-147,megawatthours
+2026-04-14T21,AZPS,Arizona Public Service Company,D,Demand,2781,megawatthours
+2026-04-14T21,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3177,megawatthours
+2026-04-14T21,AZPS,Arizona Public Service Company,NG,Net generation,2504,megawatthours
+2026-04-14T21,AZPS,Arizona Public Service Company,TI,Total interchange,-277,megawatthours
+2026-04-14T20,AZPS,Arizona Public Service Company,D,Demand,2701,megawatthours
+2026-04-14T20,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2966,megawatthours
+2026-04-14T20,AZPS,Arizona Public Service Company,NG,Net generation,2633,megawatthours
+2026-04-14T20,AZPS,Arizona Public Service Company,TI,Total interchange,-68,megawatthours
+2026-04-14T19,AZPS,Arizona Public Service Company,D,Demand,2716,megawatthours
+2026-04-14T19,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2833,megawatthours
+2026-04-14T19,AZPS,Arizona Public Service Company,NG,Net generation,2337,megawatthours
+2026-04-14T19,AZPS,Arizona Public Service Company,TI,Total interchange,-379,megawatthours
+2026-04-14T18,AZPS,Arizona Public Service Company,D,Demand,2781,megawatthours
+2026-04-14T18,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2838,megawatthours
+2026-04-14T18,AZPS,Arizona Public Service Company,NG,Net generation,2487,megawatthours
+2026-04-14T18,AZPS,Arizona Public Service Company,TI,Total interchange,-294,megawatthours
+2026-04-14T17,AZPS,Arizona Public Service Company,D,Demand,2978,megawatthours
+2026-04-14T17,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,2921,megawatthours
+2026-04-14T17,AZPS,Arizona Public Service Company,NG,Net generation,2587,megawatthours
+2026-04-14T17,AZPS,Arizona Public Service Company,TI,Total interchange,-391,megawatthours
+2026-04-14T16,AZPS,Arizona Public Service Company,D,Demand,3115,megawatthours
+2026-04-14T16,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3084,megawatthours
+2026-04-14T16,AZPS,Arizona Public Service Company,NG,Net generation,2424,megawatthours
+2026-04-14T16,AZPS,Arizona Public Service Company,TI,Total interchange,-691,megawatthours
+2026-04-14T15,AZPS,Arizona Public Service Company,D,Demand,3455,megawatthours
+2026-04-14T15,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3286,megawatthours
+2026-04-14T15,AZPS,Arizona Public Service Company,NG,Net generation,2642,megawatthours
+2026-04-14T15,AZPS,Arizona Public Service Company,TI,Total interchange,-813,megawatthours
+2026-04-14T14,AZPS,Arizona Public Service Company,D,Demand,3504,megawatthours
+2026-04-14T14,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3618,megawatthours
+2026-04-14T14,AZPS,Arizona Public Service Company,NG,Net generation,2486,megawatthours
+2026-04-14T14,AZPS,Arizona Public Service Company,TI,Total interchange,-1018,megawatthours
+2026-04-14T13,AZPS,Arizona Public Service Company,D,Demand,3427,megawatthours
+2026-04-14T13,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3789,megawatthours
+2026-04-14T13,AZPS,Arizona Public Service Company,NG,Net generation,2152,megawatthours
+2026-04-14T13,AZPS,Arizona Public Service Company,TI,Total interchange,-1275,megawatthours
+2026-04-14T12,AZPS,Arizona Public Service Company,D,Demand,3218,megawatthours
+2026-04-14T12,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3682,megawatthours
+2026-04-14T12,AZPS,Arizona Public Service Company,NG,Net generation,2219,megawatthours
+2026-04-14T12,AZPS,Arizona Public Service Company,TI,Total interchange,-999,megawatthours
+2026-04-14T11,AZPS,Arizona Public Service Company,D,Demand,3162,megawatthours
+2026-04-14T11,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3549,megawatthours
+2026-04-14T11,AZPS,Arizona Public Service Company,NG,Net generation,2092,megawatthours
+2026-04-14T11,AZPS,Arizona Public Service Company,TI,Total interchange,-1070,megawatthours
+2026-04-14T10,AZPS,Arizona Public Service Company,D,Demand,3187,megawatthours
+2026-04-14T10,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3489,megawatthours
+2026-04-14T10,AZPS,Arizona Public Service Company,NG,Net generation,2069,megawatthours
+2026-04-14T10,AZPS,Arizona Public Service Company,TI,Total interchange,-1118,megawatthours
+2026-04-14T09,AZPS,Arizona Public Service Company,D,Demand,3245,megawatthours
+2026-04-14T09,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3537,megawatthours
+2026-04-14T09,AZPS,Arizona Public Service Company,NG,Net generation,2138,megawatthours
+2026-04-14T09,AZPS,Arizona Public Service Company,TI,Total interchange,-1107,megawatthours
+2026-04-14T08,AZPS,Arizona Public Service Company,D,Demand,3418,megawatthours
+2026-04-14T08,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3552,megawatthours
+2026-04-14T08,AZPS,Arizona Public Service Company,NG,Net generation,2305,megawatthours
+2026-04-14T08,AZPS,Arizona Public Service Company,TI,Total interchange,-1113,megawatthours
+2026-04-14T07,AZPS,Arizona Public Service Company,D,Demand,3626,megawatthours
+2026-04-14T07,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3532,megawatthours
+2026-04-14T07,AZPS,Arizona Public Service Company,NG,Net generation,2420,megawatthours
+2026-04-14T07,AZPS,Arizona Public Service Company,TI,Total interchange,-1206,megawatthours
+2026-04-14T06,AZPS,Arizona Public Service Company,D,Demand,3860,megawatthours
+2026-04-14T06,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3710,megawatthours
+2026-04-14T06,AZPS,Arizona Public Service Company,NG,Net generation,2560,megawatthours
+2026-04-14T06,AZPS,Arizona Public Service Company,TI,Total interchange,-1300,megawatthours
+2026-04-14T05,AZPS,Arizona Public Service Company,D,Demand,4016,megawatthours
+2026-04-14T05,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3969,megawatthours
+2026-04-14T05,AZPS,Arizona Public Service Company,NG,Net generation,3469,megawatthours
+2026-04-14T05,AZPS,Arizona Public Service Company,TI,Total interchange,-547,megawatthours
+2026-04-14T04,AZPS,Arizona Public Service Company,D,Demand,4161,megawatthours
+2026-04-14T04,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4222,megawatthours
+2026-04-14T04,AZPS,Arizona Public Service Company,NG,Net generation,3561,megawatthours
+2026-04-14T04,AZPS,Arizona Public Service Company,TI,Total interchange,-600,megawatthours
+2026-04-14T03,AZPS,Arizona Public Service Company,D,Demand,2769,megawatthours
+2026-04-14T03,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4459,megawatthours
+2026-04-14T03,AZPS,Arizona Public Service Company,NG,Net generation,2801,megawatthours
+2026-04-14T03,AZPS,Arizona Public Service Company,TI,Total interchange,32,megawatthours
+2026-04-14T02,AZPS,Arizona Public Service Company,D,Demand,505,megawatthours
+2026-04-14T02,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4526,megawatthours
+2026-04-14T02,AZPS,Arizona Public Service Company,NG,Net generation,904,megawatthours
+2026-04-14T02,AZPS,Arizona Public Service Company,TI,Total interchange,399,megawatthours
+2026-04-14T01,AZPS,Arizona Public Service Company,D,Demand,4553,megawatthours
+2026-04-14T01,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4350,megawatthours
+2026-04-14T01,AZPS,Arizona Public Service Company,NG,Net generation,3153,megawatthours
+2026-04-14T01,AZPS,Arizona Public Service Company,TI,Total interchange,-1400,megawatthours
+2026-04-14T00,AZPS,Arizona Public Service Company,D,Demand,3613,megawatthours
+2026-04-14T00,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,4190,megawatthours
+2026-04-14T00,AZPS,Arizona Public Service Company,NG,Net generation,2979,megawatthours
+2026-04-14T00,AZPS,Arizona Public Service Company,TI,Total interchange,-634,megawatthours
+2026-04-13T23,AZPS,Arizona Public Service Company,D,Demand,3477,megawatthours
+2026-04-13T23,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3863,megawatthours
+2026-04-13T23,AZPS,Arizona Public Service Company,NG,Net generation,2709,megawatthours
+2026-04-13T23,AZPS,Arizona Public Service Company,TI,Total interchange,-768,megawatthours
+2026-04-13T22,AZPS,Arizona Public Service Company,D,Demand,3372,megawatthours
+2026-04-13T22,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3686,megawatthours
+2026-04-13T22,AZPS,Arizona Public Service Company,NG,Net generation,2640,megawatthours
+2026-04-13T22,AZPS,Arizona Public Service Company,TI,Total interchange,-732,megawatthours
+2026-04-13T21,AZPS,Arizona Public Service Company,D,Demand,3152,megawatthours
+2026-04-13T21,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3423,megawatthours
+2026-04-13T21,AZPS,Arizona Public Service Company,NG,Net generation,2772,megawatthours
+2026-04-13T21,AZPS,Arizona Public Service Company,TI,Total interchange,-380,megawatthours
+2026-04-13T20,AZPS,Arizona Public Service Company,D,Demand,2991,megawatthours
+2026-04-13T20,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3316,megawatthours
+2026-04-13T20,AZPS,Arizona Public Service Company,NG,Net generation,2321,megawatthours
+2026-04-13T20,AZPS,Arizona Public Service Company,TI,Total interchange,-670,megawatthours
+2026-04-13T19,AZPS,Arizona Public Service Company,D,Demand,2994,megawatthours
+2026-04-13T19,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3275,megawatthours
+2026-04-13T19,AZPS,Arizona Public Service Company,NG,Net generation,2056,megawatthours
+2026-04-13T19,AZPS,Arizona Public Service Company,TI,Total interchange,-938,megawatthours
+2026-04-13T18,AZPS,Arizona Public Service Company,D,Demand,3092,megawatthours
+2026-04-13T18,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3198,megawatthours
+2026-04-13T18,AZPS,Arizona Public Service Company,NG,Net generation,2253,megawatthours
+2026-04-13T18,AZPS,Arizona Public Service Company,TI,Total interchange,-839,megawatthours
+2026-04-13T17,AZPS,Arizona Public Service Company,D,Demand,3060,megawatthours
+2026-04-13T17,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3221,megawatthours
+2026-04-13T17,AZPS,Arizona Public Service Company,NG,Net generation,2237,megawatthours
+2026-04-13T17,AZPS,Arizona Public Service Company,TI,Total interchange,-823,megawatthours
+2026-04-13T16,AZPS,Arizona Public Service Company,D,Demand,2996,megawatthours
+2026-04-13T16,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3293,megawatthours
+2026-04-13T16,AZPS,Arizona Public Service Company,NG,Net generation,2250,megawatthours
+2026-04-13T16,AZPS,Arizona Public Service Company,TI,Total interchange,-746,megawatthours
+2026-04-13T15,AZPS,Arizona Public Service Company,D,Demand,3528,megawatthours
+2026-04-13T15,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3423,megawatthours
+2026-04-13T15,AZPS,Arizona Public Service Company,NG,Net generation,2456,megawatthours
+2026-04-13T15,AZPS,Arizona Public Service Company,TI,Total interchange,-1072,megawatthours
+2026-04-13T14,AZPS,Arizona Public Service Company,D,Demand,3746,megawatthours
+2026-04-13T14,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3611,megawatthours
+2026-04-13T14,AZPS,Arizona Public Service Company,NG,Net generation,2562,megawatthours
+2026-04-13T14,AZPS,Arizona Public Service Company,TI,Total interchange,-1184,megawatthours
+2026-04-13T13,AZPS,Arizona Public Service Company,D,Demand,3751,megawatthours
+2026-04-13T13,AZPS,Arizona Public Service Company,DF,Day-ahead demand forecast,3728,megawatthours
+2026-04-13T13,AZPS,Arizona Public Service Company,NG,Net generation,2560,megawatthours
+2026-04-13T13,AZPS,Arizona Public Service Company,TI,Total interchange,-1191,megawatthours

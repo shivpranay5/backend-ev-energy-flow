@@ -1,0 +1,364 @@
+{
+  "response": {
+    "total": "36",
+    "dateFormat": "YYYY-MM",
+    "frequency": "monthly",
+    "data": [
+      {
+        "period": "2023-01",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "11.11",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-02",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "11.16",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-03",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "11.24",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-04",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "11.78",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-05",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.39",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-06",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.52",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-07",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.01",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-08",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.72",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-09",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.62",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-10",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.25",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-11",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "11.99",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2023-12",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-01",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "11.85",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-02",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "11.94",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-03",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "11.95",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-04",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.32",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-05",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.05",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-06",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.33",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-07",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.48",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-08",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.33",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-09",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.97",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-10",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.72",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-11",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.12",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2024-12",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.23",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-01",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.27",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-02",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.35",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-03",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.48",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-04",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.76",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-05",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.26",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-06",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.39",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-07",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.86",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-08",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.58",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-09",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "13.2",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-10",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.68",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-11",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.24",
+        "price-units": "cents per kilowatt-hour"
+      },
+      {
+        "period": "2025-12",
+        "stateid": "AZ",
+        "stateDescription": "Arizona",
+        "sectorid": "ALL",
+        "sectorName": "all sectors",
+        "price": "12.25",
+        "price-units": "cents per kilowatt-hour"
+      }
+    ],
+    "description": "Electricity sales to ultimate customer by state and sector (number of customers, average price, revenue, and megawatthours of sales).  \n    Sources: Forms EIA-826, EIA-861, EIA-861M"
+  },
+  "request": {
+    "command": "/v2/electricity/retail-sales/data/",
+    "params": {
+      "api_key": "CcgY7SFcTPIUg1JJSZFWZkLpxzn1lyln0vyRjqED",
+      "frequency": "monthly",
+      "data": [
+        "price"
+      ],
+      "facets": {
+        "stateid": [
+          "AZ"
+        ],
+        "sectorid": [
+          "ALL"
+        ]
+      },
+      "start": "2023-01-01",
+      "end": "2025-12-31",
+      "sort": [
+        {
+          "column": "period",
+          "direction": "asc"
+        }
+      ],
+      "length": "5000",
+      "offset": "0"
+    }
+  },
+  "apiVersion": "2.1.12",
+  "ExcelAddInVersion": "2.1.0"
+}

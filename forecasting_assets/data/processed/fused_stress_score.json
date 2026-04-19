@@ -1,0 +1,20 @@
+{
+  "final_stress_probability": 0.3493,
+  "signals": [
+    {
+      "name": "eia",
+      "score": 0.4581,
+      "confidence": 0.65
+    },
+    {
+      "name": "weather",
+      "score": 0.0351,
+      "confidence": 0.7
+    },
+    {
+      "name": "price",
+      "score": 0.5981,
+      "confidence": 0.6
+    }
+  ]
+}

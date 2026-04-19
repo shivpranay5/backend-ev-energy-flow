@@ -1,0 +1,143 @@
+{
+  "name": "weather",
+  "train_accuracy": 0.9452411994784876,
+  "train_precision": 0.0,
+  "train_recall": 0.0,
+  "train_f1": 0.0,
+  "train_confusion_matrix": [
+    [
+      725,
+      0
+    ],
+    [
+      42,
+      0
+    ]
+  ],
+  "train_probability_mean": 0.15938472478498814,
+  "val_accuracy": 0.8841463414634146,
+  "val_precision": 0.0,
+  "val_recall": 0.0,
+  "val_f1": 0.0,
+  "val_confusion_matrix": [
+    [
+      145,
+      0
+    ],
+    [
+      19,
+      0
+    ]
+  ],
+  "val_probability_mean": 0.2107084882377118,
+  "test_accuracy": 0.703030303030303,
+  "test_precision": 0.0,
+  "test_recall": 0.0,
+  "test_f1": 0.0,
+  "test_confusion_matrix": [
+    [
+      116,
+      0
+    ],
+    [
+      49,
+      0
+    ]
+  ],
+  "test_probability_mean": 0.15870443853506142,
+  "feature_columns": [
+    "prcp_mean",
+    "tmax_mean",
+    "tmin_mean",
+    "prcp_max",
+    "tmax_max",
+    "tmin_max",
+    "prcp_min",
+    "tmax_min",
+    "tmin_min",
+    "prcp_std",
+    "tmax_std",
+    "tmin_std",
+    "temp_range",
+    "rolling_7d_tmax",
+    "rolling_7d_prcp",
+    "day_of_week",
+    "month",
+    "day_of_year",
+    "is_weekend"
+  ],
+  "model_path": "/Users/ksm007/Desktop/Projects/aee_hackathon/openvpp_forecasting_stack/artifacts/training_3yr/weather_model.joblib",
+  "scaler_path": "/Users/ksm007/Desktop/Projects/aee_hackathon/openvpp_forecasting_stack/artifacts/training_3yr/weather_scaler.joblib",
+  "history": [
+    {
+      "epoch": 1,
+      "train_accuracy": 0.9439374185136897,
+      "val_accuracy": 0.8719512195121951
+    },
+    {
+      "epoch": 2,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 3,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 4,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 5,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 6,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 7,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 8,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 9,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 10,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 11,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 12,
+      "train_accuracy": 0.9439374185136897,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 13,
+      "train_accuracy": 0.9439374185136897,
+      "val_accuracy": 0.8841463414634146
+    },
+    {
+      "epoch": 14,
+      "train_accuracy": 0.9452411994784876,
+      "val_accuracy": 0.8841463414634146
+    }
+  ]
+}

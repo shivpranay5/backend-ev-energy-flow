@@ -1,0 +1,133 @@
+{
+  "name": "price",
+  "train_accuracy": 1.0,
+  "train_precision": 1.0,
+  "train_recall": 1.0,
+  "train_f1": 1.0,
+  "train_confusion_matrix": [
+    [
+      613,
+      0
+    ],
+    [
+      0,
+      154
+    ]
+  ],
+  "train_probability_mean": 0.3683658117399567,
+  "val_accuracy": 1.0,
+  "val_precision": 1.0,
+  "val_recall": 1.0,
+  "val_f1": 1.0,
+  "val_confusion_matrix": [
+    [
+      84,
+      0
+    ],
+    [
+      0,
+      80
+    ]
+  ],
+  "val_probability_mean": 0.5313238805031059,
+  "test_accuracy": 0.9939393939393939,
+  "test_precision": 1.0,
+  "test_recall": 0.9863013698630136,
+  "test_f1": 0.993103448275862,
+  "test_confusion_matrix": [
+    [
+      92,
+      0
+    ],
+    [
+      1,
+      72
+    ]
+  ],
+  "test_probability_mean": 0.39196646933723356,
+  "feature_columns": [
+    "price_all_sectors",
+    "price_rolling_3m",
+    "price_change_1m",
+    "price_rank",
+    "high_price_label",
+    "day_of_week",
+    "month",
+    "day_of_year",
+    "is_weekend"
+  ],
+  "model_path": "/Users/ksm007/Desktop/Projects/aee_hackathon/openvpp_forecasting_stack/artifacts/training_3yr/price_model.joblib",
+  "scaler_path": "/Users/ksm007/Desktop/Projects/aee_hackathon/openvpp_forecasting_stack/artifacts/training_3yr/price_scaler.joblib",
+  "history": [
+    {
+      "epoch": 1,
+      "train_accuracy": 0.8161668839634941,
+      "val_accuracy": 0.6463414634146342
+    },
+    {
+      "epoch": 2,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 3,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 4,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 5,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 6,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 7,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 8,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 9,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 10,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 11,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 12,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 13,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    },
+    {
+      "epoch": 14,
+      "train_accuracy": 1.0,
+      "val_accuracy": 1.0
+    }
+  ]
+}

@@ -13,7 +13,19 @@ from .date_feature_generator import GeneratedFeatureRow, SeasonalFeatureGenerato
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
-STACK_DIR = BASE_DIR.parent / "openvpp_forecasting_stack"
+LOCAL_STACK_DIR = BASE_DIR / "forecasting_stack"
+LOCAL_ASSET_DIR = BASE_DIR / "forecasting_assets"
+LEGACY_STACK_DIR = BASE_DIR.parent / "openvpp_forecasting_stack"
+STACK_DIR = (
+    LOCAL_STACK_DIR
+    if (LOCAL_STACK_DIR / "scripts" / "train_three_year_models.py").exists()
+    else LEGACY_STACK_DIR
+)
+ASSET_DIR = (
+    LOCAL_ASSET_DIR
+    if (LOCAL_ASSET_DIR / "data" / "training_3yr").exists()
+    else STACK_DIR
+)
 
 
 @dataclass(frozen=True)
@@ -60,6 +72,11 @@ def _load_training_module():
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
+    module.BASE_DIR = ASSET_DIR
+    module.DATA_DIR = ASSET_DIR / "data" / "training_3yr"
+    module.ARTIFACT_DIR = ASSET_DIR / "artifacts" / "training_3yr"
+    module.RAW_DIR = module.DATA_DIR / "raw"
+    module.REPORT_DIR = module.ARTIFACT_DIR / "reports"
     return module
 
 

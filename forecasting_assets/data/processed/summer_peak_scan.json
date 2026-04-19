@@ -1,0 +1,242 @@
+[
+  {
+    "date":"2026-07-15",
+    "hour":20,
+    "temperature_f":84.0,
+    "eia_score":0.568,
+    "weather_score":1.0,
+    "price_score":0.6758,
+    "final_stress_probability":0.7562,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.568, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.6758, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":19,
+    "temperature_f":86.33,
+    "eia_score":0.5588,
+    "weather_score":1.0,
+    "price_score":0.6678,
+    "final_stress_probability":0.7507,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.5588, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.6678, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":18,
+    "temperature_f":91.26,
+    "eia_score":0.5497,
+    "weather_score":1.0,
+    "price_score":0.6599,
+    "final_stress_probability":0.7452,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.5497, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.6599, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":17,
+    "temperature_f":97.44,
+    "eia_score":0.5405,
+    "weather_score":1.0,
+    "price_score":0.6519,
+    "final_stress_probability":0.7397,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.5405, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.6519, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":16,
+    "temperature_f":103.74,
+    "eia_score":0.5313,
+    "weather_score":1.0,
+    "price_score":0.6439,
+    "final_stress_probability":0.7342,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.5313, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.6439, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":15,
+    "temperature_f":109.13,
+    "eia_score":0.5222,
+    "weather_score":1.0,
+    "price_score":0.6359,
+    "final_stress_probability":0.7287,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.5222, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.6359, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":14,
+    "temperature_f":112.73,
+    "eia_score":0.513,
+    "weather_score":1.0,
+    "price_score":0.628,
+    "final_stress_probability":0.7232,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.513, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.628, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":0,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":1,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":22,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":21,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":13,
+    "temperature_f":114.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":12,
+    "temperature_f":112.73,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":11,
+    "temperature_f":109.13,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":10,
+    "temperature_f":103.74,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":9,
+    "temperature_f":97.44,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":8,
+    "temperature_f":91.26,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":7,
+    "temperature_f":86.33,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":6,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":5,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":4,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":3,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":2,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  },
+  {
+    "date":"2026-07-15",
+    "hour":23,
+    "temperature_f":84.0,
+    "eia_score":0.4581,
+    "weather_score":1.0,
+    "price_score":0.5981,
+    "final_stress_probability":0.6957,
+    "signals":"[{\"name\": \"eia\", \"score\": 0.4581, \"confidence\": 0.65}, {\"name\": \"weather\", \"score\": 1.0, \"confidence\": 0.7}, {\"name\": \"price\", \"score\": 0.5981, \"confidence\": 0.6}]"
+  }
+]

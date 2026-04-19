@@ -1,0 +1,4540 @@
+{
+  "warnings": [
+    {
+      "warning": "incomplete return",
+      "description": "The API can only return 5000 rows in JSON format.  Please consider constraining your request with facet, start, or end, or using offset to paginate results."
+    }
+  ],
+  "response": {
+    "total": "255360",
+    "dateFormat": "YYYY-MM-DD\"T\"HH24",
+    "frequency": "hourly",
+    "data": [
+      {
+        "period": "2026-04-19T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3576",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-19T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3688",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-19T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3902",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-19T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4181",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-19T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4480",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-19T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4757",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-19T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "1804",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-19T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4825",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-19T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4391",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-19T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4677",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4227",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4309",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4191",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3881",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4252",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3526",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4297",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3098",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4313",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2975",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4736",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2749",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4576",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2758",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4145",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2793",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3447",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2963",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3234",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3135",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3223",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3214",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3160",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3163",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3150",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3064",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3219",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3141",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3303",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3141",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3491",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3205",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3750",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3373",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3972",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3746",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3271",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-701",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4225",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4011",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3228",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-997",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4409",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4269",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3418",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-991",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4552",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4467",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3633",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-919",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4496",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4577",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3437",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1059",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4368",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4531",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2899",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1469",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4043",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4504",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2739",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-18T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1304",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3752",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4148",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2652",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1100",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3519",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3913",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2385",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1134",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3276",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3603",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2103",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1173",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3074",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3291",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1907",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1167",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2978",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3091",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1808",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1170",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2948",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2979",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1759",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1189",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2985",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3009",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1991",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-994",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3192",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3077",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2234",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-958",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3436",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3266",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2375",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1061",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3447",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3559",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2386",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1061",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3320",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3727",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2586",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-734",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3117",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3695",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2497",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-620",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3073",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3596",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2586",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-487",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3124",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3458",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2581",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-543",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3269",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3560",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2477",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-792",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3478",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3600",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2601",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-877",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3725",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3658",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2666",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1059",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3992",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3880",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2660",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1332",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4214",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4095",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3298",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-916",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4416",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4388",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3357",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1059",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4507",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4611",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3193",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1314",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4332",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4764",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3211",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1121",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4207",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4642",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2905",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1302",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3866",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4568",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3542",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-17T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-324",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3628",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4173",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2927",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-701",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3480",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3953",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2555",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-925",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3154",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3698",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1805",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1349",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2929",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3433",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1784",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1145",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2849",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3269",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1774",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1075",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3030",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3102",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1990",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1040",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2961",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3066",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1875",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1086",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3505",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3125",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2156",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1349",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3469",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3318",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2315",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1154",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3504",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3530",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2292",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1212",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3382",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3690",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2146",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1236",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3187",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3577",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2021",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1166",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3121",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3432",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2037",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1084",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3172",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3399",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2124",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1048",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3269",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3487",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2216",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1053",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3328",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3556",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2129",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1199",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3540",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3514",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2224",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1316",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3862",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3713",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2838",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1024",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4166",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3942",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3302",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-864",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4415",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4285",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3532",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-883",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4579",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4561",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3616",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-963",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4496",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4706",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3600",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-896",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4276",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4635",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3328",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-948",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3894",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4578",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2879",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-16T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1015",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3595",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4147",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2878",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-717",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3226",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3893",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2581",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-645",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2972",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3576",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2246",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-726",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2814",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3243",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1900",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-914",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2707",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3054",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1733",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-974",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2758",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2870",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1694",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1064",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2909",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2873",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "1908",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1001",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3130",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3015",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2182",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-948",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3384",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3219",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2299",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1085",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3544",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3529",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2614",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-930",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3400",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3697",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2516",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-884",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3258",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3608",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2380",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-878",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3169",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3476",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2360",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-809",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3159",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3416",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2226",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-933",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3252",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3451",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2253",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-999",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3360",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3473",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2248",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1112",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3551",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3487",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2357",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1194",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3842",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3691",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2790",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1052",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4075",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3908",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3060",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1015",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4252",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4178",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3426",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-826",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4331",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4381",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3451",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-880",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4152",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4473",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3247",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-905",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3943",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4316",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3121",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-822",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3530",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4154",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3248",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-15T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-282",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3194",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3771",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3063",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-131",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2961",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3525",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2814",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-147",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2781",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3177",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2504",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-277",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2701",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2966",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2633",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-68",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2716",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2833",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2337",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-379",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2781",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2838",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2487",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-294",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2978",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "2921",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2587",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-391",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3115",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3084",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2424",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-691",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3455",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3286",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2642",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-813",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3504",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3618",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2486",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1018",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3427",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3789",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2152",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1275",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3218",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3682",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2219",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T12",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-999",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3162",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3549",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2092",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T11",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1070",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3187",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3489",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2069",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T10",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1118",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3245",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3537",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2138",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T09",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1107",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3418",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3552",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2305",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T08",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1113",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3626",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3532",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2420",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T07",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1206",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3860",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3710",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2560",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T06",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1300",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4016",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3969",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3469",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T05",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-547",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4161",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4222",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3561",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T04",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-600",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2769",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4459",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2801",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T03",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "32",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "505",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4526",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "904",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T02",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "399",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "4553",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4350",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "3153",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T01",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1400",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3613",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "4190",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2979",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-14T00",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-634",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3477",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3863",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2709",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T23",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-768",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3372",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3686",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2640",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T22",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-732",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3152",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3423",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2772",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T21",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-380",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2991",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3316",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2321",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T20",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-670",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2994",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3275",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2056",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T19",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-938",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3092",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3198",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2253",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T18",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-839",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3060",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3221",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2237",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T17",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-823",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "2996",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3293",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2250",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T16",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-746",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3528",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3423",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2456",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T15",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1072",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3746",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3611",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2562",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T14",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1184",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "D",
+        "type-name": "Demand",
+        "value": "3751",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "DF",
+        "type-name": "Day-ahead demand forecast",
+        "value": "3728",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "NG",
+        "type-name": "Net generation",
+        "value": "2560",
+        "value-units": "megawatthours"
+      },
+      {
+        "period": "2026-04-13T13",
+        "respondent": "AZPS",
+        "respondent-name": "Arizona Public Service Company",
+        "type": "TI",
+        "type-name": "Total interchange",
+        "value": "-1191",
+        "value-units": "megawatthours"
+      }
+    ],
+    "description": "Hourly demand, day-ahead demand forecast, net generation, and interchange by balancing authority.  \n    Source: Form EIA-930\n    Product: Hourly Electric Grid Monitor"
+  },
+  "request": {
+    "command": "/v2/electricity/rto/region-data/data/",
+    "params": {
+      "api_key": "CcgY7SFcTPIUg1JJSZFWZkLpxzn1lyln0vyRjqED",
+      "frequency": "hourly",
+      "data": [
+        "value"
+      ],
+      "facets": {
+        "respondent": [
+          "AZPS"
+        ]
+      },
+      "sort": [
+        {
+          "column": "period",
+          "direction": "desc"
+        }
+      ],
+      "length": "500"
+    }
+  },
+  "apiVersion": "2.1.12",
+  "ExcelAddInVersion": "2.1.0"
+}

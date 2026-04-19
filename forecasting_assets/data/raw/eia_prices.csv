@@ -1,0 +1,101 @@
+period,stateid,stateDescription,sectorid,sectorName,price,price-units
+2025,AZ,Arizona,ALL,all sectors,12.97,cents per kilowatt-hour
+2025,AZ,Arizona,COM,commercial,12.47,cents per kilowatt-hour
+2025,AZ,Arizona,IND,industrial,8.1,cents per kilowatt-hour
+2025,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2025,AZ,Arizona,RES,residential,15.32,cents per kilowatt-hour
+2025,AZ,Arizona,TRA,transportation,11.07,cents per kilowatt-hour
+2024,AZ,Arizona,ALL,all sectors,12.74,cents per kilowatt-hour
+2024,AZ,Arizona,COM,commercial,12.23,cents per kilowatt-hour
+2024,AZ,Arizona,IND,industrial,7.9,cents per kilowatt-hour
+2024,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2024,AZ,Arizona,RES,residential,14.91,cents per kilowatt-hour
+2024,AZ,Arizona,TRA,transportation,10.95,cents per kilowatt-hour
+2023,AZ,Arizona,ALL,all sectors,12.19,cents per kilowatt-hour
+2023,AZ,Arizona,COM,commercial,11.79,cents per kilowatt-hour
+2023,AZ,Arizona,IND,industrial,8.11,cents per kilowatt-hour
+2023,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2023,AZ,Arizona,RES,residential,14.02,cents per kilowatt-hour
+2023,AZ,Arizona,TRA,transportation,10.01,cents per kilowatt-hour
+2022,AZ,Arizona,ALL,all sectors,11.31,cents per kilowatt-hour
+2022,AZ,Arizona,COM,commercial,10.8,cents per kilowatt-hour
+2022,AZ,Arizona,IND,industrial,7.86,cents per kilowatt-hour
+2022,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2022,AZ,Arizona,RES,residential,13.02,cents per kilowatt-hour
+2022,AZ,Arizona,TRA,transportation,9.62,cents per kilowatt-hour
+2021,AZ,Arizona,ALL,all sectors,10.73,cents per kilowatt-hour
+2021,AZ,Arizona,COM,commercial,10.33,cents per kilowatt-hour
+2021,AZ,Arizona,IND,industrial,6.79,cents per kilowatt-hour
+2021,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2021,AZ,Arizona,RES,residential,12.54,cents per kilowatt-hour
+2021,AZ,Arizona,TRA,transportation,9.33,cents per kilowatt-hour
+2020,AZ,Arizona,ALL,all sectors,10.44,cents per kilowatt-hour
+2020,AZ,Arizona,COM,commercial,10.11,cents per kilowatt-hour
+2020,AZ,Arizona,IND,industrial,6.07,cents per kilowatt-hour
+2020,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2020,AZ,Arizona,RES,residential,12.27,cents per kilowatt-hour
+2020,AZ,Arizona,TRA,transportation,9.38,cents per kilowatt-hour
+2019,AZ,Arizona,ALL,all sectors,10.52,cents per kilowatt-hour
+2019,AZ,Arizona,COM,commercial,10.25,cents per kilowatt-hour
+2019,AZ,Arizona,IND,industrial,6.28,cents per kilowatt-hour
+2019,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2019,AZ,Arizona,RES,residential,12.43,cents per kilowatt-hour
+2019,AZ,Arizona,TRA,transportation,9.68,cents per kilowatt-hour
+2018,AZ,Arizona,ALL,all sectors,10.85,cents per kilowatt-hour
+2018,AZ,Arizona,COM,commercial,10.64,cents per kilowatt-hour
+2018,AZ,Arizona,IND,industrial,6.55,cents per kilowatt-hour
+2018,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2018,AZ,Arizona,RES,residential,12.77,cents per kilowatt-hour
+2018,AZ,Arizona,TRA,transportation,10.02,cents per kilowatt-hour
+2017,AZ,Arizona,ALL,all sectors,10.64,cents per kilowatt-hour
+2017,AZ,Arizona,COM,commercial,10.5,cents per kilowatt-hour
+2017,AZ,Arizona,IND,industrial,6.45,cents per kilowatt-hour
+2017,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2017,AZ,Arizona,RES,residential,12.44,cents per kilowatt-hour
+2017,AZ,Arizona,TRA,transportation,9.65,cents per kilowatt-hour
+2016,AZ,Arizona,ALL,all sectors,10.33,cents per kilowatt-hour
+2016,AZ,Arizona,COM,commercial,10.41,cents per kilowatt-hour
+2016,AZ,Arizona,IND,industrial,6.07,cents per kilowatt-hour
+2016,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2016,AZ,Arizona,RES,residential,12.15,cents per kilowatt-hour
+2016,AZ,Arizona,TRA,transportation,9.93,cents per kilowatt-hour
+2015,AZ,Arizona,ALL,all sectors,10.34,cents per kilowatt-hour
+2015,AZ,Arizona,COM,commercial,10.39,cents per kilowatt-hour
+2015,AZ,Arizona,IND,industrial,6.26,cents per kilowatt-hour
+2015,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2015,AZ,Arizona,RES,residential,12.13,cents per kilowatt-hour
+2015,AZ,Arizona,TRA,transportation,9.4,cents per kilowatt-hour
+2014,AZ,Arizona,ALL,all sectors,10.18,cents per kilowatt-hour
+2014,AZ,Arizona,COM,commercial,10.13,cents per kilowatt-hour
+2014,AZ,Arizona,IND,industrial,6.46,cents per kilowatt-hour
+2014,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2014,AZ,Arizona,RES,residential,11.9,cents per kilowatt-hour
+2014,AZ,Arizona,TRA,transportation,0,cents per kilowatt-hour
+2013,AZ,Arizona,ALL,all sectors,10.14,cents per kilowatt-hour
+2013,AZ,Arizona,COM,commercial,9.85,cents per kilowatt-hour
+2013,AZ,Arizona,IND,industrial,6.66,cents per kilowatt-hour
+2013,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2013,AZ,Arizona,RES,residential,11.71,cents per kilowatt-hour
+2013,AZ,Arizona,TRA,transportation,0,cents per kilowatt-hour
+2012,AZ,Arizona,ALL,all sectors,9.81,cents per kilowatt-hour
+2012,AZ,Arizona,COM,commercial,9.53,cents per kilowatt-hour
+2012,AZ,Arizona,IND,industrial,6.53,cents per kilowatt-hour
+2012,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2012,AZ,Arizona,RES,residential,11.29,cents per kilowatt-hour
+2012,AZ,Arizona,TRA,transportation,0,cents per kilowatt-hour
+2011,AZ,Arizona,ALL,all sectors,9.71,cents per kilowatt-hour
+2011,AZ,Arizona,COM,commercial,9.5,cents per kilowatt-hour
+2011,AZ,Arizona,IND,industrial,6.55,cents per kilowatt-hour
+2011,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2011,AZ,Arizona,RES,residential,11.08,cents per kilowatt-hour
+2011,AZ,Arizona,TRA,transportation,0,cents per kilowatt-hour
+2010,AZ,Arizona,ALL,all sectors,9.69,cents per kilowatt-hour
+2010,AZ,Arizona,COM,commercial,9.47,cents per kilowatt-hour
+2010,AZ,Arizona,IND,industrial,6.63,cents per kilowatt-hour
+2010,AZ,Arizona,OTH,other,,cents per kilowatt-hour
+2010,AZ,Arizona,RES,residential,10.97,cents per kilowatt-hour
+2010,AZ,Arizona,TRA,transportation,0,cents per kilowatt-hour
+2009,AZ,Arizona,ALL,all sectors,9.56,cents per kilowatt-hour
+2009,AZ,Arizona,COM,commercial,9.35,cents per kilowatt-hour
+2009,AZ,Arizona,IND,industrial,6.65,cents per kilowatt-hour
+2009,AZ,Arizona,OTH,other,,cents per kilowatt-hour
