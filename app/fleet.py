@@ -841,6 +841,7 @@ def compare_three_seasons() -> SeasonalComparisonResponse:
 
     bundle = _load_runtime_bundle()
     vehicles = generate_demo_fleet(seed=42)
+    fleet_size = len(vehicles)
     jobs = _scaled_demo_jobs_for_fleet_size(fleet_size)
     scenarios: list[SeasonalScenario] = []
 

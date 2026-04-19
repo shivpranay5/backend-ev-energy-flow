@@ -1,4 +1,4 @@
-from app.fleet import compute_annual_projection, compute_upgrade_roi
+from app.fleet import compare_three_seasons, compute_annual_projection, compute_upgrade_roi
 
 
 def test_annual_projection_day_buckets_sum_to_calendar_year() -> None:
@@ -28,3 +28,10 @@ def test_upgrade_roi_uses_positive_v2g_value_signal() -> None:
 
     assert roi.current_annual_net_usd > 0
     assert all(scenario.additional_annual_v2g_revenue_usd > 0 for scenario in roi.scenarios)
+
+
+def test_compare_three_seasons_returns_three_scenarios() -> None:
+    comparison = compare_three_seasons()
+
+    assert len(comparison.scenarios) == 3
+    assert comparison.insight
