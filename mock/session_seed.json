@@ -1,0 +1,9 @@
+{
+  "arrival_soc_kwh": 68,
+  "hours_until_departure": 9,
+  "grid_stress": "LOW",
+  "inference_demand": "MEDIUM",
+  "tariff_mode": "OFF_PEAK",
+  "speed_multiplier": 1
+}
+

@@ -1,0 +1,43 @@
+[
+  {
+    "simulation_hour": 0,
+    "soc_kwh": 68,
+    "mode": "IDLE",
+    "revenue_usd": 0,
+    "net_profit_usd": 0,
+    "grid_export_kwh": 0,
+    "inference_energy_kwh": 0,
+    "charge_energy_kwh": 0
+  },
+  {
+    "simulation_hour": 1,
+    "soc_kwh": 75,
+    "mode": "CHARGING",
+    "revenue_usd": 0,
+    "net_profit_usd": -0.56,
+    "grid_export_kwh": 0,
+    "inference_energy_kwh": 0,
+    "charge_energy_kwh": 7
+  },
+  {
+    "simulation_hour": 2,
+    "soc_kwh": 75,
+    "mode": "INFERENCE_ACTIVE",
+    "revenue_usd": 4.8,
+    "net_profit_usd": 4.16,
+    "grid_export_kwh": 0,
+    "inference_energy_kwh": 8,
+    "charge_energy_kwh": 0
+  },
+  {
+    "simulation_hour": 3,
+    "soc_kwh": 65,
+    "mode": "V2G_DISCHARGE",
+    "revenue_usd": 5,
+    "net_profit_usd": 4.2,
+    "grid_export_kwh": 10,
+    "inference_energy_kwh": 0,
+    "charge_energy_kwh": 0
+  }
+]
+

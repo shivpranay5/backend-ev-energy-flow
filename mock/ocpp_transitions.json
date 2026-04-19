@@ -1,0 +1,52 @@
+[
+  {
+    "mode": "CHARGING",
+    "charger_status": "CHARGING",
+    "connector_state": "ACTIVE",
+    "heartbeat_status": "OK",
+    "transaction_state": "RUNNING",
+    "session_state": "ACTIVE",
+    "meter_kwh_imported": 7,
+    "meter_kwh_exported": 0,
+    "charging_power_kw": 7,
+    "discharging_power_kw": 0
+  },
+  {
+    "mode": "V2G_DISCHARGE",
+    "charger_status": "DISCHARGING",
+    "connector_state": "ACTIVE",
+    "heartbeat_status": "OK",
+    "transaction_state": "RUNNING",
+    "session_state": "ACTIVE",
+    "meter_kwh_imported": 0,
+    "meter_kwh_exported": 10,
+    "charging_power_kw": 0,
+    "discharging_power_kw": 10
+  },
+  {
+    "mode": "INFERENCE_ACTIVE",
+    "charger_status": "CONNECTED_IDLE",
+    "connector_state": "CONNECTED",
+    "heartbeat_status": "OK",
+    "transaction_state": "STARTED",
+    "session_state": "ACTIVE",
+    "meter_kwh_imported": 8,
+    "meter_kwh_exported": 0,
+    "charging_power_kw": 0,
+    "discharging_power_kw": 0,
+    "compute_state": "INFERENCE_RUNNING"
+  },
+  {
+    "mode": "IDLE",
+    "charger_status": "AVAILABLE",
+    "connector_state": "CONNECTED",
+    "heartbeat_status": "OK",
+    "transaction_state": "NONE",
+    "session_state": "IDLE",
+    "meter_kwh_imported": 0,
+    "meter_kwh_exported": 0,
+    "charging_power_kw": 0,
+    "discharging_power_kw": 0
+  }
+]
+

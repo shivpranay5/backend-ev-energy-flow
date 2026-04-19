@@ -1,0 +1,37 @@
+{
+  "charging": {
+    "feasible": true,
+    "delta_soc_kwh": 7,
+    "immediate_value_usd": -0.56,
+    "recovery_cost_usd": 0,
+    "marginal_net_profit_usd": -0.56,
+    "rejection_reason": null
+  },
+  "v2g_discharge": {
+    "feasible": false,
+    "grid_stress_required": "HIGH",
+    "delta_soc_kwh": -10,
+    "immediate_value_usd": 5,
+    "recovery_cost_usd": 0.8,
+    "marginal_net_profit_usd": 4.2,
+    "rejection_reason": "grid_stress_not_high"
+  },
+  "inference_active": {
+    "feasible": true,
+    "inference_demand_required": "HIGH",
+    "delta_soc_kwh": -8,
+    "immediate_value_usd": 4.8,
+    "recovery_cost_usd": 0.64,
+    "marginal_net_profit_usd": 4.16,
+    "rejection_reason": null
+  },
+  "idle": {
+    "feasible": true,
+    "delta_soc_kwh": 0,
+    "immediate_value_usd": 0,
+    "recovery_cost_usd": 0,
+    "marginal_net_profit_usd": 0,
+    "rejection_reason": null
+  }
+}
+

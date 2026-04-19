@@ -1,0 +1,16 @@
+{
+  "charger_status": "CONNECTED_IDLE",
+  "connector_state": "CONNECTED",
+  "heartbeat_status": "OK",
+  "transaction_state": "STARTED",
+  "session_state": "ACTIVE",
+  "meter_kwh_imported": 0,
+  "meter_kwh_exported": 0,
+  "charging_power_kw": 0,
+  "discharging_power_kw": 0,
+  "normalized_context": {
+    "protocol": "mock_ocpp",
+    "note": "frontend should render only normalized charger state"
+  }
+}
+

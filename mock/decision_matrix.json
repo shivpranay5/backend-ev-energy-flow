@@ -1,0 +1,99 @@
+[
+  {
+    "case_id": "C1",
+    "soc_kwh": 24,
+    "mobility_buffer_kwh": 25,
+    "hours_until_departure": 3,
+    "grid_stress": "LOW",
+    "inference_demand": "LOW",
+    "tariff_mode": "OFF_PEAK",
+    "plugged_in": true,
+    "expected_action": "CHARGING",
+    "reason": "soc_below_buffer"
+  },
+  {
+    "case_id": "C2",
+    "soc_kwh": 68,
+    "mobility_buffer_kwh": 25,
+    "hours_until_departure": 9,
+    "grid_stress": "LOW",
+    "inference_demand": "HIGH",
+    "tariff_mode": "NORMAL",
+    "plugged_in": true,
+    "expected_action": "INFERENCE_ACTIVE",
+    "reason": "inference_value_higher_than_idle"
+  },
+  {
+    "case_id": "C3",
+    "soc_kwh": 78,
+    "mobility_buffer_kwh": 20,
+    "hours_until_departure": 8,
+    "grid_stress": "HIGH",
+    "inference_demand": "HIGH",
+    "tariff_mode": "PEAK",
+    "plugged_in": true,
+    "expected_action": "V2G_DISCHARGE",
+    "reason": "grid_stress_high_and_v2g_profitable"
+  },
+  {
+    "case_id": "C4",
+    "soc_kwh": 54,
+    "mobility_buffer_kwh": 20,
+    "hours_until_departure": 12,
+    "grid_stress": "LOW",
+    "inference_demand": "LOW",
+    "tariff_mode": "NORMAL",
+    "plugged_in": true,
+    "expected_action": "IDLE",
+    "reason": "no_profitable_action"
+  },
+  {
+    "case_id": "C5",
+    "soc_kwh": 30,
+    "mobility_buffer_kwh": 30,
+    "hours_until_departure": 4,
+    "grid_stress": "HIGH",
+    "inference_demand": "HIGH",
+    "tariff_mode": "PEAK",
+    "plugged_in": true,
+    "expected_action": "CHARGING",
+    "reason": "hard_override_soc_at_buffer"
+  },
+  {
+    "case_id": "C6",
+    "soc_kwh": 65,
+    "mobility_buffer_kwh": 25,
+    "hours_until_departure": 2,
+    "grid_stress": "HIGH",
+    "inference_demand": "HIGH",
+    "tariff_mode": "PEAK",
+    "plugged_in": true,
+    "expected_action": "CHARGING",
+    "reason": "insufficient_recovery_time"
+  },
+  {
+    "case_id": "C7",
+    "soc_kwh": 82,
+    "mobility_buffer_kwh": 20,
+    "hours_until_departure": 10,
+    "grid_stress": "LOW",
+    "inference_demand": "HIGH",
+    "tariff_mode": "OFF_PEAK",
+    "plugged_in": false,
+    "expected_action": "IDLE",
+    "reason": "not_plugged_in"
+  },
+  {
+    "case_id": "C8",
+    "soc_kwh": 60,
+    "mobility_buffer_kwh": 25,
+    "hours_until_departure": 7,
+    "grid_stress": "LOW",
+    "inference_demand": "MEDIUM",
+    "tariff_mode": "NORMAL",
+    "plugged_in": true,
+    "expected_action": "IDLE",
+    "reason": "inference_demand_not_high"
+  }
+]
+

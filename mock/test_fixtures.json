@@ -1,0 +1,53 @@
+{
+  "force_charging_at_buffer": {
+    "vehicle_state": {
+      "soc_kwh": 25,
+      "mobility_buffer_kwh": 25,
+      "hours_until_departure": 3,
+      "plugged_in": true
+    },
+    "expected_action": "CHARGING"
+  },
+  "v2g_vs_inference_high_stress": {
+    "vehicle_state": {
+      "soc_kwh": 70,
+      "mobility_buffer_kwh": 25,
+      "hours_until_departure": 8,
+      "plugged_in": true
+    },
+    "environment_state": {
+      "grid_stress": "HIGH",
+      "inference_demand": "HIGH",
+      "tariff_mode": "PEAK"
+    },
+    "expected_action": "V2G_DISCHARGE"
+  },
+  "inference_over_idle": {
+    "vehicle_state": {
+      "soc_kwh": 72,
+      "mobility_buffer_kwh": 20,
+      "hours_until_departure": 6,
+      "plugged_in": true
+    },
+    "environment_state": {
+      "grid_stress": "LOW",
+      "inference_demand": "HIGH",
+      "tariff_mode": "NORMAL"
+    },
+    "expected_action": "INFERENCE_ACTIVE"
+  },
+  "unsafe_action_blocked": {
+    "vehicle_state": {
+      "soc_kwh": 24,
+      "mobility_buffer_kwh": 25,
+      "hours_until_departure": 5,
+      "plugged_in": true
+    },
+    "environment_state": {
+      "grid_stress": "HIGH",
+      "inference_demand": "HIGH",
+      "tariff_mode": "PEAK"
+    },
+    "expected_action": "CHARGING"
+  }
+}

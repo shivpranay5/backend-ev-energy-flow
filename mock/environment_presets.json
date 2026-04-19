@@ -1,0 +1,24 @@
+{
+  "summer_peak_event": {
+    "grid_stress": "HIGH",
+    "tariff_mode": "PEAK",
+    "v2g_price_per_kwh": 0.5,
+    "charge_price_per_kwh": 0.11,
+    "inference_value_per_kwh": 0.4
+  },
+  "high_inference_demand": {
+    "grid_stress": "LOW",
+    "tariff_mode": "NORMAL",
+    "inference_demand": "HIGH",
+    "inference_value_per_kwh": 0.6,
+    "inference_power_kwh_per_hour": 8
+  },
+  "off_peak_window": {
+    "grid_stress": "LOW",
+    "tariff_mode": "OFF_PEAK",
+    "charge_price_per_kwh": 0.08,
+    "v2g_price_per_kwh": 0.35,
+    "inference_value_per_kwh": 0.4
+  }
+}
+

@@ -1,0 +1,119 @@
+[
+  {
+    "scenario_id": "S_OFF_PEAK_COMPUTE",
+    "name": "Off-Peak Compute Session",
+    "initial_state": {
+      "arrival_soc_kwh": 68,
+      "hours_until_departure": 9,
+      "grid_stress": "LOW",
+      "inference_demand": "HIGH",
+      "tariff_mode": "OFF_PEAK"
+    },
+    "steps": [
+      {
+        "simulation_hour": 0,
+        "current_mode": "IDLE",
+        "selected_action": "INFERENCE_ACTIVE",
+        "soc_kwh": 60,
+        "revenue_usd": 4.8,
+        "cost_usd": 0.64
+      },
+      {
+        "simulation_hour": 1,
+        "current_mode": "INFERENCE_ACTIVE",
+        "selected_action": "INFERENCE_ACTIVE",
+        "soc_kwh": 52,
+        "revenue_usd": 4.8,
+        "cost_usd": 0.64
+      }
+    ]
+  },
+  {
+    "scenario_id": "S_SUMMER_PEAK_V2G",
+    "name": "Summer Peak Event",
+    "initial_state": {
+      "arrival_soc_kwh": 78,
+      "hours_until_departure": 8,
+      "grid_stress": "HIGH",
+      "inference_demand": "LOW",
+      "tariff_mode": "PEAK"
+    },
+    "steps": [
+      {
+        "simulation_hour": 0,
+        "current_mode": "IDLE",
+        "selected_action": "V2G_DISCHARGE",
+        "soc_kwh": 68,
+        "revenue_usd": 5,
+        "cost_usd": 0
+      },
+      {
+        "simulation_hour": 1,
+        "current_mode": "V2G_DISCHARGE",
+        "selected_action": "V2G_DISCHARGE",
+        "soc_kwh": 58,
+        "revenue_usd": 5,
+        "cost_usd": 0
+      }
+    ]
+  },
+  {
+    "scenario_id": "S_LOW_BATTERY_FORCE_CHARGE",
+    "name": "Low Battery Override",
+    "initial_state": {
+      "arrival_soc_kwh": 24,
+      "hours_until_departure": 3,
+      "grid_stress": "HIGH",
+      "inference_demand": "HIGH",
+      "tariff_mode": "PEAK"
+    },
+    "steps": [
+      {
+        "simulation_hour": 0,
+        "current_mode": "CHARGING",
+        "selected_action": "CHARGING",
+        "soc_kwh": 31,
+        "revenue_usd": 0,
+        "cost_usd": 0.56
+      },
+      {
+        "simulation_hour": 1,
+        "current_mode": "CHARGING",
+        "selected_action": "CHARGING",
+        "soc_kwh": 38,
+        "revenue_usd": 0,
+        "cost_usd": 0.56
+      }
+    ]
+  },
+  {
+    "scenario_id": "S_IDLE_SAFE_HOLD",
+    "name": "Safe Idle Hold",
+    "initial_state": {
+      "arrival_soc_kwh": 54,
+      "hours_until_departure": 12,
+      "grid_stress": "LOW",
+      "inference_demand": "LOW",
+      "tariff_mode": "NORMAL"
+    },
+    "steps": [
+      {
+        "simulation_hour": 0,
+        "current_mode": "IDLE",
+        "selected_action": "IDLE",
+        "soc_kwh": 54,
+        "revenue_usd": 0,
+        "cost_usd": 0
+      },
+      {
+        "simulation_hour": 1,
+        "current_mode": "IDLE",
+        "selected_action": "IDLE",
+        "soc_kwh": 54,
+        "revenue_usd": 0,
+        "cost_usd": 0
+      }
+    ]
+  }
+]
+

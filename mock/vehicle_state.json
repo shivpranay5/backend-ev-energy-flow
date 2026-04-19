@@ -1,0 +1,15 @@
+{
+  "vehicle_id": "EV-001",
+  "battery_capacity_kwh": 100,
+  "soc_kwh": 68,
+  "mobility_buffer_kwh": 25,
+  "flexible_kwh": 43,
+  "plugged_in": true,
+  "hours_until_departure": 9,
+  "inference_capable": true,
+  "remaining_event_export_cap_kwh": 30,
+  "charge_price_per_kwh": 0.08,
+  "v2g_price_per_kwh": 0.35,
+  "inference_value_per_kwh": 0.4
+}
+

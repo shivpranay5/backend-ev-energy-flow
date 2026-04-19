@@ -1,0 +1,71 @@
+[
+  {
+    "scenario_id": "S_OFF_PEAK_COMPUTE",
+    "total_revenue_usd": 9.6,
+    "total_charge_cost_usd": 1.28,
+    "inference_revenue_usd": 9.6,
+    "digital_contribution_hours": 2,
+    "inference_energy_kwh": 16,
+    "mode_durations": {
+      "CHARGING": 0,
+      "V2G_DISCHARGE": 0,
+      "INFERENCE_ACTIVE": 2,
+      "IDLE": 0
+    },
+    "final_soc_kwh": 52,
+    "grid_export_kwh": 0,
+    "net_profit_usd": 8.32
+  },
+  {
+    "scenario_id": "S_SUMMER_PEAK_V2G",
+    "total_revenue_usd": 10,
+    "total_charge_cost_usd": 0,
+    "inference_revenue_usd": 0,
+    "digital_contribution_hours": 0,
+    "inference_energy_kwh": 0,
+    "mode_durations": {
+      "CHARGING": 0,
+      "V2G_DISCHARGE": 2,
+      "INFERENCE_ACTIVE": 0,
+      "IDLE": 0
+    },
+    "final_soc_kwh": 58,
+    "grid_export_kwh": 20,
+    "net_profit_usd": 10
+  },
+  {
+    "scenario_id": "S_LOW_BATTERY_FORCE_CHARGE",
+    "total_revenue_usd": 0,
+    "total_charge_cost_usd": 1.12,
+    "inference_revenue_usd": 0,
+    "digital_contribution_hours": 0,
+    "inference_energy_kwh": 0,
+    "mode_durations": {
+      "CHARGING": 2,
+      "V2G_DISCHARGE": 0,
+      "INFERENCE_ACTIVE": 0,
+      "IDLE": 0
+    },
+    "final_soc_kwh": 38,
+    "grid_export_kwh": 0,
+    "net_profit_usd": -1.12
+  },
+  {
+    "scenario_id": "S_IDLE_SAFE_HOLD",
+    "total_revenue_usd": 0,
+    "total_charge_cost_usd": 0,
+    "inference_revenue_usd": 0,
+    "digital_contribution_hours": 0,
+    "inference_energy_kwh": 0,
+    "mode_durations": {
+      "CHARGING": 0,
+      "V2G_DISCHARGE": 0,
+      "INFERENCE_ACTIVE": 0,
+      "IDLE": 2
+    },
+    "final_soc_kwh": 54,
+    "grid_export_kwh": 0,
+    "net_profit_usd": 0
+  }
+]
+

@@ -1,0 +1,58 @@
+[
+  {
+    "profile_id": "P_LOW_SOC_SHORT_DEPARTURE",
+    "vehicle_id": "EV-001",
+    "battery_capacity_kwh": 100,
+    "soc_kwh": 24,
+    "hours_until_departure": 3,
+    "plugged_in": true,
+    "inference_capable": true,
+    "mobility_buffer_kwh": 30,
+    "expected_action": "CHARGING"
+  },
+  {
+    "profile_id": "P_OFFPEAK_COMPUTE_READY",
+    "vehicle_id": "EV-002",
+    "battery_capacity_kwh": 100,
+    "soc_kwh": 72,
+    "hours_until_departure": 6,
+    "plugged_in": true,
+    "inference_capable": true,
+    "mobility_buffer_kwh": 25,
+    "expected_action": "INFERENCE_ACTIVE"
+  },
+  {
+    "profile_id": "P_PEAK_GRID_READY",
+    "vehicle_id": "EV-003",
+    "battery_capacity_kwh": 100,
+    "soc_kwh": 78,
+    "hours_until_departure": 8,
+    "plugged_in": true,
+    "inference_capable": true,
+    "mobility_buffer_kwh": 20,
+    "expected_action": "V2G_DISCHARGE"
+  },
+  {
+    "profile_id": "P_IDLE_SAFE_HOLD",
+    "vehicle_id": "EV-004",
+    "battery_capacity_kwh": 100,
+    "soc_kwh": 54,
+    "hours_until_departure": 12,
+    "plugged_in": true,
+    "inference_capable": false,
+    "mobility_buffer_kwh": 20,
+    "expected_action": "IDLE"
+  },
+  {
+    "profile_id": "P_UNPLUGGED_FALLBACK",
+    "vehicle_id": "EV-005",
+    "battery_capacity_kwh": 100,
+    "soc_kwh": 65,
+    "hours_until_departure": 10,
+    "plugged_in": false,
+    "inference_capable": true,
+    "mobility_buffer_kwh": 25,
+    "expected_action": "IDLE"
+  }
+]
+

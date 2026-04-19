@@ -1,0 +1,17 @@
+{
+  "total_revenue_usd": 9.8,
+  "total_charge_cost_usd": 0.56,
+  "inference_revenue_usd": 4.8,
+  "digital_contribution_hours": 1,
+  "inference_energy_kwh": 8,
+  "mode_durations": {
+    "CHARGING": 1,
+    "V2G_DISCHARGE": 1,
+    "INFERENCE_ACTIVE": 1,
+    "IDLE": 1
+  },
+  "final_soc_kwh": 65,
+  "grid_export_kwh": 10,
+  "net_profit_usd": 9.24
+}
+

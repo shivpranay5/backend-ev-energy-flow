@@ -1,0 +1,99 @@
+{
+  "incoming": {
+    "init_session": {
+      "type": "init_session",
+      "payload": {
+        "arrival_soc_kwh": 68,
+        "hours_until_departure": 9
+      }
+    },
+    "update_environment": {
+      "type": "update_environment",
+      "payload": {
+        "grid_stress": "HIGH",
+        "inference_demand": "LOW",
+        "tariff_mode": "PEAK"
+      }
+    },
+    "play": {
+      "type": "play",
+      "payload": {
+        "speed_multiplier": 1
+      }
+    },
+    "pause": {
+      "type": "pause",
+      "payload": {}
+    },
+    "step": {
+      "type": "step",
+      "payload": {}
+    },
+    "reset": {
+      "type": "reset",
+      "payload": {}
+    }
+  },
+  "outgoing": {
+    "state_update": {
+      "type": "state_update",
+      "payload": {
+        "simulation_hour": 1,
+        "hours_remaining": 8,
+        "current_mode": "INFERENCE_ACTIVE",
+        "battery_level_kwh": 60,
+        "mobility_buffer_kwh": 25,
+        "flexible_kwh": 35,
+        "current_revenue_usd": 4.8,
+        "current_cost_usd": 0.64,
+        "accumulated_revenue_usd": 4.8,
+        "accumulated_charge_cost_usd": 0.64,
+        "net_profit_usd": 4.16,
+        "grid_export_kwh": 0,
+        "inference_energy_kwh": 8,
+        "inference_hours": 1,
+        "current_prices": {
+          "charge_price_per_kwh": 0.08,
+          "v2g_price_per_kwh": 0.35,
+          "inference_value_per_kwh": 0.4
+        },
+        "environment_state": {
+          "grid_stress": "LOW",
+          "inference_demand": "HIGH",
+          "tariff_mode": "OFF_PEAK"
+        },
+        "ocpp_context": {
+          "charger_status": "CONNECTED_IDLE",
+          "connector_state": "CONNECTED",
+          "heartbeat_status": "OK",
+          "transaction_state": "STARTED"
+        }
+      }
+    },
+    "simulation_complete": {
+      "type": "simulation_complete",
+      "payload": {
+        "total_revenue_usd": 9.8,
+        "total_charge_cost_usd": 0.56,
+        "inference_revenue_usd": 4.8,
+        "digital_contribution_hours": 1,
+        "inference_energy_kwh": 8,
+        "mode_durations": {
+          "CHARGING": 1,
+          "V2G_DISCHARGE": 1,
+          "INFERENCE_ACTIVE": 1,
+          "IDLE": 1
+        },
+        "final_soc_kwh": 65
+      }
+    },
+    "error": {
+      "type": "error",
+      "payload": {
+        "message": "hours_until_departure must be non-negative",
+        "field": "hours_until_departure"
+      }
+    }
+  }
+}
+
