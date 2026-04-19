@@ -139,6 +139,7 @@ class SimulationEngine:
             "location_id": str(defaults.get("session_seed.json", {}).get("location_id", "default")),
             "charger_location": str(defaults.get("session_seed.json", {}).get("charger_location", "Arizona charger location")),
             "charger_type": str(defaults.get("session_seed.json", {}).get("charger_type", "UNIDIRECTIONAL")).upper(),
+            "start_date_local": str(defaults.get("session_seed.json", {}).get("start_date_local", "2026-01-15")),
             "start_time_local": str(defaults.get("session_seed.json", {}).get("start_time_local", "18:00")),
         }
         self.environment = EnvironmentState()
@@ -176,6 +177,7 @@ class SimulationEngine:
         location_id: str | None = None,
         charger_location: str | None = None,
         charger_type: str | None = None,
+        start_date_local: str | None = None,
         start_time_local: str | None = None,
     ) -> dict[str, Any]:
         async with self._lock:
@@ -185,6 +187,7 @@ class SimulationEngine:
                 "location_id": str(location_id or self.seed.get("location_id") or "default"),
                 "charger_location": str(charger_location or self.seed.get("charger_location") or "Arizona charger location"),
                 "charger_type": str(charger_type or self.seed.get("charger_type") or "UNIDIRECTIONAL").upper(),
+                "start_date_local": str(start_date_local or self.seed.get("start_date_local") or "2026-01-15"),
                 "start_time_local": str(start_time_local or self.seed.get("start_time_local") or "18:00"),
             }
             self.environment.tariff_mode = self._tariff_mode_for_start_time(self.seed["start_time_local"])
@@ -297,6 +300,7 @@ class SimulationEngine:
             "location_id": self.seed.get("location_id"),
             "charger_location": self.seed.get("charger_location"),
             "charger_type": charger_type,
+            "start_date_local": self.seed.get("start_date_local"),
             "start_time_local": self.seed.get("start_time_local"),
             "supports_v2g": charger_type == "BIDIRECTIONAL",
             "available_modes": ["CHARGING", "INFERENCE_ACTIVE", "IDLE"]

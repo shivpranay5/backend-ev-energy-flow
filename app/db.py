@@ -44,6 +44,7 @@ async def ensure_indexes(bundle: DatabaseBundle) -> None:
     await bundle.simulation_runs.create_index("created_at")
     await bundle.simulation_runs.create_index([("user_id", 1), ("created_at", -1)])
     await bundle.simulation_runs.create_index([("role", 1), ("created_at", -1)])
+    await bundle.simulation_runs.create_index([("location_id", 1), ("created_at", -1)])
 
 
 async def seed_admins(bundle: DatabaseBundle, admin_emails: tuple[str, ...]) -> list[dict[str, Any]]:

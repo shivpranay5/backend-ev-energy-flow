@@ -13,6 +13,7 @@ from pydantic import BaseModel, Field
 from .clerk_auth import Principal, upsert_user_identity, verify_clerk_identity, verify_clerk_session
 from .db import DatabaseBundle, connect_mongo, seed_admins
 from .mock_loader import load_bundle
+from .prediction import SiteDecisionRequest, SiteDecisionResponse, predict_site_decision
 from .settings import Settings, get_settings
 from .simulation import SimulationEngine
 
@@ -37,6 +38,7 @@ class HistorySaveRequest(BaseModel):
     start_time_local: str | None = None
     summary: dict[str, Any]
     latest_state: dict[str, Any] | None = None
+    prediction: dict[str, Any] | None = None
 
 
 class HistoryItem(BaseModel):
@@ -51,6 +53,7 @@ class HistoryItem(BaseModel):
     created_at: str
     summary: dict[str, Any]
     latest_state: dict[str, Any] | None = None
+    prediction: dict[str, Any] | None = None
 
 
 class SessionRequest(BaseModel):
@@ -59,6 +62,7 @@ class SessionRequest(BaseModel):
     hours_until_departure: int = Field(ge=0, le=168)
     charger_location: str | None = None
     charger_type: str | None = None
+    start_date_local: str | None = None
     start_time_local: str | None = None
 
 
@@ -80,6 +84,7 @@ class WSMessage(BaseModel):
     hours_until_departure: int | None = None
     charger_location: str | None = None
     charger_type: str | None = None
+    start_date_local: str | None = None
     start_time_local: str | None = None
     grid_stress: str | None = None
     inference_demand: str | None = None
@@ -272,7 +277,16 @@ def _serialize_history_run(doc: dict[str, Any]) -> HistoryItem:
         created_at=doc.get("created_at").isoformat() if doc.get("created_at") else datetime.now(timezone.utc).isoformat(),
         summary=doc.get("summary") or {},
         latest_state=doc.get("latest_state"),
+        prediction=doc.get("prediction"),
     )
+
+
+@app.post("/api/predict/site-decision", response_model=SiteDecisionResponse)
+async def site_decision_prediction(
+    payload: SiteDecisionRequest,
+    principal: Principal = Depends(get_principal),
+):
+    return predict_site_decision(payload)
 
 
 @app.post("/history/runs", response_model=HistoryItem)
@@ -293,6 +307,7 @@ async def save_history_run(
         "start_time_local": payload.start_time_local,
         "summary": payload.summary,
         "latest_state": payload.latest_state,
+        "prediction": payload.prediction,
         "created_at": now,
         "updated_at": now,
     }
@@ -336,6 +351,7 @@ async def init_simulation(payload: SessionRequest, request: Request):
         location_id=location_id,
         charger_location=payload.charger_location,
         charger_type=payload.charger_type,
+        start_date_local=payload.start_date_local,
         start_time_local=payload.start_time_local,
     )
     await _broadcast_state(request.app, location_id)
@@ -435,6 +451,7 @@ async def ws_simulation(websocket: WebSocket):
                     location_id=msg.location_id or location_id,
                     charger_location=msg.charger_location,
                     charger_type=msg.charger_type,
+                    start_date_local=msg.start_date_local,
                     start_time_local=msg.start_time_local,
                 )
                 await _broadcast(app, state, location_id)

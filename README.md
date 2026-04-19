@@ -7,6 +7,7 @@ FastAPI backend for the WebSocket-based EV energy orchestration MVP.
 - `GET /health`
 - `GET /auth/me`
 - `GET /auth/admin/me`
+- `POST /api/predict/site-decision`
 - `WS /ws/simulation`
 
 It uses:
@@ -40,4 +41,6 @@ uvicorn app.main:app --reload --port 8000
   - `ppranayreddy5454@gmail.com`
 - Users are not seeded. They are created on first authenticated request.
 - The WebSocket simulation is permissive by default for local development, but the auth layer is ready for Clerk tokens when you connect the frontend.
-
+- Site prediction is now historical-date based only.
+- The backend uses `openvpp_forecasting_stack` and its cached Arizona daily datasets to rebuild the trained forecasting models in the current environment and score past dates.
+- The selected charger location affects charger capability and user flow, but the forecast itself is driven by the Arizona-wide historical forecasting stack rather than live current APIs.
