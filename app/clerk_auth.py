@@ -4,7 +4,6 @@ import asyncio
 from dataclasses import dataclass
 from typing import Any
 
-import httpx
 import jwt
 from fastapi import HTTPException, Request, status
 from jwt import PyJWKClient
@@ -22,6 +21,38 @@ class Principal:
     source: str = "clerk"
 
 
+@dataclass(slots=True)
+class ClerkSession:
+    user_id: str
+    email: str | None = None
+    full_name: str | None = None
+
+
+def _normalize_issuer(value: str | None) -> str | None:
+    if not value:
+        return None
+    return value.strip().rstrip("/")
+
+
+def _candidate_jwks_urls(settings: Settings, unverified_payload: dict[str, Any]) -> list[str]:
+    candidates: list[str] = []
+    configured = (settings.clerk_jwks_url or "").strip()
+    if configured:
+        candidates.append(configured)
+
+    issuer = _normalize_issuer(settings.clerk_issuer) or _normalize_issuer(str(unverified_payload.get("iss") or ""))
+    if issuer:
+        candidates.append(f"{issuer}/.well-known/jwks.json")
+
+    seen: set[str] = set()
+    deduped: list[str] = []
+    for url in candidates:
+        if url and url not in seen:
+            deduped.append(url)
+            seen.add(url)
+    return deduped
+
+
 def _extract_bearer_token(request: Request) -> str | None:
     auth = request.headers.get("authorization") or request.headers.get("Authorization")
     if auth and auth.lower().startswith("bearer "):
@@ -35,127 +66,145 @@ def _extract_bearer_token(request: Request) -> str | None:
     return None
 
 
-def _extract_email_from_clerk_user(user: dict[str, Any]) -> str | None:
-    # Support both camelCase and snake_case payloads from Clerk responses.
-    primary_id = user.get("primaryEmailAddressId") or user.get("primary_email_address_id")
+def _extract_email_from_payload(payload: dict[str, Any]) -> str | None:
+    direct = payload.get("email") or payload.get("email_address")
+    if isinstance(direct, str) and direct.strip():
+        return direct.strip()
 
-    for key in ("emailAddresses", "email_addresses"):
-        emails = user.get(key) or []
-        if not isinstance(emails, list):
-            continue
-        if primary_id:
-            for email in emails:
-                if not isinstance(email, dict):
-                    continue
-                if email.get("id") == primary_id:
-                    return email.get("emailAddress") or email.get("email_address")
-        if emails:
-            first = emails[0]
-            if isinstance(first, dict):
-                return first.get("emailAddress") or first.get("email_address")
-
-    primary = user.get("primaryEmailAddress") or user.get("primary_email_address")
-    if isinstance(primary, dict):
-        return primary.get("emailAddress") or primary.get("email_address")
-
+    emails = payload.get("email_addresses")
+    if isinstance(emails, list):
+        for item in emails:
+            if isinstance(item, str) and item.strip():
+                return item.strip()
+            if isinstance(item, dict):
+                value = item.get("email_address") or item.get("emailAddress")
+                if isinstance(value, str) and value.strip():
+                    return value.strip()
     return None
 
 
-async def _fetch_clerk_user(settings: Settings, user_id: str) -> dict[str, Any]:
-    if not settings.clerk_secret_key:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Clerk secret key is not configured on the backend",
-        )
-
-    url = f"https://api.clerk.com/v1/users/{user_id}"
-    headers = {"Authorization": f"Bearer {settings.clerk_secret_key}"}
-    async with httpx.AsyncClient(timeout=15) as client:
-        response = await client.get(url, headers=headers)
-    if response.status_code >= 400:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Failed to fetch Clerk user profile",
-        )
-    return response.json()
-
-
 async def verify_clerk_identity(request: Request, settings: Settings, bundle: DatabaseBundle) -> Principal:
+    session = await verify_clerk_session(request, settings)
+    if session.email:
+        return await upsert_user_identity(
+            bundle=bundle,
+            user_id=session.user_id,
+            email=session.email,
+            full_name=session.full_name,
+            source="clerk",
+        )
+
+    existing = await bundle.users.find_one({"clerk_user_id": session.user_id})
+    if existing and existing.get("email"):
+        return Principal(
+            user_id=session.user_id,
+            email=str(existing["email"]),
+            role=str(existing.get("role") or "user"),
+            full_name=existing.get("full_name"),
+            source=str(existing.get("source") or "clerk"),
+        )
+
+    dev_email = request.headers.get("x-dev-email")
+    if dev_email:
+        return await _resolve_dev_identity(dev_email, bundle, source="dev-header")
+
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Authenticated Clerk user has no synced email. Call /auth/sync after sign-in.",
+    )
+
+
+async def verify_clerk_session(request: Request, settings: Settings) -> ClerkSession:
     token = _extract_bearer_token(request)
     if not token:
-        dev_email = request.headers.get("x-dev-email")
-        if dev_email:
-            return await _resolve_dev_identity(dev_email, bundle, source="dev-header")
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Missing authentication token")
 
     try:
-        jwk_client = PyJWKClient(settings.clerk_jwks_url)
-        signing_key = await asyncio.to_thread(jwk_client.get_signing_key_from_jwt, token)
-        payload = jwt.decode(
+        unverified_payload = jwt.decode(
             token,
-            signing_key.key,
-            algorithms=["RS256"],
-            issuer=settings.clerk_issuer or None,
-            options={"verify_aud": False},
+            options={
+                "verify_signature": False,
+                "verify_exp": False,
+                "verify_nbf": False,
+                "verify_iat": False,
+                "verify_aud": False,
+                "verify_iss": False,
+            },
+            algorithms=["RS256", "EdDSA", "ES256", "HS256"],
         )
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Clerk session token") from exc
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Malformed Clerk session token") from exc
+
+    payload: dict[str, Any] | None = None
+    last_exc: Exception | None = None
+    for jwks_url in _candidate_jwks_urls(settings, unverified_payload):
+        try:
+            jwk_client = PyJWKClient(jwks_url)
+            signing_key = await asyncio.to_thread(jwk_client.get_signing_key_from_jwt, token)
+            payload = jwt.decode(
+                token,
+                signing_key.key,
+                algorithms=["RS256", "EdDSA", "ES256"],
+                options={"verify_aud": False, "verify_iss": False},
+            )
+            break
+        except Exception as exc:  # noqa: BLE001
+            last_exc = exc
+
+    if payload is None:
+        detail = f"Invalid Clerk session token: {last_exc}" if last_exc else "Invalid Clerk session token"
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=detail)
+
+    expected_issuer = _normalize_issuer(settings.clerk_issuer)
+    actual_issuer = _normalize_issuer(str(payload.get("iss") or ""))
+    if expected_issuer and actual_issuer != expected_issuer:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=f"Invalid Clerk issuer: expected {expected_issuer}, got {actual_issuer or 'missing'}",
+        )
 
     user_id = str(payload.get("sub") or "").strip()
     if not user_id:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid Clerk token subject")
 
-    clerk_user = await _fetch_clerk_user(settings, user_id)
-    email = _extract_email_from_clerk_user(clerk_user)
-    if not email:
-        dev_email = request.headers.get("x-dev-email")
-        if dev_email:
-            email = dev_email.strip()
-        else:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Clerk user has no email address")
-
-    principal = await _resolve_email_identity(user_id, email, clerk_user, bundle, source="clerk")
-    return principal
+    full_name = payload.get("name")
+    email = _extract_email_from_payload(payload)
+    return ClerkSession(
+        user_id=user_id,
+        email=email,
+        full_name=full_name if isinstance(full_name, str) else None,
+    )
 
 
 async def _resolve_dev_identity(email: str, bundle: DatabaseBundle, source: str) -> Principal:
     cleaned = email.strip().lower()
-    role = await _role_for_email(bundle, cleaned)
     user_id = f"dev_{cleaned}"
-    await bundle.users.update_one(
-        {"email": cleaned},
-        {
-            "$set": {
-                "email": cleaned,
-                "role": role,
-                "source": source,
-                "updated_at": _utc_now(),
-            },
-            "$setOnInsert": {"created_at": _utc_now(), "clerk_user_id": user_id},
-        },
-        upsert=True,
+    return await upsert_user_identity(
+        bundle=bundle,
+        user_id=user_id,
+        email=cleaned,
+        full_name=None,
+        source=source,
     )
-    return Principal(user_id=user_id, email=cleaned, role=role, source=source)
 
-
-async def _resolve_email_identity(
+async def upsert_user_identity(
+    bundle: DatabaseBundle,
     user_id: str,
     email: str,
-    clerk_user: dict[str, Any],
-    bundle: DatabaseBundle,
+    full_name: str | None,
     source: str,
 ) -> Principal:
     cleaned = email.strip().lower()
     role = await _role_for_email(bundle, cleaned)
     now = _utc_now()
     await bundle.users.update_one(
-        {"clerk_user_id": user_id},
+        {"$or": [{"clerk_user_id": user_id}, {"email": cleaned}]},
         {
             "$set": {
                 "clerk_user_id": user_id,
                 "email": cleaned,
                 "role": role,
-                "full_name": clerk_user.get("fullName") or clerk_user.get("full_name"),
+                "full_name": full_name,
                 "source": source,
                 "updated_at": now,
             },
@@ -167,7 +216,7 @@ async def _resolve_email_identity(
         user_id=user_id,
         email=cleaned,
         role=role,
-        full_name=clerk_user.get("fullName") or clerk_user.get("full_name"),
+        full_name=full_name,
         source=source,
     )
 
@@ -181,4 +230,3 @@ def _utc_now():
     from datetime import datetime, timezone
 
     return datetime.now(timezone.utc)
-

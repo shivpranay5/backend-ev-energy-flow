@@ -136,6 +136,10 @@ class SimulationEngine:
         self.seed = {
             "arrival_soc_kwh": float(defaults.get("session_seed.json", {}).get("arrival_soc_kwh", 68)),
             "hours_until_departure": int(defaults.get("session_seed.json", {}).get("hours_until_departure", 9)),
+            "location_id": str(defaults.get("session_seed.json", {}).get("location_id", "default")),
+            "charger_location": str(defaults.get("session_seed.json", {}).get("charger_location", "Arizona charger location")),
+            "charger_type": str(defaults.get("session_seed.json", {}).get("charger_type", "UNIDIRECTIONAL")).upper(),
+            "start_time_local": str(defaults.get("session_seed.json", {}).get("start_time_local", "18:00")),
         }
         self.environment = EnvironmentState()
         self.state = self._blank_state()
@@ -165,12 +169,25 @@ class SimulationEngine:
             accumulated_v2g_revenue_usd=0.0,
         )
 
-    async def init_session(self, arrival_soc_kwh: float, hours_until_departure: int) -> dict[str, Any]:
+    async def init_session(
+        self,
+        arrival_soc_kwh: float,
+        hours_until_departure: int,
+        location_id: str | None = None,
+        charger_location: str | None = None,
+        charger_type: str | None = None,
+        start_time_local: str | None = None,
+    ) -> dict[str, Any]:
         async with self._lock:
             self.seed = {
                 "arrival_soc_kwh": float(arrival_soc_kwh),
                 "hours_until_departure": int(hours_until_departure),
+                "location_id": str(location_id or self.seed.get("location_id") or "default"),
+                "charger_location": str(charger_location or self.seed.get("charger_location") or "Arizona charger location"),
+                "charger_type": str(charger_type or self.seed.get("charger_type") or "UNIDIRECTIONAL").upper(),
+                "start_time_local": str(start_time_local or self.seed.get("start_time_local") or "18:00"),
             }
+            self.environment.tariff_mode = self._tariff_mode_for_start_time(self.seed["start_time_local"])
             self.initialized = True
             self.completed = False
             self.mode_durations = {"CHARGING": 0, "V2G_DISCHARGE": 0, "INFERENCE_ACTIVE": 0, "IDLE": 0}
@@ -271,7 +288,21 @@ class SimulationEngine:
             ocpp_context=self._ocpp_for_mode("IDLE"),
             accumulated_inference_revenue_usd=0.0,
             accumulated_v2g_revenue_usd=0.0,
+            extra=self._session_context_extra(),
         )
+
+    def _session_context_extra(self) -> dict[str, Any]:
+        charger_type = str(self.seed.get("charger_type") or "UNIDIRECTIONAL").upper()
+        return {
+            "location_id": self.seed.get("location_id"),
+            "charger_location": self.seed.get("charger_location"),
+            "charger_type": charger_type,
+            "start_time_local": self.seed.get("start_time_local"),
+            "supports_v2g": charger_type == "BIDIRECTIONAL",
+            "available_modes": ["CHARGING", "INFERENCE_ACTIVE", "IDLE"]
+            if charger_type != "BIDIRECTIONAL"
+            else ["CHARGING", "V2G_DISCHARGE", "INFERENCE_ACTIVE", "IDLE"],
+        }
 
     def _current_prices(self) -> dict[str, float]:
         charge_defaults = {"OFF_PEAK": 0.08, "NORMAL": 0.11, "PEAK": 0.11}
@@ -311,6 +342,20 @@ class SimulationEngine:
             return 4.0
         return 2.0
 
+    def _tariff_mode_for_start_time(self, start_time_local: str | None) -> str:
+        if not start_time_local:
+            return self.environment.tariff_mode
+        try:
+            hour = int(str(start_time_local).split(":", 1)[0])
+        except Exception:  # noqa: BLE001
+            return self.environment.tariff_mode
+        hour = hour % 24
+        if hour >= 22 or hour < 6:
+            return "OFF_PEAK"
+        if 16 <= hour < 21:
+            return "PEAK"
+        return "NORMAL"
+
     def _remaining_charge_time_hours(self, projected_soc: float, mobility_buffer: float, charge_price: float) -> float:
         deficit = max(0.0, mobility_buffer - projected_soc)
         if deficit <= 0:
@@ -340,6 +385,8 @@ class SimulationEngine:
             return ActionResult(action, delta > 0, delta, immediate, recovery, marginal, None if delta > 0 else "battery_full")
 
         if action == "V2G_DISCHARGE":
+            if str(self.seed.get("charger_type") or "UNIDIRECTIONAL").upper() != "BIDIRECTIONAL":
+                return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "charger_type_not_bidirectional")
             if self.environment.grid_stress != "HIGH":
                 return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "grid_stress_not_high")
             delta = -min(self.V2G_DISCHARGE_POWER_KWH_PER_HOUR, flexible_kwh, remaining_export_cap)
@@ -405,6 +452,7 @@ class SimulationEngine:
         self.state.flexible_kwh = max(0.0, self.state.battery_level_kwh - self.state.mobility_buffer_kwh)
         self.state.current_prices = self._current_prices()
         self.state.environment_state = self.environment.to_dict()
+        self.state.extra = self._session_context_extra()
 
         if self.state.battery_level_kwh <= self.state.mobility_buffer_kwh:
             selected = ActionResult(
@@ -434,6 +482,7 @@ class SimulationEngine:
         self.state.current_prices = self._current_prices()
         self.state.environment_state = self.environment.to_dict()
         self.state.ocpp_context = self._ocpp_for_mode(selected.action)
+        self.state.extra = self._session_context_extra()
         self.mode_durations[selected.action] = self.mode_durations.get(selected.action, 0) + 1
         self.state.inference_hours = self.mode_durations.get("INFERENCE_ACTIVE", 0)
         self.state.net_profit_usd = self.state.accumulated_revenue_usd - self.state.accumulated_charge_cost_usd

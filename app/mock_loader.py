@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any
 
 
-MOCK_DIR = Path(__file__).resolve().parents[2] / "mock"
+MOCK_DIR = Path(__file__).resolve().parents[1] / "mock"
 
 
 def load_mock_json(name: str) -> Any:
@@ -32,4 +32,3 @@ def load_bundle() -> dict[str, Any]:
         "test_fixtures.json",
     ]
     return {name: load_mock_json(name) for name in files}
-

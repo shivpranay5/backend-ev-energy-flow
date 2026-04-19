@@ -1,11 +1,15 @@
 {
   "incoming": {
     "init_session": {
-      "type": "init_session",
-      "payload": {
-        "arrival_soc_kwh": 68,
-        "hours_until_departure": 9
-      }
+        "type": "init_session",
+        "payload": {
+          "location_id": "145749",
+          "arrival_soc_kwh": 68,
+          "hours_until_departure": 9,
+          "charger_location": "Tucson Premium Outlets (Tucson, AZ)",
+          "charger_type": "BIDIRECTIONAL",
+          "start_time_local": "18:00"
+        }
     },
     "update_environment": {
       "type": "update_environment",
@@ -37,8 +41,9 @@
   "outgoing": {
     "state_update": {
       "type": "state_update",
-      "payload": {
-        "simulation_hour": 1,
+        "payload": {
+          "location_id": "145749",
+          "simulation_hour": 1,
         "hours_remaining": 8,
         "current_mode": "INFERENCE_ACTIVE",
         "battery_level_kwh": 60,
@@ -57,6 +62,11 @@
           "v2g_price_per_kwh": 0.35,
           "inference_value_per_kwh": 0.4
         },
+        "charger_location": "Tucson Premium Outlets (Tucson, AZ)",
+        "charger_type": "BIDIRECTIONAL",
+        "start_time_local": "18:00",
+        "supports_v2g": true,
+        "available_modes": ["CHARGING", "V2G_DISCHARGE", "INFERENCE_ACTIVE", "IDLE"],
         "environment_state": {
           "grid_stress": "LOW",
           "inference_demand": "HIGH",
@@ -96,4 +106,3 @@
     }
   }
 }
-
