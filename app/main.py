@@ -12,6 +12,21 @@ from pydantic import BaseModel, Field
 
 from .clerk_auth import Principal, upsert_user_identity, verify_clerk_identity, verify_clerk_session
 from .db import DatabaseBundle, connect_mongo, seed_admins
+from .fleet import (
+    AnnualProjection,
+    FleetOptimizeRequest,
+    FleetOptimizeResponse,
+    SeasonalComparisonResponse,
+    UpgradeCalculatorResponse,
+    WeekForecastResponse,
+    compare_three_seasons,
+    compute_annual_projection,
+    compute_upgrade_roi,
+    compute_week_forecast,
+    generate_demo_fleet,
+    generate_demo_jobs,
+    optimize_fleet,
+)
 from .mock_loader import load_bundle
 from .prediction import SiteDecisionRequest, SiteDecisionResponse, predict_site_decision
 from .settings import Settings, get_settings
@@ -287,6 +302,83 @@ async def site_decision_prediction(
     principal: Principal = Depends(get_principal),
 ):
     return predict_site_decision(payload)
+
+
+# ── Fleet endpoints ───────────────────────────────────────────────────────────
+
+
+@app.post("/api/fleet/optimize", response_model=FleetOptimizeResponse)
+async def fleet_optimize(payload: FleetOptimizeRequest):
+    """Greedy fleet optimizer: allocates V2G + inference jobs across N vehicles.
+    When use_ml_prediction=true the forecasting stack auto-sets grid_stress."""
+    return await asyncio.to_thread(optimize_fleet, payload)
+
+
+@app.get("/api/fleet/scenario/grid-event", response_model=FleetOptimizeResponse)
+async def fleet_grid_event_scenario(date: str | None = None):
+    """End-to-end demo scenario: generates a synthetic 15-vehicle fleet,
+    runs the ML prediction for the target date, and returns the full
+    AI-driven V2G + inference assignment — no manual toggles required."""
+    vehicles = generate_demo_fleet()
+    jobs = generate_demo_jobs()
+    req = FleetOptimizeRequest(
+        vehicles=vehicles,
+        inference_jobs=jobs,
+        use_ml_prediction=True,
+        target_date=date,
+    )
+    return await asyncio.to_thread(optimize_fleet, req)
+
+
+@app.get("/api/fleet/demo-vehicles")
+async def fleet_demo_vehicles():
+    """Return the synthetic demo fleet for the frontend to display."""
+    return generate_demo_fleet()
+
+
+@app.get("/api/fleet/demo-jobs")
+async def fleet_demo_jobs():
+    """Return the demo inference job queue."""
+    return generate_demo_jobs()
+
+
+@app.get("/api/fleet/compare-seasons", response_model=SeasonalComparisonResponse)
+async def fleet_compare_seasons():
+    """
+    Run the SAME fleet on three representative Arizona dates (winter / spring / summer peak).
+    The ML model autonomously produces different grid_stress levels → different assignments.
+    This endpoint is the core demo differentiator: no manual toggles, AI decides.
+    """
+    return await asyncio.to_thread(compare_three_seasons)
+
+
+@app.get("/api/fleet/annual-projection", response_model=AnnualProjection)
+async def fleet_annual_projection(fleet_size: int = 15):
+    """
+    Project annual fleet revenue using 3 years of Arizona backtest data.
+    Counts ML-predicted HIGH/MEDIUM stress days, multiplies by empirical
+    per-day revenue from the fleet optimizer.
+    """
+    return await asyncio.to_thread(compute_annual_projection, fleet_size)
+
+
+@app.get("/api/fleet/week-forecast", response_model=WeekForecastResponse)
+async def fleet_week_forecast(start_date: str | None = None):
+    """
+    Run ML fusion model on 7 consecutive dates starting from start_date (default: today).
+    Returns predicted grid stress, fusion probability, temperature, and expected fleet
+    net value for each day.
+    """
+    return await asyncio.to_thread(compute_week_forecast, start_date)
+
+
+@app.get("/api/fleet/upgrade-roi", response_model=UpgradeCalculatorResponse)
+async def fleet_upgrade_roi():
+    """
+    Calculate ROI of upgrading UNIDIRECTIONAL vehicles to BIDIRECTIONAL.
+    Shows added annual V2G revenue and payback period for 1-5 upgrades.
+    """
+    return await asyncio.to_thread(compute_upgrade_roi)
 
 
 @app.post("/history/runs", response_model=HistoryItem)

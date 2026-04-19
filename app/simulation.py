@@ -7,6 +7,61 @@ from datetime import datetime, timezone
 from typing import Any, Awaitable, Callable
 
 
+def _inference_demand_from_hour(start_time_local: str) -> str:
+    """
+    Compute inference demand from hour of day.
+    Distributed inference workloads peak in the evening when
+    enterprise batch jobs queue up after business hours.
+    """
+    try:
+        hour = int(str(start_time_local).split(":", 1)[0]) % 24
+    except Exception:
+        return "MEDIUM"
+    if 18 <= hour < 24:   # evening prime-time compute demand
+        return "HIGH"
+    if 9 <= hour < 18:    # business hours — moderate demand
+        return "MEDIUM"
+    return "LOW"           # overnight — low demand
+
+
+def _ml_resolve_environment(start_date_local: str, start_time_local: str = "12:00") -> dict[str, Any]:
+    """
+    Call the trained forecasting stack and return auto-resolved environment fields.
+    Grid stress comes from the trained EIA/weather/price fusion model.
+    Inference demand comes from hour-of-day (compute jobs peak in evenings).
+    Returns empty dict on any failure so the simulation always starts.
+    """
+    try:
+        from .forecasting_model_adapter import _load_runtime_bundle, get_historical_forecast_for_date
+
+        forecast = get_historical_forecast_for_date(start_date_local)
+        bundle = _load_runtime_bundle()
+        prob = forecast.fusion_prob
+        threshold = bundle.fusion_threshold
+
+        if prob >= threshold:
+            grid_stress = "HIGH"
+        elif prob >= threshold * 0.55:
+            grid_stress = "MEDIUM"
+        else:
+            grid_stress = "LOW"
+
+        inference_demand = _inference_demand_from_hour(start_time_local)
+
+        return {
+            "grid_stress": grid_stress,
+            "inference_demand": inference_demand,
+            "fusion_prob": round(prob, 4),
+            "fusion_threshold": round(threshold, 4),
+            "ml_driven": True,
+            "weather_tmax_c": round(forecast.weather_raw.get("tmax_c_est", 0), 1),
+            "eia_prob": round(forecast.eia_prob, 4),
+            "weather_prob": round(forecast.weather_prob, 4),
+        }
+    except Exception:
+        return {}
+
+
 def _utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
@@ -146,6 +201,7 @@ class SimulationEngine:
         self.state = self._blank_state()
         self.mode_durations: dict[str, int] = {"CHARGING": 0, "V2G_DISCHARGE": 0, "INFERENCE_ACTIVE": 0, "IDLE": 0}
         self.summary: dict[str, Any] | None = None
+        self.ml_context: dict[str, Any] = {}  # populated by ML resolver on init_session
 
     def _blank_state(self) -> SimulationSnapshot:
         return SimulationSnapshot(
@@ -191,6 +247,21 @@ class SimulationEngine:
                 "start_time_local": str(start_time_local or self.seed.get("start_time_local") or "18:00"),
             }
             self.environment.tariff_mode = self._tariff_mode_for_start_time(self.seed["start_time_local"])
+
+            # ── ML auto-resolve grid_stress and inference_demand ──────────────
+            ml = await asyncio.to_thread(
+                _ml_resolve_environment,
+                self.seed["start_date_local"],
+                self.seed.get("start_time_local", "12:00"),
+            )
+            if ml:
+                self.ml_context = ml
+                # Only set if not already overridden by the user in this call
+                self.environment.grid_stress = ml["grid_stress"]
+                self.environment.inference_demand = ml["inference_demand"]
+            else:
+                self.ml_context = {"ml_driven": False, "error": "forecasting_unavailable"}
+
             self.initialized = True
             self.completed = False
             self.mode_durations = {"CHARGING": 0, "V2G_DISCHARGE": 0, "INFERENCE_ACTIVE": 0, "IDLE": 0}
@@ -296,7 +367,7 @@ class SimulationEngine:
 
     def _session_context_extra(self) -> dict[str, Any]:
         charger_type = str(self.seed.get("charger_type") or "UNIDIRECTIONAL").upper()
-        return {
+        extra: dict[str, Any] = {
             "location_id": self.seed.get("location_id"),
             "charger_location": self.seed.get("charger_location"),
             "charger_type": charger_type,
@@ -307,6 +378,9 @@ class SimulationEngine:
             if charger_type != "BIDIRECTIONAL"
             else ["CHARGING", "V2G_DISCHARGE", "INFERENCE_ACTIVE", "IDLE"],
         }
+        if self.ml_context:
+            extra["ml_context"] = self.ml_context
+        return extra
 
     def _current_prices(self) -> dict[str, float]:
         charge_defaults = {"OFF_PEAK": 0.08, "NORMAL": 0.11, "PEAK": 0.11}
@@ -403,9 +477,10 @@ class SimulationEngine:
             return ActionResult(action, feasible, delta, immediate, recovery, marginal, reason)
 
         if action == "INFERENCE_ACTIVE":
-            if self.environment.inference_demand != "HIGH":
-                return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "inference_demand_not_high")
-            if hours_until_departure < 4:
+            # Allow inference at MEDIUM or HIGH demand. LOW demand → not worthwhile.
+            if self.environment.inference_demand == "LOW":
+                return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "inference_demand_low")
+            if hours_until_departure < 3:
                 return ActionResult(action, False, 0.0, 0.0, 0.0, float("-inf"), "departure_too_close")
             inference_power = self._inference_power()
             delta = -min(inference_power, flexible_kwh)

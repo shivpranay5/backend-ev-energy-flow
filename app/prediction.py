@@ -76,6 +76,21 @@ class RecommendationContext(BaseModel):
     alternatives: list[ActionScore]
 
 
+class SimulationSeed(BaseModel):
+    location_id: str
+    location_name: str | None = None
+    charger_type: Literal["UNIDIRECTIONAL", "BIDIRECTIONAL"]
+    arrival_soc_kwh: float = Field(ge=0, le=100)
+    hours_until_departure: int = Field(ge=1, le=168)
+    start_date_local: str
+    start_time_local: str
+    environment_patch: dict[str, str | float]
+    initial_action: Literal["CHARGING", "V2G_DISCHARGE", "INFERENCE_ACTIVE", "IDLE"]
+    auto_step_on_launch: bool = True
+    auto_play: bool = True
+    speed_multiplier: float = Field(default=1.0, gt=0)
+
+
 class SiteDecisionResponse(BaseModel):
     location_id: str
     location_name: str | None = None
@@ -88,6 +103,7 @@ class SiteDecisionResponse(BaseModel):
     economics: EconomicsContext
     recommendation: RecommendationContext
     environment_patch: dict[str, str | float]
+    simulation_seed: SimulationSeed
     model_context: dict[str, object]
 
 
@@ -415,6 +431,20 @@ def predict_site_decision(payload: SiteDecisionRequest) -> SiteDecisionResponse:
             alternatives=alternatives,
         ),
         environment_patch=environment_patch,
+        simulation_seed=SimulationSeed(
+            location_id=payload.location_id,
+            location_name=payload.location_name,
+            charger_type=payload.charger_type,
+            arrival_soc_kwh=payload.arrival_soc_kwh,
+            hours_until_departure=payload.hours_until_departure,
+            start_date_local=payload.start_date_local,
+            start_time_local=payload.start_time_local,
+            environment_patch=environment_patch,
+            initial_action=chosen.action,
+            auto_step_on_launch=True,
+            auto_play=True,
+            speed_multiplier=1.0,
+        ),
         model_context={
             "predictor_type": "hybrid_forecast_optimizer_v1",
             "source_mode": "historical_date_only",
