@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 from contextlib import asynccontextmanager
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from typing import Any
 
 from fastapi import Depends, FastAPI, HTTPException, Request, WebSocket, WebSocketDisconnect, status
@@ -17,6 +17,7 @@ from .fleet import (
     FleetOptimizeRequest,
     FleetOptimizeResponse,
     SeasonalComparisonResponse,
+    SessionCorrelatedRequest,
     UpgradeCalculatorResponse,
     WeekForecastResponse,
     compare_three_seasons,
@@ -26,6 +27,7 @@ from .fleet import (
     generate_demo_fleet,
     generate_demo_jobs,
     optimize_fleet,
+    run_session_correlated_fleet,
 )
 from .mock_loader import load_bundle
 from .prediction import SiteDecisionRequest, SiteDecisionResponse, predict_site_decision
@@ -309,17 +311,16 @@ async def site_decision_prediction(
 
 @app.post("/api/fleet/optimize", response_model=FleetOptimizeResponse)
 async def fleet_optimize(payload: FleetOptimizeRequest):
-    """Greedy fleet optimizer: allocates V2G + inference jobs across N vehicles.
+    """LP/MILP fleet co-optimizer: allocates V2G + inference jobs across N vehicles.
     When use_ml_prediction=true the forecasting stack auto-sets grid_stress."""
     return await asyncio.to_thread(optimize_fleet, payload)
 
 
 @app.get("/api/fleet/scenario/grid-event", response_model=FleetOptimizeResponse)
 async def fleet_grid_event_scenario(date: str | None = None):
-    """End-to-end demo scenario: generates a synthetic 15-vehicle fleet,
-    runs the ML prediction for the target date, and returns the full
-    AI-driven V2G + inference assignment — no manual toggles required."""
-    vehicles = generate_demo_fleet()
+    """End-to-end demo scenario: generates a date-dynamic fleet (different SOC distribution
+    per date), runs ML prediction, returns LP-optimized V2G + inference assignments."""
+    vehicles = generate_demo_fleet(target_date=date)
     jobs = generate_demo_jobs()
     req = FleetOptimizeRequest(
         vehicles=vehicles,
@@ -330,10 +331,21 @@ async def fleet_grid_event_scenario(date: str | None = None):
     return await asyncio.to_thread(optimize_fleet, req)
 
 
+@app.post("/api/fleet/session-correlated", response_model=FleetOptimizeResponse)
+async def fleet_session_correlated(payload: SessionCorrelatedRequest):
+    """
+    Inject the user's completed session vehicle into the fleet as EV-YOUR,
+    run the LP co-optimizer alongside 14 date-dynamic peers, and return
+    the fleet result with SessionContribution showing how this vehicle's
+    fleet-LP value relates to its actual session earnings.
+    """
+    return await asyncio.to_thread(run_session_correlated_fleet, payload)
+
+
 @app.get("/api/fleet/demo-vehicles")
 async def fleet_demo_vehicles():
-    """Return the synthetic demo fleet for the frontend to display."""
-    return generate_demo_fleet()
+    """Return a date-dynamic demo fleet (seed varies by today's date)."""
+    return generate_demo_fleet(target_date=date.today().isoformat())
 
 
 @app.get("/api/fleet/demo-jobs")

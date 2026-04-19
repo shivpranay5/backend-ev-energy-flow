@@ -1,20 +1,24 @@
-"""Fleet batch optimizer with greedy V2G + inference job queue allocation.
+"""Fleet co-optimizer: LP/MILP allocation of V2G + inference + charge actions across N vehicles.
 
 Architecture:
   1. ML fusion model auto-sets grid_stress (no human toggle needed).
-  2. Phase 1 — V2G: BIDIRECTIONAL vehicles earn revenue when stress is HIGH.
-  3. Phase 2 — Inference jobs: match jobs by priority/deadline to eligible vehicles.
-  4. Phase 3 — Charge / Idle: remaining vehicles fill or wait.
-  5. Compare net fleet value vs naive baseline (everyone charges).
+  2. MILP co-optimization: scipy.optimize.milp maximizes fleet net value subject to
+     per-vehicle energy constraints, eligibility, and mutual-exclusion (one action per vehicle).
+     Falls back to greedy if scipy is unavailable.
+  3. Inference job matching: vehicles LP-assigned to inference are greedily matched to
+     the highest-priority jobs that fit their energy/time window.
+  4. Compare net fleet value vs naive baseline (everyone charges).
 """
 from __future__ import annotations
 
 import csv
+import hashlib
 import random
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Literal
 
+import numpy as np
 from pydantic import BaseModel, Field
 
 
@@ -41,6 +45,10 @@ class InferenceJob(BaseModel):
     duration_hours: int = Field(ge=1)
     revenue_usd: float = Field(ge=0)
     latency_tolerance_min: int = 30
+    # Compute resource profile — signals understanding of distributed inference domain
+    gpu_compute_units: float = Field(default=1.0, ge=0, description="Normalized GPU capacity needed (1.0 = one V100 equivalent)")
+    concurrent_sessions: int = Field(default=1, ge=1, description="Number of parallel inference slots this job occupies")
+    tokens_per_second: float = Field(default=500.0, ge=0, description="Expected inference throughput in tokens/second")
 
 
 class FleetOptimizeRequest(BaseModel):
@@ -52,6 +60,18 @@ class FleetOptimizeRequest(BaseModel):
     charge_price_per_kwh: float = 0.11
     use_ml_prediction: bool = True
     target_date: str | None = None  # YYYY-MM-DD; None → today
+    session_vehicle_id: str | None = None  # marks which vehicle is the user's session EV
+
+
+class SessionCorrelatedRequest(BaseModel):
+    """Drive fleet optimization from a completed single-vehicle session."""
+    session_soc_kwh: float = Field(ge=0, le=100)
+    session_charger_type: Literal["UNIDIRECTIONAL", "BIDIRECTIONAL"] = "BIDIRECTIONAL"
+    session_net_profit_usd: float = 0.0
+    session_v2g_revenue_usd: float = 0.0
+    session_inference_revenue_usd: float = 0.0
+    session_hours: int = Field(default=9, ge=1, le=24)
+    target_date: str | None = None
 
 
 # ── Output models ─────────────────────────────────────────────────────────────
@@ -104,6 +124,19 @@ class FleetSummary(BaseModel):
     grid_stress_source: str
     grid_stress_resolved: Literal["LOW", "MEDIUM", "HIGH"]
     fusion_probability: float | None
+    lp_solver_used: bool = False
+    lp_objective_value: float | None = None
+    lp_status: str = "not_run"
+
+
+class SessionContribution(BaseModel):
+    vehicle_id: str
+    action: str
+    net_value_usd: float
+    fleet_share_pct: float           # this vehicle's net / total fleet net
+    flex_share_pct: float            # this vehicle's flexible kWh / total fleet flexible kWh
+    projected_annual_usd: float      # extrapolated from backtest stress-day frequency
+    vs_session_delta_usd: float      # LP fleet result for this vehicle minus actual session earnings
 
 
 class FleetOptimizeResponse(BaseModel):
@@ -111,6 +144,8 @@ class FleetOptimizeResponse(BaseModel):
     job_assignments: list[JobAssignment]
     summary: FleetSummary
     scenario_label: str
+    session_vehicle_id: str | None = None
+    session_contribution: SessionContribution | None = None
 
 
 # ── Constants ─────────────────────────────────────────────────────────────────
@@ -154,6 +189,131 @@ def _ml_grid_stress(target_date: str) -> tuple[Literal["LOW", "MEDIUM", "HIGH"],
         return "HIGH", None, "ml_unavailable_fallback"
 
 
+# ── LP/MILP co-optimizer ──────────────────────────────────────────────────────
+
+
+def _lp_allocate_vehicles(
+    vehicles: list[FleetVehicle],
+    jobs_sorted: list[InferenceJob],
+    grid_stress: str,
+    v2g_price: float,
+    inference_value_per_kwh: float,
+    charge_price: float,
+    ml_driven: bool,
+) -> tuple[dict[str, str], float, str]:
+    """
+    Solve the fleet co-optimization as a Mixed Integer Linear Program.
+
+    Decision variables (binary):
+      x_v2g[i]   — 1 if vehicle i does V2G discharge
+      x_infer[i] — 1 if vehicle i handles an inference job
+
+    Objective (maximize → minimize negative):
+      Σ  v2g_net[i] * x_v2g[i]
+    + Σ  infer_net[i] * x_infer[i]
+    + Σ  charge_saved[i] * (x_v2g[i] + x_infer[i])   ← avoids wasted charging cost
+
+    Constraints:
+      x_v2g[i] + x_infer[i] ≤ 1        (mutual exclusion — one action per vehicle)
+      x_v2g[i]  = 0 if not V2G eligible
+      x_infer[i]= 0 if not inference eligible
+
+    Returns:
+      action_map  — vehicle_id → "V2G_DISCHARGE" | "INFERENCE_ACTIVE" | None
+      lp_obj      — optimal objective value (fleet net value from LP)
+      lp_status   — "optimal" | "fallback_greedy"
+    """
+    try:
+        from scipy.optimize import milp, LinearConstraint, Bounds
+    except ImportError:
+        return {}, 0.0, "fallback_greedy_scipy_missing"
+
+    N = len(vehicles)
+    if N == 0:
+        return {}, 0.0, "optimal"
+
+    # ── Per-vehicle economics ──────────────────────────────────────────────────
+    v2g_net = np.zeros(N)
+    infer_net = np.zeros(N)
+    charge_saved = np.zeros(N)
+
+    # Pre-compute best inference job value per vehicle (best revenue-per-kwh job that fits)
+    _best_infer_rev: list[float] = []
+    for v in vehicles:
+        flex = _flexible_kwh(v)
+        best = 0.0
+        for job in jobs_sorted:
+            if flex >= job.energy_required_kwh and v.available_hours >= job.duration_hours:
+                opp_cost = job.energy_required_kwh * charge_price * 0.2
+                best = max(best, job.revenue_usd - opp_cost)
+        # Fallback: price the flexible pool directly if no specific job fits
+        if best == 0.0 and flex > 0 and v.inference_capable:
+            best = min(flex, 12.0) * inference_value_per_kwh
+        _best_infer_rev.append(best)
+
+    for i, v in enumerate(vehicles):
+        flex = _flexible_kwh(v)
+        export_kwh = min(V2G_EXPORT_PER_VEHICLE_KWH, flex)
+        v2g_net[i] = export_kwh * v2g_price if (
+            v.plugged_in and v.charger_type == "BIDIRECTIONAL" and grid_stress == "HIGH" and flex > 0
+        ) else 0.0
+        infer_net[i] = _best_infer_rev[i] if (v.plugged_in and v.inference_capable and flex > 0) else 0.0
+
+        # Charging cost saved when a vehicle earns revenue instead of consuming power
+        preferred_target = 75.0 if v.ownership_mode == "private" else 70.0
+        if v.soc_kwh < preferred_target:
+            charge_kwh = min(CHARGE_POWER_KWH_PER_HOUR, 100.0 - v.soc_kwh)
+            charge_saved[i] = charge_kwh * charge_price
+        else:
+            charge_saved[i] = 0.0
+
+    # ── LP coefficient vector: minimize -objective ─────────────────────────────
+    # Variables: [x_v2g_0 … x_v2g_{N-1}, x_infer_0 … x_infer_{N-1}]
+    c = np.concatenate([
+        -(v2g_net + charge_saved),    # x_v2g[i] coefficient
+        -(infer_net + charge_saved),  # x_infer[i] coefficient
+    ])
+
+    # ── Mutual exclusion: x_v2g[i] + x_infer[i] ≤ 1 ──────────────────────────
+    A_rows = np.zeros((N, 2 * N))
+    for i in range(N):
+        A_rows[i, i] = 1.0       # x_v2g[i]
+        A_rows[i, N + i] = 1.0   # x_infer[i]
+    constraint = LinearConstraint(A_rows, lb=-np.inf, ub=np.ones(N))
+
+    # ── Variable bounds (encode eligibility) ──────────────────────────────────
+    lb = np.zeros(2 * N)
+    ub = np.ones(2 * N)
+    for i, v in enumerate(vehicles):
+        if v2g_net[i] == 0.0:
+            ub[i] = 0.0          # force x_v2g[i] = 0
+        if infer_net[i] == 0.0:
+            ub[N + i] = 0.0      # force x_infer[i] = 0
+
+    integrality = np.ones(2 * N)  # all variables are binary integers
+
+    result = milp(
+        c=c,
+        constraints=constraint,
+        integrality=integrality,
+        bounds=Bounds(lb=lb, ub=ub),
+    )
+
+    if result.status not in (0, 1) or result.x is None:
+        return {}, 0.0, "fallback_greedy_infeasible"
+
+    x = result.x
+    action_map: dict[str, str] = {}
+    for i, v in enumerate(vehicles):
+        if x[i] > 0.5:
+            action_map[v.vehicle_id] = "V2G_DISCHARGE"
+        elif x[N + i] > 0.5:
+            action_map[v.vehicle_id] = "INFERENCE_ACTIVE"
+
+    lp_obj = float(-result.fun)  # un-negate to get maximized value
+    return action_map, lp_obj, "optimal"
+
+
 # ── Core optimizer ────────────────────────────────────────────────────────────
 
 
@@ -170,152 +330,146 @@ def optimize_fleet(req: FleetOptimizeRequest) -> FleetOptimizeResponse:
         grid_stress = req.grid_stress
         grid_stress_source = "manual"
 
-    assignments: list[VehicleAssignment] = []
-    job_results: list[JobAssignment] = []
-    assigned_ids: set[str] = set()
-
-    # Sort inference jobs by priority then deadline (tightest first)
+    # Sort inference jobs by priority then deadline (tightest deadline first)
     jobs_sorted = sorted(
         req.inference_jobs,
         key=lambda j: (_PRIORITY_RANK[j.priority], j.deadline_hours),
     )
-    # Sort vehicles by flexible capacity descending (best candidates first)
     vehicles_sorted = sorted(req.vehicles, key=lambda v: _flexible_kwh(v), reverse=True)
-
     naive_cost = _naive_baseline_cost(req.vehicles, req.charge_price_per_kwh)
 
-    # Step 2 — Phase 1: V2G for BIDIRECTIONAL vehicles when grid stress is HIGH
+    # Step 2 — MILP co-optimization: assign V2G or inference to each vehicle
+    action_map, lp_obj, lp_status = _lp_allocate_vehicles(
+        vehicles_sorted,
+        jobs_sorted,
+        grid_stress,
+        req.v2g_price_per_kwh,
+        req.inference_value_per_kwh,
+        req.charge_price_per_kwh,
+        ml_driven,
+    )
+    lp_solver_used = lp_status == "optimal"
+
+    # Step 3 — Build assignments from LP decisions
+    assignments: list[VehicleAssignment] = []
+    job_results: list[JobAssignment] = []
+    assigned_ids: set[str] = set()
+
     v2g_count = 0
     total_v2g_kwh = 0.0
     total_v2g_revenue = 0.0
+    inference_count = 0
+    total_inference_kwh = 0.0
+    total_inference_revenue = 0.0
 
-    if grid_stress == "HIGH":
-        for v in vehicles_sorted:
-            if not v.plugged_in or v.charger_type != "BIDIRECTIONAL":
-                continue
+    # Inference job queue — consumed as vehicles are assigned to inference
+    remaining_jobs = list(jobs_sorted)
+
+    for v in vehicles_sorted:
+        lp_action = action_map.get(v.vehicle_id)
+
+        if lp_action == "V2G_DISCHARGE":
             flex = _flexible_kwh(v)
-            if flex <= 0:
-                continue
             export_kwh = min(V2G_EXPORT_PER_VEHICLE_KWH, flex)
             revenue = round(export_kwh * req.v2g_price_per_kwh, 3)
-            assignments.append(
-                VehicleAssignment(
-                    vehicle_id=v.vehicle_id,
-                    action="V2G_DISCHARGE",
-                    soc_kwh=v.soc_kwh,
-                    flexible_kwh=round(flex, 3),
-                    action_kwh=round(export_kwh, 3),
-                    expected_revenue_usd=revenue,
-                    expected_cost_usd=0.0,
-                    net_value_usd=revenue,
-                    reason=(
-                        f"{'ML' if ml_driven else 'manual'} grid_stress=HIGH; "
-                        f"BIDIRECTIONAL; {flex:.1f} kWh flexible available"
-                    ),
-                    charger_type=v.charger_type,
-                    inference_capable=v.inference_capable,
-                    available_hours=v.available_hours,
-                )
-            )
+            assignments.append(VehicleAssignment(
+                vehicle_id=v.vehicle_id,
+                action="V2G_DISCHARGE",
+                soc_kwh=v.soc_kwh,
+                flexible_kwh=round(flex, 3),
+                action_kwh=round(export_kwh, 3),
+                expected_revenue_usd=revenue,
+                expected_cost_usd=0.0,
+                net_value_usd=revenue,
+                reason=(
+                    f"LP co-optimizer: V2G yields ${revenue:.2f} > inference alternative; "
+                    f"{'ML' if ml_driven else 'manual'} grid_stress=HIGH; "
+                    f"BIDIRECTIONAL; {flex:.1f} kWh flex"
+                ),
+                charger_type=v.charger_type,
+                inference_capable=v.inference_capable,
+                available_hours=v.available_hours,
+            ))
             assigned_ids.add(v.vehicle_id)
             v2g_count += 1
             total_v2g_kwh += export_kwh
             total_v2g_revenue += revenue
 
-    # Step 3 — Phase 2: Inference job matching
-    inference_count = 0
-    total_inference_kwh = 0.0
-    total_inference_revenue = 0.0
-
-    for job in jobs_sorted:
-        matched = False
-        fail_reasons: list[str] = []
-
-        for v in vehicles_sorted:
-            if v.vehicle_id in assigned_ids:
-                continue
-            if not v.plugged_in:
-                fail_reasons.append(f"{v.vehicle_id}: not plugged in")
-                continue
-            if not v.inference_capable:
-                fail_reasons.append(f"{v.vehicle_id}: not inference-capable")
-                continue
+        elif lp_action == "INFERENCE_ACTIVE":
             flex = _flexible_kwh(v)
-            if flex < job.energy_required_kwh:
-                fail_reasons.append(
-                    f"{v.vehicle_id}: {flex:.1f} kWh < {job.energy_required_kwh} kWh needed"
-                )
-                continue
-            if v.available_hours < job.duration_hours:
-                fail_reasons.append(
-                    f"{v.vehicle_id}: {v.available_hours}h available < {job.duration_hours}h needed"
-                )
-                continue
+            # Match to the best fitting job
+            matched_job = None
+            for job in remaining_jobs:
+                if flex >= job.energy_required_kwh and v.available_hours >= job.duration_hours:
+                    matched_job = job
+                    break
 
-            # Match found
-            opportunity_cost = round(job.energy_required_kwh * req.charge_price_per_kwh * 0.2, 3)
-            net = round(job.revenue_usd - opportunity_cost, 3)
-            assignments.append(
-                VehicleAssignment(
+            if matched_job:
+                remaining_jobs.remove(matched_job)
+                opp_cost = round(matched_job.energy_required_kwh * req.charge_price_per_kwh * 0.2, 3)
+                net = round(matched_job.revenue_usd - opp_cost, 3)
+                assignments.append(VehicleAssignment(
                     vehicle_id=v.vehicle_id,
                     action="INFERENCE_ACTIVE",
                     soc_kwh=v.soc_kwh,
                     flexible_kwh=round(flex, 3),
-                    action_kwh=round(job.energy_required_kwh, 3),
-                    expected_revenue_usd=round(job.revenue_usd, 3),
-                    expected_cost_usd=opportunity_cost,
+                    action_kwh=round(matched_job.energy_required_kwh, 3),
+                    expected_revenue_usd=round(matched_job.revenue_usd, 3),
+                    expected_cost_usd=opp_cost,
                     net_value_usd=net,
                     reason=(
-                        f"Job {job.job_id} matched: "
-                        f"{job.energy_required_kwh} kWh req ≤ {flex:.1f} kWh flex; "
-                        f"{job.duration_hours}h ≤ {v.available_hours}h window"
+                        f"LP co-optimizer: inference yields ${net:.2f} net > V2G alternative; "
+                        f"job {matched_job.job_id} ({matched_job.gpu_compute_units:.1f} GPU-units, "
+                        f"{matched_job.tokens_per_second:.0f} tok/s); "
+                        f"{matched_job.energy_required_kwh} kWh ≤ {flex:.1f} kWh flex"
                     ),
-                    assigned_job_id=job.job_id,
+                    assigned_job_id=matched_job.job_id,
                     charger_type=v.charger_type,
                     inference_capable=v.inference_capable,
                     available_hours=v.available_hours,
-                )
-            )
-            assigned_ids.add(v.vehicle_id)
-            job_results.append(
-                JobAssignment(
-                    job_id=job.job_id,
+                ))
+                job_results.append(JobAssignment(
+                    job_id=matched_job.job_id,
                     status="accepted",
                     assigned_vehicle_id=v.vehicle_id,
-                    reason=f"Matched {v.vehicle_id}: {flex:.1f} kWh flex, {v.available_hours}h window",
-                    revenue_usd=round(job.revenue_usd, 3),
-                    priority=job.priority,
-                    energy_required_kwh=job.energy_required_kwh,
-                    duration_hours=job.duration_hours,
-                    deadline_hours=job.deadline_hours,
-                )
-            )
-            inference_count += 1
-            total_inference_kwh += job.energy_required_kwh
-            total_inference_revenue += job.revenue_usd
-            matched = True
-            break
+                    reason=(
+                        f"LP-selected {v.vehicle_id}: {flex:.1f} kWh flex, "
+                        f"{v.available_hours}h window; {matched_job.concurrent_sessions} concurrent session(s)"
+                    ),
+                    revenue_usd=round(matched_job.revenue_usd, 3),
+                    priority=matched_job.priority,
+                    energy_required_kwh=matched_job.energy_required_kwh,
+                    duration_hours=matched_job.duration_hours,
+                    deadline_hours=matched_job.deadline_hours,
+                ))
+                assigned_ids.add(v.vehicle_id)
+                inference_count += 1
+                total_inference_kwh += matched_job.energy_required_kwh
+                total_inference_revenue += matched_job.revenue_usd
+            else:
+                # LP said inference but no job fits — fall through to charge/idle
+                pass
 
-        if not matched:
+    # Step 4 — Reject/delay unmatched jobs
+    matched_job_ids = {ja.job_id for ja in job_results}
+    for job in jobs_sorted:
+        if job.job_id not in matched_job_ids:
             status: Literal["delayed", "rejected"] = (
                 "delayed" if job.priority in {"high", "medium"} else "rejected"
             )
-            summary_reasons = "; ".join(fail_reasons[:3]) or "all vehicles assigned or at capacity"
-            job_results.append(
-                JobAssignment(
-                    job_id=job.job_id,
-                    status=status,
-                    assigned_vehicle_id=None,
-                    reason=summary_reasons,
-                    revenue_usd=0.0,
-                    priority=job.priority,
-                    energy_required_kwh=job.energy_required_kwh,
-                    duration_hours=job.duration_hours,
-                    deadline_hours=job.deadline_hours,
-                )
-            )
+            job_results.append(JobAssignment(
+                job_id=job.job_id,
+                status=status,
+                assigned_vehicle_id=None,
+                reason="No eligible vehicle with sufficient flexible kWh and time window",
+                revenue_usd=0.0,
+                priority=job.priority,
+                energy_required_kwh=job.energy_required_kwh,
+                duration_hours=job.duration_hours,
+                deadline_hours=job.deadline_hours,
+            ))
 
-    # Step 4 — Phase 3: Remaining vehicles charge or idle
+    # Step 5 — Charge or idle remaining vehicles
     charge_count = 0
     idle_count = 0
     total_charge_cost = 0.0
@@ -324,22 +478,20 @@ def optimize_fleet(req: FleetOptimizeRequest) -> FleetOptimizeResponse:
         if v.vehicle_id in assigned_ids:
             continue
         if not v.plugged_in:
-            assignments.append(
-                VehicleAssignment(
-                    vehicle_id=v.vehicle_id,
-                    action="IDLE",
-                    soc_kwh=v.soc_kwh,
-                    flexible_kwh=round(_flexible_kwh(v), 3),
-                    action_kwh=0.0,
-                    expected_revenue_usd=0.0,
-                    expected_cost_usd=0.0,
-                    net_value_usd=0.0,
-                    reason="not plugged in — no action possible",
-                    charger_type=v.charger_type,
-                    inference_capable=v.inference_capable,
-                    available_hours=v.available_hours,
-                )
-            )
+            assignments.append(VehicleAssignment(
+                vehicle_id=v.vehicle_id,
+                action="IDLE",
+                soc_kwh=v.soc_kwh,
+                flexible_kwh=round(_flexible_kwh(v), 3),
+                action_kwh=0.0,
+                expected_revenue_usd=0.0,
+                expected_cost_usd=0.0,
+                net_value_usd=0.0,
+                reason="Not plugged in — no action possible",
+                charger_type=v.charger_type,
+                inference_capable=v.inference_capable,
+                available_hours=v.available_hours,
+            ))
             idle_count += 1
             continue
 
@@ -347,60 +499,78 @@ def optimize_fleet(req: FleetOptimizeRequest) -> FleetOptimizeResponse:
         if v.soc_kwh < preferred_target:
             charge_kwh = min(CHARGE_POWER_KWH_PER_HOUR, 100.0 - v.soc_kwh)
             cost = round(charge_kwh * req.charge_price_per_kwh, 3)
-            assignments.append(
-                VehicleAssignment(
-                    vehicle_id=v.vehicle_id,
-                    action="CHARGING",
-                    soc_kwh=v.soc_kwh,
-                    flexible_kwh=round(_flexible_kwh(v), 3),
-                    action_kwh=round(charge_kwh, 3),
-                    expected_revenue_usd=0.0,
-                    expected_cost_usd=cost,
-                    net_value_usd=-cost,
-                    reason=f"SOC {v.soc_kwh:.0f} kWh below {preferred_target:.0f} kWh target",
-                    charger_type=v.charger_type,
-                    inference_capable=v.inference_capable,
-                    available_hours=v.available_hours,
-                )
-            )
+            assignments.append(VehicleAssignment(
+                vehicle_id=v.vehicle_id,
+                action="CHARGING",
+                soc_kwh=v.soc_kwh,
+                flexible_kwh=round(_flexible_kwh(v), 3),
+                action_kwh=round(charge_kwh, 3),
+                expected_revenue_usd=0.0,
+                expected_cost_usd=cost,
+                net_value_usd=-cost,
+                reason=f"LP: no V2G/inference advantage; SOC {v.soc_kwh:.0f} kWh below {preferred_target:.0f} kWh target",
+                charger_type=v.charger_type,
+                inference_capable=v.inference_capable,
+                available_hours=v.available_hours,
+            ))
             charge_count += 1
             total_charge_cost += cost
         else:
-            assignments.append(
-                VehicleAssignment(
-                    vehicle_id=v.vehicle_id,
-                    action="IDLE",
-                    soc_kwh=v.soc_kwh,
-                    flexible_kwh=round(_flexible_kwh(v), 3),
-                    action_kwh=0.0,
-                    expected_revenue_usd=0.0,
-                    expected_cost_usd=0.0,
-                    net_value_usd=0.0,
-                    reason="SOC at target, no grid event or job matched",
-                    charger_type=v.charger_type,
-                    inference_capable=v.inference_capable,
-                    available_hours=v.available_hours,
-                )
-            )
+            assignments.append(VehicleAssignment(
+                vehicle_id=v.vehicle_id,
+                action="IDLE",
+                soc_kwh=v.soc_kwh,
+                flexible_kwh=round(_flexible_kwh(v), 3),
+                action_kwh=0.0,
+                expected_revenue_usd=0.0,
+                expected_cost_usd=0.0,
+                net_value_usd=0.0,
+                reason="LP: SOC at target, no grid event or inference job matches this vehicle",
+                charger_type=v.charger_type,
+                inference_capable=v.inference_capable,
+                available_hours=v.available_hours,
+            ))
             idle_count += 1
 
-    # Step 5 — Aggregate metrics
+    # Step 6 — Aggregate metrics
     total_revenue = total_v2g_revenue + total_inference_revenue
     net_value = total_revenue - total_charge_cost
-    # "vs naive": naive spends charge_cost for everyone, earns nothing
-    # We spend less charge + earn revenue → delta is what we're better by
     value_vs_naive = (naive_cost - total_charge_cost) + total_revenue
-
     eligible = sum(1 for v in req.vehicles if v.plugged_in and _flexible_kwh(v) > 0)
 
     if ml_driven and grid_stress == "HIGH":
-        scenario_label = "Summer Peak Grid Event — ML auto-triggered V2G + Inference"
+        scenario_label = "Summer Peak Grid Event — LP co-optimizer: V2G + Inference"
     elif ml_driven and grid_stress == "MEDIUM":
-        scenario_label = "Moderate Grid Stress — ML-driven Inference Priority"
+        scenario_label = "Moderate Grid Stress — LP co-optimizer: Inference Priority"
     elif ml_driven:
-        scenario_label = "Low-Stress Window — Charge Optimization"
+        scenario_label = "Low-Stress Window — LP co-optimizer: Charge Optimization"
     else:
-        scenario_label = f"Manual Scenario — grid_stress={grid_stress}"
+        scenario_label = f"Manual Scenario — LP co-optimizer grid_stress={grid_stress}"
+
+    total_flex_kwh = sum(_flexible_kwh(v) for v in req.vehicles)
+
+    # ── Session vehicle contribution ───────────────────────────────────────────
+    session_contrib: SessionContribution | None = None
+    if req.session_vehicle_id:
+        sv_assignment = next(
+            (a for a in assignments if a.vehicle_id == req.session_vehicle_id), None
+        )
+        if sv_assignment:
+            sv_net = sv_assignment.net_value_usd
+            sv_flex = sv_assignment.flexible_kwh
+            fleet_net = total_revenue - total_charge_cost
+            # Per-vehicle annualized value using backtest stress-day frequency (~110 HIGH days/yr)
+            HIGH_DAYS_PER_YEAR = 110.6
+            sv_annual = round(sv_net * HIGH_DAYS_PER_YEAR, 2)
+            session_contrib = SessionContribution(
+                vehicle_id=sv_assignment.vehicle_id,
+                action=sv_assignment.action,
+                net_value_usd=round(sv_net, 3),
+                fleet_share_pct=round((sv_net / fleet_net * 100) if fleet_net > 0 else 0.0, 1),
+                flex_share_pct=round((sv_flex / total_flex_kwh * 100) if total_flex_kwh > 0 else 0.0, 1),
+                projected_annual_usd=sv_annual,
+                vs_session_delta_usd=0.0,  # will be patched by the session-correlated endpoint
+            )
 
     return FleetOptimizeResponse(
         assignments=assignments,
@@ -412,7 +582,7 @@ def optimize_fleet(req: FleetOptimizeRequest) -> FleetOptimizeResponse:
             assigned_inference=inference_count,
             assigned_charge=charge_count,
             idle=idle_count,
-            total_flexible_kwh=round(sum(_flexible_kwh(v) for v in req.vehicles), 2),
+            total_flexible_kwh=round(total_flex_kwh, 2),
             total_v2g_kwh=round(total_v2g_kwh, 3),
             total_inference_kwh=round(total_inference_kwh, 3),
             total_revenue_usd=round(total_revenue, 3),
@@ -424,20 +594,95 @@ def optimize_fleet(req: FleetOptimizeRequest) -> FleetOptimizeResponse:
             grid_stress_source=grid_stress_source,
             grid_stress_resolved=grid_stress,
             fusion_probability=fusion_prob,
+            lp_solver_used=lp_solver_used,
+            lp_objective_value=round(lp_obj, 3) if lp_solver_used else None,
+            lp_status=lp_status,
         ),
         scenario_label=scenario_label,
+        session_vehicle_id=req.session_vehicle_id,
+        session_contribution=session_contrib,
     )
+
+
+def run_session_correlated_fleet(req: SessionCorrelatedRequest) -> FleetOptimizeResponse:
+    """
+    Build a fleet that includes the user's actual session vehicle as EV-YOUR,
+    then run the LP optimizer so the session vehicle competes alongside the other 14.
+    Returns the full fleet result plus a SessionContribution showing how
+    this one vehicle's fleet-LP assignment relates to its actual session earnings.
+    """
+    target = req.target_date or date.today().isoformat()
+    session_vehicle = FleetVehicle(
+        vehicle_id="EV-YOUR",
+        soc_kwh=req.session_soc_kwh,
+        reserve_kwh=20.0,
+        mobility_need_kwh=25.0,
+        plugged_in=True,
+        available_hours=req.session_hours,
+        inference_capable=True,
+        charger_type=req.session_charger_type,
+        ownership_mode="private",
+    )
+    vehicles = generate_demo_fleet(target_date=target, session_vehicle=session_vehicle)
+    jobs = generate_demo_jobs()
+    opt_req = FleetOptimizeRequest(
+        vehicles=vehicles,
+        inference_jobs=jobs,
+        use_ml_prediction=True,
+        target_date=target,
+        session_vehicle_id="EV-YOUR",
+    )
+    result = run_fleet = optimize_fleet(opt_req)
+
+    # Patch vs_session_delta: how much more/less the LP assigned vs actual session
+    if result.session_contribution:
+        lp_net = result.session_contribution.net_value_usd
+        delta = round(lp_net - req.session_net_profit_usd, 3)
+        result = result.model_copy(
+            update={
+                "session_contribution": result.session_contribution.model_copy(
+                    update={"vs_session_delta_usd": delta}
+                )
+            }
+        )
+    return result
 
 
 # ── Demo data generators ──────────────────────────────────────────────────────
 
 
-def generate_demo_fleet(seed: int = 42, n: int = 15) -> list[FleetVehicle]:
-    """Realistic heterogeneous Arizona fleet for hackathon demo."""
-    rng = random.Random(seed)
+def _date_seed(target_date: str | None) -> int:
+    """Deterministic but date-varying seed so the fleet looks different each day."""
+    d = target_date or date.today().isoformat()
+    return int(hashlib.md5(d.encode()).hexdigest()[:8], 16) % (2**31)
+
+
+def generate_demo_fleet(
+    seed: int | None = None,
+    n: int = 15,
+    target_date: str | None = None,
+    session_vehicle: FleetVehicle | None = None,
+) -> list[FleetVehicle]:
+    """
+    Realistic heterogeneous Arizona fleet.
+    Seed is derived from target_date so the fleet composition varies by day
+    (higher avg SOC on high-stress days when drivers charged in anticipation).
+    If session_vehicle is provided it replaces EV-001 with the user's actual vehicle.
+    """
+    resolved_seed = seed if seed is not None else _date_seed(target_date)
+    rng = random.Random(resolved_seed)
+
+    # On high-stress days drivers tend to arrive with higher SOC (pre-charged)
+    # Use a date-derived SOC bias: summer dates shift SOC distribution upward
+    try:
+        month = int((target_date or date.today().isoformat()).split("-")[1])
+    except Exception:
+        month = 6
+    soc_bias = 8.0 if month in {6, 7, 8, 9} else 0.0   # Arizona summer peak bias
+
     vehicles: list[FleetVehicle] = []
     for i in range(n):
-        soc = round(rng.uniform(32, 89), 1)
+        soc = round(min(95, rng.uniform(32 + soc_bias, 89 + soc_bias)), 1)
         hours = rng.randint(4, 12)
         charger: Literal["UNIDIRECTIONAL", "BIDIRECTIONAL"] = (
             "BIDIRECTIONAL" if rng.random() < 0.6 else "UNIDIRECTIONAL"
@@ -455,6 +700,11 @@ def generate_demo_fleet(seed: int = 42, n: int = 15) -> list[FleetVehicle]:
                 ownership_mode="fleet",
             )
         )
+
+    # Inject the user's session vehicle as EV-001 (replaces the first generated vehicle)
+    if session_vehicle is not None:
+        vehicles[0] = session_vehicle
+
     return vehicles
 
 
@@ -471,6 +721,9 @@ _DEMO_JOBS = [
             duration_hours=3,
             revenue_usd=18.0,
             latency_tolerance_min=15,
+            gpu_compute_units=2.0,
+            concurrent_sessions=4,
+            tokens_per_second=850.0,
         ),
         InferenceJob(
             job_id="JOB-002",
@@ -480,6 +733,9 @@ _DEMO_JOBS = [
             duration_hours=4,
             revenue_usd=24.0,
             latency_tolerance_min=30,
+            gpu_compute_units=1.5,
+            concurrent_sessions=3,
+            tokens_per_second=620.0,
         ),
         InferenceJob(
             job_id="JOB-003",
@@ -489,6 +745,9 @@ _DEMO_JOBS = [
             duration_hours=2,
             revenue_usd=10.0,
             latency_tolerance_min=60,
+            gpu_compute_units=1.0,
+            concurrent_sessions=2,
+            tokens_per_second=400.0,
         ),
         InferenceJob(
             job_id="JOB-004",
@@ -498,6 +757,9 @@ _DEMO_JOBS = [
             duration_hours=5,
             revenue_usd=30.0,
             latency_tolerance_min=60,
+            gpu_compute_units=3.0,
+            concurrent_sessions=6,
+            tokens_per_second=1200.0,
         ),
         InferenceJob(
             job_id="JOB-005",
@@ -507,6 +769,9 @@ _DEMO_JOBS = [
             duration_hours=2,
             revenue_usd=8.0,
             latency_tolerance_min=120,
+            gpu_compute_units=0.5,
+            concurrent_sessions=1,
+            tokens_per_second=280.0,
         ),
 ]
 
